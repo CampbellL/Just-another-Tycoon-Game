@@ -1,0 +1,1447 @@
+v1.93
+------------------------------------------------------------------------------
+- Added support for the newer Layout Group attributes, specifically:
+  childControlWidth/Height (Unity 2018.1 or newer)
+  childScaleWidth/Height (Unity 2019.1 or newer)
+- (Unity 2019.2) Added a check to see if the current instance of XmlLayout
+  is a prefab, and if so, extract it into a regular scene object
+- MVVM in Unity 2019 no longer requires .NET 4.0 in order to function;
+  if tags appear to be missing (e.g. 'List'), then you may need to reimport
+  XmlLayout (right click on the UI/XmlLayout folder and click 'Reimport')
+- In Unity 2019 and newer, XmlLayout will now add references to the
+  'Unity.ugui' package when generating Assembly Definition Files
+------------------------------------------------------------------------------
+
+v1.92
+------------------------------------------------------------------------------
+- Fixed an issue where ChildXmlLayouts had no LayoutElement component
+- Float/Single values can now use commas as a separator, however you will
+  need to make a minor modification to
+  UI/XmlLayout/Type Conversion/ConversionExtensions.cs line 34 - specifically,
+  you'll need to replace the '.' value there with ','
+- Fixed an issue where Slider events could trigger an exception
+------------------------------------------------------------------------------
+
+v1.91
+------------------------------------------------------------------------------
+- Unicode characters now support an uppercase 'U' as well as a lowercase 'u'
+- Events now support multiple arguments, whereas before only a single argument
+  was permitted. Please note that the signature of the
+  XmlLayoutController.ReceiveMessage() method has changed slightly, if you've
+  overriden it in your code you may need to make a slight adjustment to match
+  the new signature.
+  Some restrictions still apply in MVVM - .item is currently supported as a
+  single parameter only, and .index/.guid will work with other parameters,
+  but for now they must be the first parameter.
+
+- MVVM: You can now have nested types for MVVM ViewModels. However,
+  some restrictions apply: nested children MUST extend XmlLayoutViewModelChild,
+  otherwise they will not be monitored for changes and two-way binding will not
+  work. This is an experimental feature and may still change over time.
+  Please note that this does not yet apply to <List> elements.
+
+- Fixed an issue where the space bar would submit TextMesh Pro Input Fields
+------------------------------------------------------------------------------
+
+v1.90
+------------------------------------------------------------------------------
+- XmlElement.AddChildElement() will now remove the child element from its
+  former parents childElements collection (if it had a parent).
+- Mask elements will no longer block raycasts by default
+- Fixed a minor bug in the MVVM Toggle Group example
+- Fixed an issue where Custom Xml Tags would ignore layout attributes
+- Fixed an issue where an exception would be thrown if an image attribute
+  was provided a value of "none"
+- ScrollViews now have a horizontal/vertical scrollbar in their prefab regardless
+  of whether they are horizontal/vertical scrollviews.
+------------------------------------------------------------------------------
+
+v1.89
+------------------------------------------------------------------------------
+- Progress bars now have two new attributes:
+  - 'horizontal' True by default. Set this to false to make the progress bar
+    operate in the vertical plane instead of horizontal.
+  - 'reverse' False by default. Set this to make the progress bar operate
+    in the opposite direction (e.g. right to left, top to bottom)
+- Added the new 'Dropdown.GetSelectedValue' extension method which gets the
+  text value of the currently selected option (as opposed to 'Dropdown.value')
+  which retrieves the selected index
+- Some minor refactoring, mostly changing method accessibility from public
+  to internal where access shouldn't be available outside of the XmlLayout
+  namespace
+- Fixed an issue where the image attribute no longer set the color to white
+  if no color was specified (e.g. for Panel elements)
+------------------------------------------------------------------------------
+
+v1.88
+------------------------------------------------------------------------------
+- XmlLayout is now capable of loading images from remote servers,
+  if you specify a url for the image attribute, XmlLayout will attempt
+  to download the image and add it to its resource database. If successful,
+  it will then use the sprite as per normal.
+- The image attribute no longer strips out file extensions automatically
+  This is as images loaded remotely still retain their file extensions
+  in the resource database path.
+
+- XmlLayout is now capable of loading Xml from remote servers. To do so,
+  call the new xmlLayout.LoadXmlFromUrl(string url). It will then connect
+  to the remote address, download the xml, and then render it.
+  At present, include paths/etc. do not support loading remote Xml as
+  loading is an asynchronous process, and loading include paths/etc. is a
+  synchronous process. This may change in future however.
+------------------------------------------------------------------------------
+
+v1.87
+------------------------------------------------------------------------------
+- Extracted all colors from the example styles file into a new 'Color Scheme'
+  file (ColorScheme_GreenYellow.xml)
+- Fixed an issue where Progress Bars couldn't use named colors for their
+  'fillImageColor' attribute
+- Fixed an issue where Unity's IL2CPP optimizer was stripping out methods
+  required for animation to work correctly
+- Some minor bug fixes related to show animations
+- Some minor improvements to show animation performance
+------------------------------------------------------------------------------
+
+v1.86
+------------------------------------------------------------------------------
+- IMPORTANT: As of v1.86, MVVM is _Disabled_ by default. If you are using
+  MVVM, you will need to enable it by clicking the 'Enable MVVM Functionality'
+  button on the XmlLayout configuration object. This will only be available
+  if your API Compatibility level is set to .NET 4.0 in Unity 2019.
+  If for some reason this doesn't work, you can manually add 'MVVM_ENABLED'
+  to 'Scripting Define Symbols' in your projects Player Settings.
+- Fixed a warning message shown when elements with an empty string
+  value for 'showAnimation' were shown
+- Added code to the XmlLayoutLocalizationEditor inspector which will
+  attempt to repair the localization dictionary if it appears to be
+  corrupted (very rare, one case reported)
+- Fixed a bug where 'SelectedColor' wasn't set for ColorBlocks in Unity 2019
+------------------------------------------------------------------------------
+
+v1.85
+------------------------------------------------------------------------------
+- Fixed an issue where ToggleButtons ignored the interactable attribute
+- Fixed an issue with build target platforms and plugins on certain platforms
+- Added the SVGImage tag for Vector graphics (Unity 2018.1 and newer only)
+  Note: Vector graphics may need to be manually added to a resource database,
+  and specifically, the 'sprite' child of the svg asset may need to be added
+  to the resource database rather than the asset itself (this appears to
+  vary from svg to svg)
+- Added the 'allowAnyAttribute' property to Custom tags, if this is set to true
+  (default = false), then the autocomplate system will allow any attribute to be
+  used with this tag without any validation errors
+- Fixed an issue where the XmlLayoutTimer would consider the frame in which
+  it was instantiated to be the 'first frame' of the application. It now
+  checks Time.frameCount instead.
+- XmlLayoutTimer will now disable itself if there are no delayed calls scheduled
+  (preventing unnecessary Update() calls which were using a small amount of
+  memory each frame). When new delayed calls are scheduled, it will re-enable
+  itself.
+- New 'Animation' tag added - this allows you to define custom animations
+  in the defaults section.
+- Added the new 'Animations' example to showcase custom animation definitions.
+------------------------------------------------------------------------------
+
+v1.84
+------------------------------------------------------------------------------
+- The OffsetXY attribute is now supported for XmlLayout elements
+  (e.g. child layouts, custom xml tags), provided they are children of another
+  element (previously, it was only supported for other element types)
+- Custom Xml Tags will no longer rebuild their layouts twice initially
+- Fixed an issue with autocomplete in newly created Xml documents
+------------------------------------------------------------------------------
+
+v1.83
+------------------------------------------------------------------------------
+- Fixed a null reference exception triggered when calling ApplyAttributes()
+  for Toggle elements more than once.
+- Fixed an issue where the 'selected color' of color blocks wouldn't be set
+  in Unity 2019
+------------------------------------------------------------------------------
+
+v1.82
+------------------------------------------------------------------------------
+- TextMesh Pro attributes should now be applied correctly even if the TextMesh
+  Pro instance is not initially active
+- ToggleGroup now supports MVVM - child elements (Toggle or ToggleButton)
+  can be added through the use of a List element (or manually in Xml)
+  (See new MVVM Toggle Group example scene)
+- ToggleGroup now supports SetSelectedValue when using Toggle elements
+  (previously only ToggleButton was supported)
+- A few minor misc fixes related to Toggle / ToggleGroup
+- Updated the code generated by the new Element Tag Handler menu item
+- If you attempt to set the color of a TextMesh Pro text component
+  (buttons, toggles, etc.) and the material face color is not white, XmlLayout
+  will set the material's _FaceColor property to white so that the color
+  can be changed correctly. This will, however, create an instance of the material
+  and as such it is probably best to set the material's face color to white
+  in advance to keep memory usage to a minimum.
+- Added the 'arrowOffset' attribute to Dropdown and TextMeshProDropdown
+- Added the 'itemWidth' attribute to TextMeshProDropdown
+- Fixed some issues with asmdef generation for DatePicker and UIObject3D
+------------------------------------------------------------------------------
+
+v1.81
+------------------------------------------------------------------------------
+- Added the new 'Accordion' element. See the new example (Examples/Accordion)
+  for details.
+- The 'Create->XmlLayout->New XmlLayout Xml File' option will now use the
+  updated schemaLocation attribute
+- The UIObject3D tag now supports MVVM (vm-dataSource an now be used to
+  specify the path to the prefab)
+- Dragged elements will now be set as the last sibling in the hierarchy,
+  so that they are rendered above any other elements with the same parent
+  (they will be restored to their original position in the hierarchy when released)
+- Added the 'lineSpacing' attribute to 'Text' (and other elements that use Text)
+- Fixed an issue where rich text tags in the 'Text' element were no longer
+  working correctly due to namespace changes introduced in v1.79
+- Text changes to bring XmlLayout text handling more in-line with HTML:
+	- XmlLayout will now replace multiple spaces in Text elements with single spaces
+	- XmlLayout will now trim each line of text
+- Fixed some error messages when importing XmlLayout into Unity 2018 due to
+  Unity executing XmlLayout code during import that shouldn't be executed
+  at that time.
+- XmlLayout no longer uses the Unity Animator component for show and hide
+  animations, as the Animator has a tendency to affect unrelated properties
+  (such as position) in more recent versions of Unity. Instead, the animations
+  are now handled by the new 'XmlLayoutAnimator' component.
+- Fixed an issue where in Unity 2018, animations that affect the scale of
+  a ScrollView cause its scroll position to change incorrectly
+- Fixed an issue where some style selectors didn't work properly in WebGL
+  (in Unity 2018)
+- Tooltips will now hide themselves if the element they are attached to
+  is made inactive
+- If you specify an AudioMixerGroup for the 'XmlLayout' element, it will
+  now be used automatically for any elements in that layout that don't have
+  a different group specified
+- Custom Xml tag handlers extending BaseXmlTag will now be built immediately
+  once the Xml has been parsed. Additionally, they will no longer be rebuilt
+  when ApplyAttributes() is called unless their Xml has changed. This allows
+  more advanced behaviour, such as having child elements which would have
+  otherwise have been destroyed by the rebuild process.
+------------------------------------------------------------------------------
+
+v1.80
+------------------------------------------------------------------------------
+- Fixed an issue where XmlLayoutSelectableNavigator would still call
+  onPointerClick events for selected objects that were no longer active
+- The delay commmands (WaitForSeconds/WaitForSecondsRealtime) used by
+  XmlLayout are no longer cached - it appears that caching them can cause issues.
+- The onClick, onMouseDown, and onMouseUp events now support the 'pointerId'
+  value, e.g. MethodName(pointerId), which will specify which mouse button
+  was clicked (-1 = left, -2 = right, or -3 = middle)
+- Rewrote the drag handling code to use the position of the pointer rather
+  than Unity's 'delta' (this should help prevent issues where the element
+  'lags' behind the pointer)
+- Added a (rather complicated) example: UI/XmlLayout/Examples/ReorderableList
+  This is a list which can have elements dragged around to new positions
+- Fixed an issue which could prevent building with v1.79
+------------------------------------------------------------------------------
+
+v1.79
+------------------------------------------------------------------------------
+- NOTE: It is highly recommended that you delete the original XmlLayout folder
+  and restart the editor before importing this update. You can backup
+  UI/XmlLayout/Configuration/Resources/XmlLayout_Configuration
+  if you'd like to preserve your configuration settings.
+  Ideally, the updated version should be imported without any scenes
+  containing XmlLayout open.
+
+- Added the 'selectedBackgroundSprite' and 'deselectedBackgroundSprite'
+  attributes to ToggleButton - deselectedBackgroundSprite is optional and will
+  be set to the initial background sprite used by the ToggleButton if a value
+  is not provided
+- Fixed an issue where 'showPercentageText' on the ProgressBar element
+  didn't always work correctly
+
+- Fixed an issue where sometimes delayed commands weren't executed
+  while in edit mode
+
+- The XmlLayoutResourceDatabase no longer has properties that aren't included
+  in the final build
+- Fixed an issue where the XmlLayoutResourceDatabase would pick up
+  assets in Resources folders inside the 'Packages' folder - it
+  will now only reference resources found inside the 'Assets' folder.
+
+- XSD: The XmlLayout xsd file now uses the 'XmlLayout' namespace
+  rather than 'http://www.w3schools.com'. XmlLayout will automatically
+  update any Xml files in your project to use the new namespace.
+
+- Renamed 'XmlPluginProcessor' to 'XmlLayoutPluginProcessor'
+- Renamed 'XmlSchemaProcessor' to 'XmlLayoutSchemaProcessor'
+- Moved the contents of 'UI/XmlLayout/Resource Database/Editor' to
+  'UI/XmlLayout/Editor/Resource Database' so as to have all XmlLayout
+  editor code in the same place
+
+- Extracted Assembly-related code from XmlLayoutUtilities to a new class
+  called 'XmlLayoutAssemblyHelper'
+
+- Added the Assets/XmlLayout/Regenerate XSD menu item (a shortcut)
+- Added the Assets/XmlLayout/Fix Symbol Definition menu item
+  Use this if you've removed a plugin (such as PagedRect) and are now getting
+  exceptions due to 'missing' classes
+
+- Added an option to 'Disable MVVM functionality' to the Configuration
+  (and vice versa). This will exclude MVVM classes from being compiled,
+  resulting in a (slightly) smaller build, as well as excluding references
+  to the Remoting namespace, which isn't available in .NET 2.0
+  in recent versions of Unity.
+
+- (Unity 2018 and newer) Added functionality to generate assembly definition
+  files for XmlLayout and related plugins. This can be found in the XmlLayout
+  Configuration window, specifically:
+  - 'Manage Assembly Definition Automatically': If this is enabled,
+    XmlLayout will generate assembly definition files automatically.
+	This will add to compilation time, so it is recommended to leave this
+	value disabled most of the time.
+  - 'Generate Assembly Definition Files': Clicking this button will generate
+    assembly definition files for XmlLayout and any installed plugins.
+  - 'Delete Assembly Definition Files': Clicking this button will delete any
+    assembly definition files created by XmlLayout, restoring the project
+	to its former state.
+------------------------------------------------------------------------------
+
+v1.78
+------------------------------------------------------------------------------
+- Fixed an issue where the offset Min/Max values for ChildXmlLayout's
+  XmlLayout instance were incorrect
+- Added a new handler for the 'RectAlignment' attribute - previously this
+  attribute was applied by the width and/or height attributes. Now it may
+  be applied even if those attributes are not used, for use with attributes
+  such as contentSizeFitter, and also to allow the RectAlignment setting
+  to be used if the width and/or height is changed at runtime through any means.
+- Added the 'sortingOrder' attribute to the Canvas element
+- Fixed an issue where 'RestrictToPermittedElementsOnly' wasn't taken into
+  account by the autocomplete (although the restriction was functional
+  when processing the Xml)
+- Fixed an issue where child element collections would be cleared by
+  RebuildLayout calls even if XmlLayout determined that no rebuild was
+  necessary (and forceEvenIfXmlIsUnchanged was false)
+- Some minor adjustments that may help slightly improve the speed of
+  switching from edit to play mode in the editor
+------------------------------------------------------------------------------
+
+v1.77
+------------------------------------------------------------------------------
+- Fixed an issue where sometimes elements would change positions when their
+  classes changed, even if none of their position related attributes were
+  changed
+- Fixed a potential exception when using the vm-DataSource attribute on
+  elements with a non-MVVM layout controller
+- Fixed a potential issue with one-shot audio objects being destroyed
+  before they finished playing if the application is lagging and the sound
+  takes longer to play than it should
+- Fixed an issue where child elements would sometimes have their "active"
+  attribute set to false when hiding their parent via Hide()
+------------------------------------------------------------------------------
+
+v1.76
+------------------------------------------------------------------------------
+- Fixed a bug where PagedRect would no longer remove the default 'template'
+  pages
+- Fixed an issue where PagedRect Pagination was no longer using the correct
+  rectAlignment value if a width or height were specified
+- Added autocomplete for the useSwipeInputForScrollRect attribute
+- Fixed a bug with list item positioning when multiple lists were present
+- The XmlLayoutTimer component will now be persistent between scene loads
+  (via DontDestroyOnLoad), which ensures that delayed calls will not be
+  interrupted
+- One Shot audio sources are now also persistent between scene loads
+------------------------------------------------------------------------------
+
+v1.75
+------------------------------------------------------------------------------
+- Some bug fixes for plugin processing when dealing with dynamically generated
+  code
+- Fixed a potential issue with controller types in ChildXmlLayout
+- Added the 'iconImageType' attribute to Button and ToggleButton
+- Minor adjustment to ViewModel property equality checks
+- Added the 'scrollSensitivity' attribute to Dropdown
+- Added the 'selectedIcon' attribute to ToggleButton
+- Added the 'textOffset' attribute to InputField
+- Fixed a bug where XmlLayoutController.OnTwoWayBoundViewModelMemberChanged()
+  wasn't called if a two way bound dropdown's value changed
+- The base implementation of XmlLayoutController.OnTwoWayBoundViewModelMemberChanged()
+  now calls 'ViewModelMemberChanged' so as to update any other elements using
+  the same data source
+- If you change the value of a vm-dataSource attribute, XmlLayout will now update
+  the value of the element to match the new data source immediately
+- If the vm-dataSource attribute is removed, XmlLayout will now break the association
+  between the element and its old data source when ApplyAttributes() is called
+- XmlLayout now delays processing event-handler attributes until the end of the
+  frame in which the change was applied, allowing internal event-handlers (such
+  as those used for MVVM) to be added first, and thus, execute first. This helps
+  ensure that ViewModel updates are processed prior to event-handlers being called.
+------------------------------------------------------------------------------
+
+v1.74
+------------------------------------------------------------------------------
+- XmlLayout now supports Unicode characters, e.g. \u03a0 (Pi) in text
+  values for most elements (e.g. Text, TextMeshPro, InputField, Toggle, etc.)
+- Added the 'Exclude Assembly List' to XmlLayout Configuration, allowing you
+  to specifically exclude certain assemblies from XmlLayout's custom
+  element / attribute search.
+- ScrollView prefabs now have Sub-Canvas elements on their Content GameObjects
+  (this should help isolate ScrollView content from unnecessary layout rebuilds)
+- Added the 'asteriskChar' attribute to the InputField element
+- Fixed an issue with PlayShowAnimation
+- If the Xml file used by a custom element (extending BaseXmlTagHandler) is
+  changed, the parent XmlLayout will now be rebuilt
+- If the Xml file specified by an <Include /> tag is changed, the parent
+  XmlLayout will now be rebuilt
+- Added an optional third parameter to Show()/Hide() which allows you to force
+  XmlLayout to Show/Hide the element even if XmlLayout thinks it is already
+  visible/hidden
+- Reworked Show/Hide a bit so that it should work a bit better
+- Calling Show() while a Hide() is in progress will now interrupt the
+  Hide() process and switch over to Show(), and vice versa
+- Added 'both' and 'none' options to the contentSizeFitter attribute
+- Fixed some issues with MVVM and non-string data types and the List tag
+- Changed the MVVM Example List to use integers instead of strings
+------------------------------------------------------------------------------
+
+v1.73
+------------------------------------------------------------------------------
+- Added the 'BaseXmlTag' class which you can extend to create your own tags
+  which use Xml
+  - Override the 'XmlPath' property to load an Xml file for the tag, or
+  - Override the 'Xml' property to specify Xml directly
+  - Override the 'ControllerType' property to specify which type of
+    XmlLayoutController to use (optional)
+  - Override the 'PrimaryComponentType' property to specify a component type
+    to be added to the element
+- Renamed 'XmlLayout_Base.xsd' to "XmlLayout_Base.txt' so as to prevent
+  Jetbrains Rider from picking it up as a schema document (it should be using
+  'XmlLayout.xsd')
+  NOTE: You may need to delete 'XmlLayout_Base.xsd' manually if you are
+  using Rider.
+- Some minor refactoring of event-handling code
+------------------------------------------------------------------------------
+
+
+v1.72
+------------------------------------------------------------------------------
+- PrepopulateViewModel() will now still be called if the XmlLayout element
+  has its active attribute set to false.
+- Fixed an issue where Show Animations didn't always work correctly when
+  timeScale was set to zero
+- All elements will now be added to the UI layer
+- One shot audio sources should now be destroyed correctly if timeScale is 0
+- Fixed a bug where selectable elements would play the OnMouseEnterSound
+  when they were clicked
+------------------------------------------------------------------------------
+
+v1.71
+------------------------------------------------------------------------------
+- Fixed a bug in which a Dropdown list with a scrollbar could sometimes have
+  incorrectly sized/positioned items
+- When rebuilding a layout, XmlLayout will now unparent any children of the
+  layout itself prior to calling Destroy() on them.
+- Added image-related attributes to the autocomplete for the InputField element
+- Fixed a potential null-reference exception if a color block property was given
+  an empty value
+- Fixed an issue with 'OneShot' audio where the temporary audio source was
+  destroyed, but its GameObject was not
+- Assembly.Load() calls are now wrapped in try...catch statements,
+  so if there are any issues with any assemblies, XmlLayout will still function
+  regardless
+- Fixed an issue in the DatePickerDateRange TagHandler
+------------------------------------------------------------------------------
+
+v1.70
+------------------------------------------------------------------------------
+- Fixed a bug where enabling an element which had played any sound would result
+  in it playing that sound again
+- Added the 'audioMode' attribute to all elements.
+  - 'Normal' mode is the default (current) behaviour.
+  - 'OneShot' mode allows you to instruct XmlLayout to create a one-shot
+    audio source to play any sounds. This is slightly more expensive
+	performance-wise, but it allows XmlElements to play sounds even after they
+	have been disabled, and also allows them to play more than one sound
+	at a time.
+- You can now use Vector2/3/4 datatypes in ViewModels with most Vector attributes
+- You can now use asset data types (e.g. Sprites) in ViewModels with most
+  attributes. These assets will, if they are not already located in a resource
+  database, be added to the main XmlLayout asset database with a dynamically
+  generated path (temporarily).
+- XmlLayoutSelectableNavigator is no longer attached to an XmlLayout GameObject,
+  it will have its own GameObject so it will no longer stop working if the
+  first XmlLayout in the scene is disabled.
+------------------------------------------------------------------------------
+
+v1.69
+------------------------------------------------------------------------------
+- Added the 'tooltipWidth' attribute
+- Added a 'Refresh' button to resource databases
+- Fixed a bug where an XmlLayout with its 'active' attribute set to false
+  would require two calls of Show() before it became visible.
+------------------------------------------------------------------------------
+
+v1.68
+------------------------------------------------------------------------------
+- MVVM should now function correctly in .NET 4.0
+- Added support for uResize attributes (uResize sold separately)
+- Fixed an issue where the default caches weren't cleared when rebuilding the
+  layout, preventing modifications to styles from taking effect. (v1.68a)
+------------------------------------------------------------------------------
+
+v1.67
+------------------------------------------------------------------------------
+- Added the option to disable the XmlLayoutSelectableNavigator component
+  to the XmlLayout Configuration object
+- Added the new TextMeshProMaterial element (Defaults section only)
+  This allows you to create TextMeshPro Materials via Xml and assign them
+  to TextMeshPro objects. For details please see:
+  http://digital-legacy.co.za/XmlLayout/Documentation#TextMeshPro-TextMeshProMaterials
+- Improved drag handling code
+  (should now work better in "Screen Space - Camera" and "World Space" render modes)
+------------------------------------------------------------------------------
+
+v1.66
+------------------------------------------------------------------------------
+- Fixed an issue where elements with ShowAnimations were sometimes positioned
+  incorrectly in Unity 2018.2+
+- Fixed an issue where sometimes items in an ObservableList wouldn't be issued
+  unique identifiers properly
+- Added the ObservableList.ReplaceItems() method which combines Clear() and
+  AddRange() calls.
+- Fixed an issue with the PagedRect tag implementation
+  (ParseChildElements return type)
+------------------------------------------------------------------------------
+
+v1.65
+------------------------------------------------------------------------------
+- Custom Resource Databases now have an optional 'Path Prefix' value which you
+  can use to automatically add a prefix to all entries in that database;
+  this allows you to, if you wish, have an easier time of referring to specific
+  resource databases if need be.
+- * The XmlLayout Configuration object (Assets -> XmlLayout -> Configuration)
+  now allows you to specify whether or not assemblies beyond the current
+  should be searched for plugins, custom elements and attributes (this is
+  the default behaviour). For most users, this should be left as it is,
+  but if you aren't using any plugins, or custom attributes/etc. defined
+  outside the assembly containing XmlLayout, then you can safely disable
+  this option which slightly improve performance, and may prevent some issues
+  in Visual Studio.
+- * Added the 'Custom Assembly List' to the XmlLayout Configuration object.
+  This property allows you to specify a list of additional assemblies to check
+  for plugins, custom elements, and attributes. This will allow you to have
+  XmlLayout search specific additional assemblies without have to extensively
+  search through all available assemblies. Please note that you will need to
+  specify the full name of the assembly, e.g.
+  "mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+- * Please note that these new options are for advanced users only, they can
+  safely be ignored.
+- Fixed an issue where Text Mesh Pro tooltips were incorrectly scaled in
+  Screen Space - Camera mode.
+------------------------------------------------------------------------------
+
+v1.64
+------------------------------------------------------------------------------
+- SetAttribute(), RemoveAttribute(), and ApplyAttributes() can now be used
+  fluently.
+- Added new events: onMouseDown and onMouseUp
+- ChildXmlLayout change: If no controller has been specified; events will
+  now be passed automatically to the parent controller instead.
+- Added a new option to the 'XmlLayout' component:
+  'Use Unscaled Time for animations' (default value: true)
+  If this is set, then animations will be played independently of time scale.
+------------------------------------------------------------------------------
+
+v1.63
+------------------------------------------------------------------------------
+- The order in which defaults are defined is now important (as per CSS)
+  defaults classes which are defined later on will always take precedence
+  over those which were defined before, regardless of the order of the
+  classes in the 'class' attribute.
+- Fixed an issue with the AttributeDictionary used in ApplyAttributes()
+  in which methods such as ContainsKey() would not work correctly
+- Fixed an issue with SetAttribute() sometimes triggering an exception
+  if used to apply an attribute to an element which was already present
+  due to a defaults definition
+------------------------------------------------------------------------------
+
+v1.62
+------------------------------------------------------------------------------
+- Fixed an issue with animation where animationDuration didn't precisely match
+  the amount of time an animation would take to complete (animations were taking
+  longer than they should). As such, all animations will run faster now;
+  you may need to adjust your animationDuration settings.
+- Fixed an issue where button 'iconWidth' attribute settings were not always
+  applied if other attributes were applied later
+- Major performance improvements across the board to improve layout build
+  performance and reduce XmlLayout's memory footprint. In testing,
+  initial layout builds now perform approximately 20% faster, and use
+  approximately 30% less memory.
+------------------------------------------------------------------------------
+
+v1.61
+------------------------------------------------------------------------------
+- Tooltips now support TextMesh Pro!
+  Use the 'tooltipUseTextMeshPro' attribute to enable this functionality
+  (either in a Defaults 'Tooltip' element, or on a specific element)
+  Please note:
+  a) TextMesh Pro tooltips will still use the 'tooltipFont' attribute,
+  but will expect a TextMesh Pro font rather than a regular font object.
+  b) The 'tooltipTextOutlineColor' attribute is not supported for TextMesh Pro
+  c) You can use tooltips using either text type in the same scene,
+  but it is recommended that you stick with one or the other for consistency.
+------------------------------------------------------------------------------
+
+v1.60
+------------------------------------------------------------------------------
+- XmlLayoutButtons may now optionally use prefabs which do not have
+  text and/or icon components
+- Added the 'Allow Any Attribute' option to the XmlLayout Configuration.
+  If this attribute is enabled (it is off by default), then you may use any
+  attribute in your Xml without receiving any validation errors.
+  (You can access the configuration object via Assets -> XmlLayout -> Configuration)
+- Child XmlLayout instances will now maintain a reference to their parent
+- Child XmlLayout instances will now use their parents to show tooltips instead
+  of showing them directly
+- Added the 'tooltipFadeTime' attribute. Tooltips will now fade in/out by default.
+  (Default value: 0.2)
+- Added the 'tooltipDelayTime' attribute. This will delay showing the tooltip
+  by this amount of time - the pointer must still be over the element
+  (or the element must still be selected) after this time in order for the tooltip
+  to be shown.
+------------------------------------------------------------------------------
+
+v1.59
+------------------------------------------------------------------------------
+- Shadows and Outlines can now be used on the same element
+- Float values are now parsed using an invariant culture, so that the format
+  will remain the same regardless of which culture the application is running
+  on
+- Fixed a bug with multiple nested ChildXmlLayout elements
+------------------------------------------------------------------------------
+
+v1.58
+------------------------------------------------------------------------------
+- Fixed a bug where sometimes XmlLayout did not pick up plugins that were
+  in a /Plugins/ directory or in a separate dll file.
+- Fixed an issue where hover classes were not removed from buttons
+  if the mouse button was held down while moving the pointer away
+  from the element
+- Fixed an issue where hover classes were removed if the button was pressed
+- Fixed an issue where button text colors were not always switched correctly
+  to the disabled text color when the element was disabled
+------------------------------------------------------------------------------
+
+v1.57
+------------------------------------------------------------------------------
+- Fixed a bug where SetAndApplyAttribute() did not always preserve the new
+  attribute value
+- Added the 'maskImage' attribute to ScrollViews
+- Fixed an issue where changing classes in event-handlers could trigger
+  exceptions (when using .NET 4.6)
+------------------------------------------------------------------------------
+
+v1.56
+------------------------------------------------------------------------------
+- Fixed a bug in which TextMeshProInputFields sometimes showed text unmasked
+  if their attributes/classes were changed. Note: you can no longer set
+  text for input fields via the TMP_Text element, only directly on the
+  TextMeshProInputField element.
+- Fixed a bug where TextMeshProInputField text sometimes blocked raycasts,
+  preventing selection of the element
+- Added the 'EventTarget' attribute to XmlLayoutController, allowing you
+  to specify an object other than the controller to receive events *
+- Added the 'OnLayoutRebuilt' event to XmlLayoutController, allowing you
+  to react to layout rebuilds outside of the controller *
+- * Thanks to /u/andrewgarrison for these!
+------------------------------------------------------------------------------
+
+v1.55
+------------------------------------------------------------------------------
+- Fixed a bug in TextComponentWrapper
+- Fixed a bug in which lists of named colors could not have an 'x' in them
+  (side note: you can no longer separate lists of colors using an 'x', use
+  a space or '|' instead)
+- Fixed a potential bug in TextMeshProInputField
+- Fixed a bug where elements would sometimes lose their RectAlignment values
+  when their classes changed
+- The 'prefabPath' attribute now works with defaults values
+- Added the 'selectClass' attribute which allows you to specify classes
+  to be added when the element is selected (and removed when deselected)
+- Added the 'pressClass' attribute which allows you to specify classes
+  to be added when the element is pressed (and removed when the press ends)
+- Fixed a bug where removing a class did not remove it from the class attribute,
+  sometimes resulting in the attributes not being reset correctly
+- Fixed a bug where sometimes the classes of an element were not correctly
+  preserved when adding or removing one or more classes to them
+- TextMeshPro input fields and dropdowns will now have LayoutElements present
+------------------------------------------------------------------------------
+
+v1.54
+------------------------------------------------------------------------------
+- Fixed a warning message added in v1.53
+- Fixed a warning message when using the 'ChildXmlLayout' element
+- Added an override to XmlElement.ApplyAttributes which will allow you to pass
+  a Dictionary<string, string> instead of an AttributeDictionary
+- 'ChildXmlLayout' elements will no longer attempt to create a new XmlLayout
+  instance every time ApplyAttributes() is called.
+  Note: If you need to apply attributes to the child XmlLayout object, you will
+  need to do the following:
+  childXmlLayout.childElements[0].ApplyAttributes(Dictionary<string,string> attributes)
+- Setting the id or internalId of an element via ApplyAttributes() or
+  SetAndApplyAttribute() will now update the XmlLayout such that
+  GetElementById() will work.
+- If an element is hidden while showing a tooltip, the tooltip will now be
+  hidden as well
+- Added the 'fillCenter' attribute to elements which use images
+- Fixed a bug in 'SetNativeSize' which was preventing it from working correctly
+  if the element was inactive
+- Added the 'GetElementsByClass' method to XmlLayout, and the
+ 'GetChildElementsByClass' method to XmlElement
+------------------------------------------------------------------------------
+
+v1.53
+------------------------------------------------------------------------------
+- Added the 'SetNativeSize' attribute for elements using images
+- Rewrote tooltip positioning code, it should now work correctly in all canvas
+  render modes
+- Fixed a bug where sometimes complex combinations ofhover classes wouldn't
+  work correctly
+- You can now create named colors using the 'Color' element (within a defaults
+  section only). You will then be able to use them as follows:
+  <Defaults>
+      <Color name="primary" color="rgb(1,1,0)" />
+	  <Color name="secondary" color=rgb(1,0,0)" />
+
+	  <Panel color="primary" />
+	  <Button color="primary" />
+	  <Text color="secondary" />
+  </Defaults>
+
+  Please be advised that, due to this change, the ToColor() and ToColorBlock()
+  conversion methods now accept an optional parameter which specifies
+  which XmlLayout instance is being used - if you don't provide this parameter
+  in any custom code which uses ToColor() or ToColorBlock() then those method
+  calls will not work with custom named colors.
+------------------------------------------------------------------------------
+
+v1.52
+------------------------------------------------------------------------------
+- Added missing image attributes to the TextMeshProInputField and
+  TextMeshProDropdown elements
+- Added 'raycastTarget' and 'image' attributes to 'Canvas' element
+- Fixed a bug which could prevent offsetXY from working correctly with
+  TextMeshPro elements
+- Child elements will now be updated when their parent elements have
+  classes added or removed via AddClass() or RemoveClass()
+- Updated TableLayout to v1.12
+------------------------------------------------------------------------------
+
+v1.51
+------------------------------------------------------------------------------
+- Fixed a potential null reference exception when applying attributes to
+  a Button element using TextMeshPro after initial setup
+------------------------------------------------------------------------------
+
+v1.50
+------------------------------------------------------------------------------
+- Made an adjustment to how property values are set, which may prevent some
+  issues when using .NET 4.6 (Experimental) and IL2CPP
+------------------------------------------------------------------------------
+
+v1.49
+------------------------------------------------------------------------------
+- Fixed an issue where list items would sometimes not be updated properly when
+  ViewModel properties were changed.
+- Added the 'NotifyListChanged' method to XmlLayoutViewModel which you can use
+  to notify XmlLayout to check for changes to a list (for use with calculated
+  properties which rely on external data)
+------------------------------------------------------------------------------
+
+v1.48
+------------------------------------------------------------------------------
+- Fixed an issue where a <List> element located inside a TableLayout Row
+  would not always update the layout correctly when list elements are
+  changed.
+------------------------------------------------------------------------------
+
+v1.47
+------------------------------------------------------------------------------
+- Fixed an issue where sometimes TextMeshPro Dropdown elements would always
+  have a label font size of 14, even if a different value had been set
+- Fixed an issue where sometimes TextMeshPro InputField elements would have
+  unusual scaling values for its text / placeholder elements
+- Added the 'padding' attribute to the TextMeshPro InputField element
+  (the default value is 10 10 7 6)
+- Added the 'padding' attribute to the TextMeshPro Dropdown element
+  (the default value is 10 25 7 6)
+- TextMeshPro Dropdown elements will now use correct default font sizes and
+  colors
+- Fixed an issue where sometimes the TextMeshPro Dropdown element would not
+  correctly apply changes to colors
+- Added the 'scrollbarWidth' attribute to the TextMeshPro Dropdown element
+- Added the 'padding' attribute to the TextMeshPro Dropdown Item Template
+  (the default value is 20 20 2 1)
+- Fixed an issue where the TextMeshPro Dropdown element would ignore
+  checkmark image, color, and sizing attributes.
+- Using a value of 'none' in a string field will now use the word 'none'
+  rather than having no value
+------------------------------------------------------------------------------
+
+v1.46
+------------------------------------------------------------------------------
+- Fixed an issue where ViewModels would not respond to changes to an
+  ObservableList if the ViewModel and list were initialized using a C#
+  Object initializer e.g.
+  viewModel = new MyViewModel()
+  {
+       myList = new ObservableList()
+  }
+------------------------------------------------------------------------------
+
+v1.45
+------------------------------------------------------------------------------
+- Updated TableLayout to v1.11 (fixing a positioning issue in Unity 2017.3)
+------------------------------------------------------------------------------
+
+v1.44
+------------------------------------------------------------------------------
+- Fixed a bug where TextMeshPro would ignore attributes applied to it during
+  if they were applied immediately after creating the object
+- Added the option to use Nested Styles (Defaults) - see the online
+  documentation for details on how to use this
+------------------------------------------------------------------------------
+
+
+v1.43
+------------------------------------------------------------------------------
+- Fixed an xsd validation error
+------------------------------------------------------------------------------
+
+v1.42
+------------------------------------------------------------------------------
+- Fixed an issue where calling ApplyAttributes() on a Button element with an
+  explicitly-defined Text element child could result in the Text element
+  being destroyed
+------------------------------------------------------------------------------
+
+v1.41
+------------------------------------------------------------------------------
+- Fixed an error message when using PagedRect v1.40 with XmlLayout v1.40
+- Fixed a potential issue where XmlLayout would attempt to control the cursor
+  even when no cursor attributes had been defined.
+- Fixed a bug where changing the selected/deselected colors of a ToggleButton
+  at runtime via attributes/classes wouldn't take effect immediately
+------------------------------------------------------------------------------
+
+v1.40
+------------------------------------------------------------------------------
+- Elements with tooltips will now automatically have 'raycastTarget' set to true
+- Fixed a bug which was preventing children of ScrollViews from being
+  included in GetFormData() results.
+- Fixed a bug in which XmlLayout objects were incorrectly set to block raycasts
+  (if you're experiencing an issue where events aren't firing, try clearing
+  the 'raycastTarget' property of the XmlLayout's image component)
+------------------------------------------------------------------------------
+
+v1.39
+------------------------------------------------------------------------------
+- Added the 'Canvas' element which can be used to isolate areas of the
+  layout from one another so that Unity's layout calculations work on them
+  independently. This may, in some cases, improve the performance of complex
+  layouts.
+- Button elements may now optionally have a <Text> or <TextMeshPro> child element,
+  if this is present then it will replace the button's default text element
+  with the child, meaning that you can now, if you wish, use TextMeshPro
+  on button elements, as well as using text attributes which were previously
+  not available when setting attributes via the <Button> tag.
+  Attributes defined on the child element will override any defined by the
+  button.
+- As with Button elements, Toggle elements now also support a <Text> or
+  <TextMeshPro> child which will replace the default text element.
+- Toggle elements now use a layout group internally to position the image
+  and optional text elements rather than absolute positioning.
+- Fixed a bug where the string used to refer to a tag type would always
+  be based on the name of the tag handler's class, even when the
+  [ElementTagHandler()] attribute was used to specify a different name
+- 'Force Rebuild on Awake' is no longer strictly necessary in order to use
+  event-handling as event attributes will now be applied independently
+  on awake. Please note that if your layout implements dynamically generated
+  elements, or is dependent on any LayoutRebuilt() code being triggered at
+  runtime, then you will still need 'Force Rebuild on Awake' to be enabled.
+- Added the 'TextMeshPro_InputField' and 'TextMeshPro_Dropdown' elements
+  which allow you to create input fields and dropdown elements which implement
+  TextMeshPro instead of default Unity UI Text.
+- Fixed a bug which could prevent prefabs being specified for UIObject3D
+- Fixed a warning message which was sometimes logged if UIObject3D was not
+  installed
+------------------------------------------------------------------------------
+
+v1.38
+------------------------------------------------------------------------------
+- Added two new events to all elements: onShow and onHide, which will be called
+  when the elements are shown/hiddden respectively. If the elements are animated,
+  they will be called when the animation completes.
+- Events such as Show() and Hide() will now be propogated to ChildXmlLayout
+  elements from the parent layout
+- Added 'onShowSound' and 'onHideSound' to all elements which will be played
+  when the elements are shown/hidden (before any animations start)
+- Added the 'audioMixerGroup' attribute to all elements which allows you to
+  specify the audioMixerGroup to be used by that element. It expects values
+  in the following format:
+  Path/To/AudioMixer|Path/To/AudioMixerGroup
+  Where the AudioMixer path is accessible to XmlLayout, and the AudioMixerGroup
+  path is the argument passed to
+  https://docs.unity3d.com/ScriptReference/Audio.AudioMixer.FindMatchingGroups.html
+- Fixed a bug where attributes which were removed from the XmlLayout element
+  would not always be cleared when rebuilt.
+- Fixed a bug in the 'Test it Out' example which sometimes broke instead of
+  displaying the error message when invalid Xml was provided.
+- Fixed a potential exception in the Cursor controller code.
+- Xml Elements which do not use drag functionality will no longer prevent
+  elements beneath them from receiving drag events (e.g. buttons in a scrollview)
+- Added drag attributes to the autocomplete file for Button elements
+- Text fields now support using '\n' or '<br />' to add line breaks.
+- Added support for UIObject3D (Sold separately, available soon).
+------------------------------------------------------------------------------
+
+v1.37
+------------------------------------------------------------------------------
+- Added two new attributes to the Slider element:
+   a) fillMaskImage: allows you to specify a masking image be applied  to the
+      fill area of a slider
+   b) fillPadding: allows you to control the padding used by the fill area
+- Added several Dropdown attributes which were missing from autocomplete:
+   - textAlignment
+   - testShadow
+   - textColor
+- Fixed a potential issue in the xsd which could prevent certain editors
+  from using autocomplete
+- The autocomplete generation system is now a little more efficient when it
+  comes to generating documentation for enum fields (which will result in
+  smaller xsd files)
+- Added more verbose warning messages when invalid values are used for
+  ChildXmlLayout attributes
+- Added support for the PagedRect 'PageChangedEvent'
+------------------------------------------------------------------------------
+
+v1.36
+------------------------------------------------------------------------------
+- Added the 'toggleCheckmarkSize' and 'toggleCheckmarkImagePreserveAspect'
+  attributes to the 'Toggle' element.
+- Added the 'checkSize' and 'checkImagePreserveAspect' attributes to the 'Dropdown'
+  element.
+- Fixed the 'checkImage' attribute not working for dropdown elements.
+- Added the 'dropdownHeight' attribute to 'Dropdown' which allows you to
+  specify the height of the dropdown item list.
+- Fixed a bug which could trigger an exception when using two-way binding
+  with InputFields bound to numeric values (float, int, etc.)
+- Fixed a bug which was preventing the Dropdown item colors from working as
+  expected.
+- 'hoverClass' will now also be applied/removed when an object enters the
+  'Highlighted' state, such as when an element is selected using navigation
+  keys (or a gamepad/etc.) for buttons, sliders, dropdowns, and toggles.
+  In addition, these elements will now show their tooltips and play their
+  OnMouseEnter sounds when selected in such a way.
+- Fixed a bug which resulted in odd content sizing for dropdowns using a custom
+  item height.
+------------------------------------------------------------------------------
+
+v1.35
+------------------------------------------------------------------------------
+- Added the 'verticalScrollbarWidth' and 'horizontalScrollbarHeight' attributes
+  to VerticalScrollView and HorizontalScrollView respectively.
+- Fixed a bug with the show animations for list elements.
+- The 'onSubmit' event will now be triggered by any submit source rather than
+  just the enter key (e.g. gamepad button 0)
+- Fixed a bug in explicit selectable navigation when the element was initially
+  inactive
+------------------------------------------------------------------------------
+
+v1.34
+------------------------------------------------------------------------------
+- Added the 'iconDisabledColor' attribute to buttons
+- Fixed a bug where the 'alignByGeometry' attribute wouldn't be applied
+  to button text
+- Added the "itemShowAnimation", "itemHideAnimation", and "itemAnimationDuration"
+  attributes to the "List" tag which allow animations to be displayed when
+  items are added or removed from lists. Best used in conjunction with
+  VerticalLayout, HorizontalLayout, or GridLayout groups.
+- Fixed a potential error in Unity 5.6 after a fresh install
+------------------------------------------------------------------------------
+
+v1.33
+------------------------------------------------------------------------------
+- Fixed a bug where adding a new XmlLayout to a world space canvas would
+  give it a non-zero Z position value.
+- Fixed some element positioning issues on a world space canvas
+- Tooltips should now work correctly on a world space canvas
+- Added a simple world space example
+- Fixed a potential error in the cursor controller when changing scenes
+------------------------------------------------------------------------------
+
+v1.32
+------------------------------------------------------------------------------
+- Custom Resource Databases should no longer fail to load Texture2D objects
+- Added optional attributes to control the appearance of the cursor:
+  - To set the default cursors (default / on click), set the 'cursor' and
+    (optionally) cursorClick' attributes on the 'XmlLayout' element.
+	This is only necessary on one XmlLayout instance per scene.
+  - To set the cursors that are visible when the mouse is over an element,
+    set that element's 'cursor' and (optionally) 'cursorClick' attributes.
+------------------------------------------------------------------------------
+
+v1.31
+------------------------------------------------------------------------------
+- You can now create custom attribute groups through the use of the
+  'CustomXmlAttributeGroup' class, which allows you to define a list
+  of CustomXmlAttributes that can then be assigned to an ElementTagHandler's
+  new 'customAttributeGroups' property.
+  It's best if you set the CustomXmlAttribute's 'AttributeGroup' type to the
+  new 'Custom' value (to prevent it from being assigned to a built-in group
+  as well).
+------------------------------------------------------------------------------
+
+v1.30
+------------------------------------------------------------------------------
+- The Image element now supports the vm-dataSource attribute for MVVM. This
+  should be provided with a string path to the desired image.
+- Added the 'fillMethod', 'fillOrigin', 'fillAmount', and 'fillClockwise'
+  attributes to image related elements.
+- Added the 'navigation', 'selectOnUp', 'selectOnDown', 'selectOnLeft',
+  and 'selectOnRight' attributes which allow you to explicitly set navigation
+  values using element ids.
+- Shift + Tab will now move the selection to the previous element (using
+  FindSelectableOnUp()), while Tab on its own will still move to the next
+  element (using FindSelectableOnDown())
+------------------------------------------------------------------------------
+
+v1.29
+------------------------------------------------------------------------------
+- Added the 'text' attribute to the autocomplete system for 'Text'
+- Added the MVVM 'List' element as a possible child for 'GridLayout'
+  (both of these were always available, but are now supported by autocomplete)
+- Added the 'ProgressBar' element (Supports MVVM)
+- Added the 'ProgressBar' element to the 'Element List' example
+- Fixed a bug where button icon alignment could be reset to the default value
+  when used with hoverClass
+------------------------------------------------------------------------------
+
+V1.28
+------------------------------------------------------------------------------
+- ElementTagHandler.MatchParentDimensions() now also sets anchoredPosition3D
+- Updated TableLayout to v1.09, introducing alternate row and cell background colors
+------------------------------------------------------------------------------
+
+V1.27
+------------------------------------------------------------------------------
+- Added the 'ChildXmlLayout' tag which allows you to nest child layouts
+ (and optionally their controllers) without having to write any additional
+ code.
+- (Editor only) When in edit mode XmlLayout instances will now check their
+  Xml files for changes in Awake(), if changes are found they will reload
+  and rebuild using the updated Xml automatically, and mark the scene they
+  are present in as needing to be saved. This will help ensure that scenes
+  are always up to date, even if the scene is not loaded when the Xml file is
+  changed.
+- The template for new ElementTagHandlers now uses 'attributesToApply' instead
+  of 'attributes' as the default parameter name for ApplyAttributes(), as
+  'attributes' was shadowing the ElementTagHandler.attributes property.
+  This has also been applied to all existing ElementTagHandlers.
+- SimpleContentSize fitter will now release RectTransform properties it is
+  controlling if it is disabled.
+- Fixed an issue with DataTable positioning in Unity 5.4 (was fine in 5.5)
+- Added the 'RawImage' tag.
+- The Localization example now uses an XmlLayoutCustomResourceDatabase instead
+  of a Resources folder to reference its localization asset files.
+- Sprites/Textures stored in Resource Databases now support sprite atlasing
+  format (spriteName:atlasEntryName e.g. mySprite:mySprite_1)
+------------------------------------------------------------------------------
+
+V1.26
+------------------------------------------------------------------------------
+- Added support for an onSubmit event which will be triggered for InputField
+  elements when the enter key is hit while it is selected.
+- Added support for TextMesh Pro (if TextMesh Pro is installed in your project,
+  XmlLayout will automatically pick it up and the <TextMeshPro> tag will
+  become available). Most TextMesh Pro properties can be controlled via
+  Xml attributes - for details on how to use TextMesh Pro, please consult
+  the TextMesh Pro documentation.
+------------------------------------------------------------------------------
+
+V1.25
+------------------------------------------------------------------------------
+- Fixed a bug in which iconColor and iconHoverColor would not be applied to
+  buttons if the icon attribute was not also applied at the same time
+  (e.g. if you specifically changed the iconColor, but did not also specify
+  the 'icon' attribute, whether it changed or not, the change would not be
+  applied)
+- Hidden child elements will no longer be considered to be visible by XmlLayout
+  if their parent is shown (but they are not).
+- Rebuilt the 'SimpleContentSizeFitter' class used by ScrollViews so that it
+  works better than before, and no longer triggers infinite update loops
+  in newer versions of Unity.
+- Updated DatePicker tag support to v1.13
+- Updated PagedRect tag support to v1.32
+------------------------------------------------------------------------------
+
+V1.24
+------------------------------------------------------------------------------
+- Reworked TableRow as it was being unnecessarily updated repeatedly by Unity
+  in later versions of the editor (new TableLayout version 1.08)
+- Custom AnimationControllers / AnimationSpeed settings should now work correctly
+  (removed animator.StartPlayBack() call in the attribute handler)
+- Fixed a bug where calling Show() on elements which were initially hidden
+  wouldn't always work
+- Fixed a bug where elements which were hidden before the pointer moved outside
+  of their bounds would retain their hover classes even if the pointer wasn't
+  over them
+- Added the new 'XmlLayoutSelectableNavigator' class which allows you to use
+  the tab key to navigate through on screen elements, and also allows you
+  to hit enter while an element is selected to trigger its onClick events.
+  This will automatically be added to new XmlLayouts created via the wizard
+  - to add it to an existing one, just add the component to the XmlLayout object.
+  Only one needs to be present in any given scene, additional ones will
+  automatically be removed so you don't need to worry about that.
+- Added the 'selected' attribute. If this is true, then this element will be
+  selected by the event system (only the most recently selected item will
+  remain selected however).
+------------------------------------------------------------------------------
+
+V1.23
+------------------------------------------------------------------------------
+- The 'offsetXY' attribute will no longer be additively applied to an element
+  if ApplyAttributes() is called for any reason, it will now behave as expected
+- Added the ability to add new resources or override existing ones at runtime
+  through the use of
+  XmlLayoutResourceDatabase.instance.AddResource(string path, Object resource)
+- Added the ability to create custom resource databases which you can use to
+  create custom collections of resources (see the updated online documentation
+  for details)
+- Moved most of the built-in Resources out of Resources folders and into new
+  custom resource databases instead.
+- Fixed a bug where ScrollView contents would sometimes disappear when exiting
+  play mode (temporarily)
+------------------------------------------------------------------------------
+
+V1.22
+------------------------------------------------------------------------------
+- Custom elements can now prevent any children from being added by using
+  a value of 'none' or 'null' for elementChildType.
+- Added the new 'DataTable' tag, which is intended for use with MVVM.
+  At the moment, DataTable is a convenient method of rendering data from
+  lists/etc. in a tabular format (essentially, it is a simpler method of
+  of generating a TableLayout). In the future, more functionality may be added,
+  such as customiseable cell types (e.g. images, input fields, etc.)
+  You can populate a DataTable's data by using dataTable.SetData() (MVC approach)
+  or by setting its vm-dataSource property (MVVM approach)
+- Fixed a bug where MVVM XmlLayoutControllers would throw an exception
+  when receiving events without parameters
+- Added documentation for the 'returnToOriginalPositionWhenReleased' attribute
+  (related to element dragging)
+- All LayoutGroups will no longer block raycasts by default
+- Setting 'allowDragging' to true will now automatically set 'blockRaycasts'
+  to true as well (unless you have manually specified otherwise)
+- Using any event other than 'onValueChanged' on an element will now cause
+  that element to block raycasts if it did not already do so
+- Using the 'image' attribute on elements which are transparent by default,
+  e.g. layout groups, will now cause those elements to have their color set
+  from transparent to white unless another color has been specified
+  (otherwise the element would remain transparent).
+- Added an optional parameter to the xmlElement.RemoveChildElement() method,
+  which allows you to have the element destroyed if you so choose instead
+  of just detaching it from the parent.
+- Setting a  blank value for the 'hoverClass' will now clear it instead of
+  adding a hoverClass of '' (resulting in some unusual behaviour)
+- Changed how ObservableListItem.Equals works - instead of comparing members,
+  ObservableListItem now has an internal guid which is checked instead. This
+  is useful in scenarios where, for example, multiple list items are identical,
+  but still need to be considered different (e.g. duplicate rows in a DataTable).
+- Fixed a bug where adding onMouseEnter events would clear any existing onClick events.
+------------------------------------------------------------------------------
+
+V1.21
+------------------------------------------------------------------------------
+- Added the 'textColors' attribute to Buttons and ToggleButtons.
+- Removed ToggleButton's 'selectedTextColor' and 'deselectedTextColor'
+  (use textColors instead)
+- Added the static 'XmlLayoutFactory' class which you can use to easily
+  create new instances of XmlLayout dynamically
+- Added a new attribute to all elements, 'hoverClass'. This attribute allows you
+  to define one or more classes which will be applied to this element when the
+  pointer enters it, and will be removed once the pointer leaves. This is fairly
+  similar to CSS' :hover modifier. A simple example of this has been added
+  to the example's Styles.xml
+- The Slider.handleColor attribute now works
+------------------------------------------------------------------------------
+
+V1.20
+------------------------------------------------------------------------------
+- You can now modify element classes at runtime through the use of the
+  xmlElement.AddClass(), xmlElement.RemoveClass(), and xmlElement.SetClass()
+  methods
+- Added the new XmlLayoutResourceDatabase class which generates a list of all
+  assets stored in Resources folder at compile time. You can access these
+  resources if you wish by using
+  XmlLayoutResourceDatabase.instance.GetResource<Type>("path");
+- XmlLayout will now load resources from XmlLayoutResourceDatabase where
+  possible - as these assets have already been located at compile-time,
+  there may be a minor performance increase
+- Toggle elements will now have their backgrounds centered if there is no text
+- Made improvements to MVVM code handling non-auto properties (properties with
+  custom get accessors defined)
+- All MVVM-specific code will no longer be compiled if IL2CPP is enabled
+  (e.g. WebGL, iOS, or any platform when IL2CPP is in use)
+------------------------------------------------------------------------------
+
+V1.19
+------------------------------------------------------------------------------
+- Added new data types to the XSD file which support the new MVVM
+  variable types, e.g. you can now use {myList.myBooleanVariable} in a
+  boolean field without getting any Xml validation errrors. XmlLayout
+  automatically substitutes the new data types in place of the originals
+  after generating XmlLayout.xsd, so no changes to existing code/attributes
+  are necessary.
+------------------------------------------------------------------------------
+
+V1.18
+------------------------------------------------------------------------------
+- New MVVM functionality
+	-> Create a ViewModel class and have its data automatically
+	   propogated to your view!
+	-> Documentation for MVVM can be found at:
+	   http://www.digital-legacy.co.za/XmlLayout/Documentation/MVVM
+
+- Element Tag handlers will no longer attempt to process event attributes
+  while in edit mode (they will only do so at run-time). As event attributes
+  only work at runtime anyway, this should make no difference other than
+  to prevent accidental triggering of events in edit mode (which is generally
+  undesirable).
+- Some images were not being rendered correctly on Android - this appears to have
+  been a Unity (v5.4.3) issue, but replacing these images (such as Unity's UISprite)
+  with new versions that XmlLayout uses instead seems to have resolved the problem.
+  Replaced images:
+	- UISprite
+	- Background
+	- Arrow
+	- Checkmark
+- Added a simple PropertyDrawer for AttributeDictionary, so you can now view
+  (but not edit) XmlElement attributes in the inspector
+- Added a fix so that it is no longer necessary to call Show() before you can
+  call Hide() on any XmlElement or XmlLayout objects
+- Added an optional OnCompleteCallBack parameter to XmlLayout.Show() and
+  XmlElement.Show()
+------------------------------------------------------------------------------
+
+V1.17
+------------------------------------------------------------------------------
+- XmlElement.attributes is now populated before its tag handler.Open() call is made,
+  so the attributes can be accessed in the Open() and ParseChildElements() methods
+- XmlLayout now supports sprite atlases. You can access the content of a sprite atlas
+  by using the following path: path/to/atlas:spriteNameWithinAtlas
+- Updated TableLayout to V1.07
+- Fixed a rotation issue in World Space Canvas Mode
+------------------------------------------------------------------------------
+
+V1.16
+------------------------------------------------------------------------------
+- Fixed a bug where elements with children that aren't added as direct descendents
+  of the element's rectTransform (e.g. ScrollView) wouldn't have the children
+  stored in their "childElements" collection, and the child elements wouldn't have
+  their "parentElement" property populated
+- Fixed an issue where sometimes a ScrollView wouldn't have its content window
+  sized correctly (especially when the nested layout uses a ContentSizeFitter).
+- Some minor rebuild-performance improvements
+- Added the [XmlFieldName] attribute/annotation which you can use to specify
+ the attribute name to use for a field. This allows you to use attribute names
+ that don't meet C# naming standards, e.g. XmlElement.DataSource => vm-dataSource
+- Fixed a potential editor crash when working with PagedRect
+- Upgraded TableLayout to v1.06
+------------------------------------------------------------------------------
+
+V1.15
+------------------------------------------------------------------------------
+- Updated DatePicker integration to DatePicker v1.07
+- Updated PagedRect integration to PagedRect v1.26
+- Added support for OnDrag, OnBeginDrag, and OnEndDrag events
+- All Add(EventType)Event methods now have a second optional argument which specifies
+  whether or not existing events of that type should be cleared first (default false).
+- When events are specified by attributes, any pre-existing events of that type
+  on that element are now cleared first.
+- Fixed a bug which sometimes prevented layouts from being updated when the
+  xml file's content is changed.
+- Added an option to suppress the 'Updating XSD file' message in the XmlLayoutConfiguration
+  file - located in UI/XmlLayout/Configuration
+- Added a menu shortcut to access the XmlLayout Configuration file (Assets->XmlLayout->Configuration)
+- Added a new optional attribute for tooltips: 'tooltipFollowMouse'. If this is enabled,
+  then the tooltip will follow the mouse cursor as it moves instead of being positioned
+  adjacent to the element.
+------------------------------------------------------------------------------
+
+V1.14
+------------------------------------------------------------------------------
+- Added two new attributes which allow you to implement an Aspect Ratio Fitter
+  on any element with a RectTransform: aspectRatio (which accepts either a float
+  value or a string value in the format width:height), and aspectMode, which has
+  the following options: 'None', 'WidthControlsHeight', 'HeightControlsWidth',
+  'FitInParent', and 'EnvelopeParent'
+- XmlLayout will now pick up the presence of PagedRect and/or DatePicker
+  in the current project automatically without requiring you to add symbols
+  manually.
+- Added the 'raycastTarget' attribute to the 'Text' tag
+- Added a new wrapper for xmlLayout.GetElementById<T>(string id) to the
+  XmlLayoutController class. You can use it to references to elements more easily
+  e.g.
+  public class MyXmlLayoutController : XmlLayoutController
+  {
+       XmlElementReference<Button> myButton = null;
+
+       void Awake()
+       {
+            myButton = XmlElementReference("buttonId");
+	        // you can now access the button through the myButton.element property
+	        // at any time, XmlLayout will automatically preserve the reference
+	        // even if the layout is rebuilt
+       }
+  }
+- Updated TableLayout to v1.04
+- Added the 'transition' and 'Sprite Swap' attributes for all InputFields that support it,
+  'Button', 'ToggleButton', 'Dropdown', 'InputField', 'Slider', 'Toggle'.
+  The 'Sprite Swap' attributes are: 'disabledSprite', 'highlightedSprite', and 'pressedSprite'
+- Added a new basic localization system - see the "Localization Example" to see it in action.
+- Fixed a few minor bugs related to ToggleGroups.
+------------------------------------------------------------------------------
+
+V1.13
+------------------------------------------------------------------------------
+- Added new drag and drop functionality - See the new Drag & Drop Example to
+  see how to it can be used. There will likely be more D&D related functionality
+  and fixes added in the future, such as built-in restrictions on what element
+  types/classes can be dropped onto specific elements to allow for slot/socket
+  type behaviours.
+- Fixed a bug where the 'scale' attribute was not correctly being translated
+  to 'localScale' (and as such, was not being applied to the RectTransform)
+- Updated TableLayout to v1.03, which includes a fix for iOS
+- Added a new tooltip attribute "tooltipTextOutlineColor"
+- Added a new tooltip attribute "tooltipFont"
+------------------------------------------------------------------------------
+
+V1.12
+------------------------------------------------------------------------------
+- Added a new basic attribute called "contentSizeFitter", which will add a
+  Unity ContentSizeFitter to the object. The arguments available are 'vertical'
+  and 'horizontal' which define the axis on which the ContentSizeFitter operates.
+- Added the 'AddRow(row)' method to TableLayout
+- Added the static XmlLayoutTimer class which can be used for delayed calls
+- The 'Test it out' example can now be expanded
+------------------------------------------------------------------------------
+
+V1.11
+------------------------------------------------------------------------------
+- Added optional integration with DatePicker (also available on the Asset Store)
+- Added a new C# Attribute which can be used to name custom tags instead of
+  just using the name of the C# class (e.g. CustomTagHandler -> Custom tag).
+  You can now name the class whatever you wish and use the new ElementTagHandler
+  attribute to specify the tag name, e.g.
+  [ElementTagHandler("CustomTag")]
+  public class MyTagHandler : ElementTagHandler
+  {
+  }
+------------------------------------------------------------------------------
+
+V1.10
+------------------------------------------------------------------------------
+- Fixed a bug with icon colors on toggle buttons
+- Fixed an issue where text/icons on buttons/togglebuttons were interfering with raycasts
+  (and preventing mouse events from being triggered)
+- Reworked event-handling for OnClick, OnMouseEnter, and OnMouseExit to be more consistent
+------------------------------------------------------------------------------
+
+V1.09
+------------------------------------------------------------------------------
+- Updated PagedRect tags to match PagedRect v1.18. (New "Page Previews" functionality)
+------------------------------------------------------------------------------
+
+V1.08
+------------------------------------------------------------------------------
+- Added some attributes which were missing for PagedRect / Pagination / PaginationButtonTemplate
+- Changed the way inline <Include path="" /> tags are handled, they will
+  now be rendered correctly as child elements where appropriate instead
+  of reverting to the top level of the XmlLayout
+- Reworked and improved Dropdown tag implementation - now has a lot more control
+  over its appearance
+- Reworked and improved Slider tag implementation - now also has more control
+  over its appearance
+------------------------------------------------------------------------------
+
+V1.07
+------------------------------------------------------------------------------
+- Added the "iconHoverColor" attribute to Buttons and ToggleButtons - buttons
+  may now have icons which change color when the mouse is over them.
+  E.g. if you set "iconColor" to "rgba(1,1,1,0)" (transparent) and
+  "iconHoverColor" to any color, you can have icons which only appear
+  when the mouse is over the button.
+- Fixed a bug where using a button icon without text would disable the text
+  component of the button (correctly) but would not enable it again if text were
+  added later
+- Fixed a bug where setting tooltip styles in a defaults tag would prevent
+  any additional defaults values from being loaded
+------------------------------------------------------------------------------
+
+V1.06
+------------------------------------------------------------------------------
+- PagedRect's pagination buttons can now be styled via Xml.
+- PagedRect's Pagination container can also now be styled and positioned via Xml.
+- (XSD) ElementTagHandler.attributes now supports creating an enumeration for
+  the attribute type. Any attribute type containing commas will be converted
+  into an enumeration, e.g. {"type", "TypeA,TypeB,TypeC"}
+------------------------------------------------------------------------------
+
+V.105
+------------------------------------------------------------------------------
+- Now supports integration with PagedRect! (Please note that a manual step
+  is required to activate this - please see the
+  documentation @ http://www.digital-legacy.co.za/XmlLayout/Documentation)
+  [Add PAGEDRECT_PRESENT to the Player Settings -> Scripting Define Symbols]
+- TableLayout, Row, and Cell no longer block raycasts by default
+- Minor adjustments to custom tag generation:
+	- ElementTagHandler.elementGroup is now a string
+	- New: ElementTagHandler.elementChildType (string) specifies the element
+	  group which child elements must be part of (to be contained by this element)
+------------------------------------------------------------------------------
+
+V1.04
+------------------------------------------------------------------------------
+- Added 'toggleWidth' and 'toggleHeight' attributes to control the size of the
+  toggle background and checkmark images
+- Added 'placeholderText' attribute to <InputField>
+- Added new animations: Shrink_Vertical, Shrink_Horizontal, Grow_Vertical,
+  and Grow_Horizontal
+- Added new property to XmlLayoutController - "SuppressEventHandling".
+  If this property is set to true, then events will be ignored by the
+  XmlLayoutController - this property can be changed at any time.
+- Fixed dragging which was broken in v1.02 (oops, sorry)
+------------------------------------------------------------------------------
+
+V1.03
+------------------------------------------------------------------------------
+- Text Alignment attribute added to <InputField>
+- All text attributes added to <Toggle>
+- Added a few more missing attributes to the XSD file
+------------------------------------------------------------------------------
+
+V1.02
+------------------------------------------------------------------------------
+- Tooltips are now implemented!
+- Some minor bug fixes in event-handling
+- Added a few attributes to the XSD file which were missing
+------------------------------------------------------------------------------
+
+V1.01
+------------------------------------------------------------------------------
+- CustomXmlElements and ElementTagHandlers can now be added to the XSD
+  file automatically (so that autocomplete/validation works for custom elements
+  without requiring manual modification to the XSD file)
+------------------------------------------------------------------------------
+
+V1.00
+------------------------------------------------------------------------------
+- Initial Release
+------------------------------------------------------------------------------

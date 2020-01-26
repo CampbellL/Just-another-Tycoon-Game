@@ -1,0 +1,100 @@
+<XmlLayout xmlns="XmlLayout"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="XmlLayout ../../../Configuration/XmlLayout.xsd">
+  
+  <Include path="Xml/Styles" />
+
+  <Defaults>
+    <Text class="label" alignment="MiddleCenter" fontSize="18" />
+    <Cell class="headingCell" overrideGlobalPadding="1" padding="4" />
+    <Button tooltipPosition="Above" />
+
+    <DataTableRowTemplate class="header" color="rgb(0.1,0.7,0)" />
+    <DataTableRowTemplate class="data" />
+  </Defaults>
+  
+  <TableLayout width="95%" height="95%" cellPadding="16" class="noCellBackground">
+    
+    <Row preferredHeight="64" class="headerRow">
+      <Cell class="headingCell">
+        <Text class="label">
+          <![CDATA[<b>MVVM #1 (myData)</b>
+<size=12>Item Type: DataTableExampleListItem</size>]]>
+        </Text>
+      </Cell>
+      <Cell class="headingCell">
+        <Text class="label">
+          <![CDATA[<b>MVVM #2 (myData2)</b>
+<size=12>Item Type: Dictionary<string, string></size>]]>
+        </Text>
+      </Cell>
+      <Cell class="headingCell">
+        <Text class="label">
+          <![CDATA[<b>MVC (myData3)</b>
+<size=12>Item Type: Dictionary<string, string></size>]]>
+        </Text>
+      </Cell>
+    </Row>
+
+    <Row class="viewPort">
+      <Cell>
+        <VerticalScrollView class="scrollView">
+          <DataTable vm-dataSource="myData">
+            
+            <DataTableRowTemplate templateType="HeaderRow" class="header">
+              <DataTableCellTemplate />
+            </DataTableRowTemplate>
+            
+            <DataTableRowTemplate templateType="DataRow" class="data">
+              <DataTableCellTemplate />
+            </DataTableRowTemplate>
+            
+          </DataTable>
+        </VerticalScrollView>
+      </Cell>
+      
+      <Cell>
+        <VerticalScrollView class="scrollView">
+          <DataTable vm-dataSource="myData2">
+            <DataTableRowTemplate templateType="HeaderRow" class="header">
+              <DataTableCellTemplate />
+            </DataTableRowTemplate>
+            <DataTableRowTemplate templateType="DataRow" class="data" />
+          </DataTable>
+        </VerticalScrollView>
+      </Cell>
+      
+      <Cell>
+        <VerticalScrollView class="scrollView">
+          <DataTable id="dataTable3">
+            <DataTableRowTemplate templateType="HeaderRow" class="header" name="test" />
+            <DataTableRowTemplate templateType="DataRow" class="data" />
+          </DataTable>          
+        </VerticalScrollView>
+      </Cell>
+    </Row>
+
+    <Row class="viewPort" preferredHeight="80">
+      <Cell spacing="4">
+        <Button onClick="MVVM1_AddItem">Add Item</Button>
+        <Button onClick="MVVM1_RemoveLast">Remove Last</Button>
+        <Button onClick="MVVM1_ChangeLast" tooltip="Change one column of the last row.">Change Last</Button>
+        <Button onClick="MVVM1_ReplaceLast" tooltip="Replace the last row with a new one.">Replace Last</Button>        
+      </Cell>
+      <Cell spacing="4">
+        <Button onClick="MVVM2_AddItem">Add Item</Button>
+        <Button onClick="MVVM2_RemoveLast">Remove Last</Button>
+        <Button class="disabled" tooltip="Changing individual columns is not supported in this mode, sorry!">Change Last</Button>
+        <Button onClick="MVVM2_ReplaceLast" tooltip="Replace the last row with a new one.">Replace Last</Button>
+      </Cell>
+      <Cell spacing="4">
+        <Button onClick="MVC_AddItem">Add Item</Button>
+        <Button onClick="MVC_RemoveLast">Remove Last</Button>
+        <Button onClick="MVC_ChangeLast" tooltip="Change one column of the last row.">Change Last</Button>
+        <Button onClick="MVC_ReplaceLast" tooltip="Replace the last row with a new one.">Replace Last</Button>
+      </Cell>
+    </Row>
+    
+  </TableLayout>  
+
+</XmlLayout>

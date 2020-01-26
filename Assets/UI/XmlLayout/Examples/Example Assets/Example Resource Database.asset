@@ -1,0 +1,120 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0aec51a543456c24c94bde974bfaa499, type: 3}
+  m_Name: Example Resource Database
+  m_EditorClassIdentifier: 
+  PathPrefix: 
+  MonitorContainingFolder: 1
+  folders:
+  - UI/XmlLayout/Examples/Example Assets
+  AutomaticallyRemoveEntries: 1
+  entries:
+  - path: Audio/beep-timber
+    resource: {fileID: 8300000, guid: 6c0e45832d03fe746a8fdbde90a02376, type: 3}
+  - path: Audio/XmlLayoutExampleAudioMixer
+    resource: {fileID: 24100000, guid: cea55b82e826c0148b7b9aef7bd3711a, type: 2}
+  - path: Cursors/ExampleCursor_Click
+    resource: {fileID: 2800000, guid: eee3cfb56c499a04da9b7a841a133fdc, type: 3}
+  - path: Cursors/ExampleCursor_Default
+    resource: {fileID: 2800000, guid: 6729ffc6cbc696747be97b778ad34c2c, type: 3}
+  - path: Cursors/ExampleCursor_Hover
+    resource: {fileID: 2800000, guid: f90352e082883e1419cf04324fc80436, type: 3}
+  - path: Example Resource Database
+    resource: {fileID: 11400000}
+  - path: Sprites/Elements/Background
+    resource: {fileID: 21300000, guid: 84bd5ae8f07172945b715ecbe5ca4380, type: 3}
+  - path: Sprites/HUD/CommandButton
+    resource: {fileID: 21300000, guid: dae7c17e8ecb0e2408a90554b14a38d3, type: 3}
+  - path: Sprites/HUD/Game
+    resource: {fileID: 21300000, guid: 57bdee8181dbd9e449dd76b4a5d2f887, type: 3}
+  - path: Sprites/HUD/Minimap
+    resource: {fileID: 21300000, guid: ea91537fa70dee544a2802ac537878b4, type: 3}
+  - path: Sprites/HUD/Starfield
+    resource: {fileID: 21300000, guid: 56d1198fe5cb18f46aa8914d366fc7a9, type: 3}
+  - path: Sprites/HUD/UnitIcon
+    resource: {fileID: 21300000, guid: 3a2d816a7e4c7024c96d108d027ea32a, type: 3}
+  - path: Sprites/HUD/UnitPortrait
+    resource: {fileID: 21300000, guid: ec432b69457db8c49bf44409e6bb2570, type: 3}
+  - path: Sprites/Icons/anticlockwise-rotation
+    resource: {fileID: 21300000, guid: df1f4ba795e91a242a865dd0bfd6e11a, type: 3}
+  - path: Sprites/Icons/Arrow_Down
+    resource: {fileID: 21300000, guid: 62f782cb2d96db94097f31c355bb94e3, type: 3}
+  - path: Sprites/Icons/Arrow_Left
+    resource: {fileID: 21300000, guid: e0e6967ceb2e4be4ca8a6be6b767151f, type: 3}
+  - path: Sprites/Icons/Arrow_Right
+    resource: {fileID: 21300000, guid: d8548d2471f69d04697d1188e318b04a, type: 3}
+  - path: Sprites/Icons/Arrow_Up
+    resource: {fileID: 21300000, guid: 57b0a91000a4c0742bd08b0d5cea039b, type: 3}
+  - path: Sprites/Icons/cancel
+    resource: {fileID: 21300000, guid: 3cff35ce2062cda4998ad8bca2bd07cf, type: 3}
+  - path: Sprites/Icons/cog
+    resource: {fileID: 21300000, guid: 88cda604c8ef81a4784ec954ef0334be, type: 3}
+  - path: Sprites/Icons/crosshair
+    resource: {fileID: 21300000, guid: 8ba8ffae33595854eb2e13c0db3cde37, type: 3}
+  - path: Sprites/Icons/Expand
+    resource: {fileID: 21300000, guid: 781571bc9fef446408c66f1bd9b06f05, type: 3}
+  - path: Sprites/Icons/Image sources
+    resource: {fileID: 4900000, guid: 34b1f17433a55704a9041e4708d0cf48, type: 3}
+  - path: Sprites/Icons/move
+    resource: {fileID: 21300000, guid: 2fce5eae732f15e478580d8875c2cf4c, type: 3}
+  - path: Sprites/Layout/Base
+    resource: {fileID: 21300000, guid: 9573ca896ed4a604b990f904b734a06e, type: 3}
+  - path: Sprites/Layout/Button
+    resource: {fileID: 21300000, guid: a5731dab39687bc4fac1f566e6270061, type: 3}
+  - path: Sprites/Layout/Gradient
+    resource: {fileID: 21300000, guid: 6e73f019b359e9e40a473db1c6176436, type: 3}
+  - path: Sprites/Layout/Indented
+    resource: {fileID: 21300000, guid: a868894dc0a9c4c4eaba6cc6d997145c, type: 3}
+  - path: Sprites/Layout/Scrollbar
+    resource: {fileID: 21300000, guid: 0ce8467cb3fa5aa4ea31318dce06c75e, type: 3}
+  - path: Sprites/Layout/Title
+    resource: {fileID: 21300000, guid: c8e5090ff6a873b4ba35e65e2f3ff15a, type: 3}
+  - path: Sprites/Layout/Viewport
+    resource: {fileID: 21300000, guid: 5c253608277d17a4590a26ef6e7d970e, type: 3}
+  - path: Sprites/Shop/coin
+    resource: {fileID: 21300000, guid: 1663cf908da6f8b4a971d00b9c6abbe2, type: 3}
+  - path: Sprites/Shop/gemBlue
+    resource: {fileID: 21300000, guid: ae55d13eee00f5c4ba4b480f2e9c083c, type: 3}
+  - path: Sprites/Shop/gemGreen
+    resource: {fileID: 21300000, guid: 12ffeb5d18e0f3647b248d82b4e4557c, type: 3}
+  - path: Sprites/Shop/gemRed
+    resource: {fileID: 21300000, guid: 1cf3b137acf31b3458e0ea970ec846ab, type: 3}
+  - path: Sprites/Shop/Image source
+    resource: {fileID: 4900000, guid: 3bb273918a100f1489ff8c46bf4c0b7d, type: 3}
+  - path: Sprites/XmlLayout
+    resource: {fileID: 21300000, guid: 1b734c802b081084498a5c3544d1676c, type: 3}
+  - path: Xml/CurrencyOverlay
+    resource: {fileID: 4900000, guid: 7587c272d83311a48acb9a13b3b1d6cb, type: 3}
+  - path: Xml/DemoOverlay
+    resource: {fileID: 4900000, guid: f2b043dfe170eaf469e277e65cc21111, type: 3}
+  - path: Xml/ElementList
+    resource: {fileID: 4900000, guid: bdd2ad8b9057c2f459cd74a1bb6f680d, type: 3}
+  - path: Xml/ExampleHUD
+    resource: {fileID: 4900000, guid: 19d08ec1c9d72214e8c1f1f5de17fd19, type: 3}
+  - path: Xml/ExampleMenu
+    resource: {fileID: 4900000, guid: cd74a5efad877a34f9e427d8a7bd0c50, type: 3}
+  - path: Xml/MessageDialog
+    resource: {fileID: 4900000, guid: 4fc07b850e0faeb4996182f100a7315d, type: 3}
+  - path: Xml/OptionsMenu
+    resource: {fileID: 4900000, guid: 9d143cabfc464194698bdaac4d319f07, type: 3}
+  - path: Xml/Shop
+    resource: {fileID: 4900000, guid: eb847718a71465b4e9843500d9c9f05e, type: 3}
+  - path: Xml/Shop_ConfirmPurchaseDialog
+    resource: {fileID: 4900000, guid: f0a51ede873742d4f8c7959c5323d5d2, type: 3}
+  - path: Xml/ShopStyles
+    resource: {fileID: 4900000, guid: a213a8dbcfd75b345869984d02407d8b, type: 3}
+  - path: Xml/Styles
+    resource: {fileID: 4900000, guid: 4a788ad5ef57c2e4eb97441cf1335349, type: 3}
+  - path: Xml/TestItOut
+    resource: {fileID: 4900000, guid: 86326fdf3bd01ad448ae437cf5b2f533, type: 3}
+  - path: Audio/Audio sourced from
+    resource: {fileID: 0}

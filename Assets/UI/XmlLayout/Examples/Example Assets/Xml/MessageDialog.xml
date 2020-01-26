@@ -1,0 +1,43 @@
+<XmlLayout xmlns="XmlLayout" 
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+           xsi:schemaLocation="XmlLayout ../../../Configuration/XmlLayout.xsd"
+           height="100%" 
+           width="100%" 
+           rectAlignment="MiddleCenter">
+  
+  <Include path="Xml/Styles.xml" />
+
+  <Panel color="rgba(0,0,0,0.75)" name="Overlay" raycastTarget="1">
+
+    <TableLayout class="noCellBackground" height="320" width="480" rectAlignment="MiddleCenter" name="Dialog" showAnimation="Grow" hideAnimation="Shrink">
+      <Row class="headerRow" preferredHeight="52">
+        <Cell>
+          <Text id="titleText" class="title" fontSize="28">          
+            Dialog Title
+          </Text>
+        </Cell>
+      </Row>
+      <Row class="viewport">
+        <Cell>
+          <TableLayout class="noCellBackground" cellPadding="10">
+            <Row>
+              <Cell columnSpan="3">
+                <Panel>
+                  <Text id="messageText" alignment="MiddleCenter" width="80%" fontSize="14" shadow="rgba(0,0,0,0.5)">Dialog Text</Text>
+                </Panel>
+              </Cell>
+            </Row>
+            <Row preferredHeight="48">
+              <Cell></Cell>
+              <Cell>
+                <Button onClick="Hide();" preferredWidth="50">Close</Button>
+              </Cell>
+              <Cell></Cell>
+            </Row>                
+          </TableLayout>
+        </Cell>
+      </Row>    
+    </TableLayout>
+    
+  </Panel>
+</XmlLayout>

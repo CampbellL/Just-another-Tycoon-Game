@@ -1,0 +1,118 @@
+<XmlLayout xmlns="XmlLayout"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="XmlLayout ../../Configuration/XmlLayout.xsd">
+
+  <Defaults>
+    <Text font="Arial Bold" />
+
+    <VerticalLayout class="player" childForceExpandHeight="false" />
+    <HorizontalLayout class="player>@HorizontalLayout" childForceExpandWidth="false" preferredHeight="48" flexibleHeight="0" />
+    <HorizontalLayout class="header" raycastTarget="true" isDropReceiver="true" onElementDropped="SongDropped()" />
+
+    <VerticalScrollView class="songScrollView" flexibleHeight="1" isDropReceiver="true" />
+    <VerticalLayout class="songList" flexibleHeight="1" childForceExpandHeight="false" childAlignment="UpperLeft" isDropReceiver="true" onElementDropped="SongDropped()" />
+    <HorizontalLayout class="songList>@HorizontalLayout" childForceExpandWidth="false" preferredHeight="48" flexibleHeight="0" />
+
+    <Panel class="header>@Panel" image="Sprites/Layout/Button" color="rgb(0.2,0.7,0)" raycastTarget="false" />
+
+    <Panel class="songName" flexibleWidth="1" />
+    <Panel class="songArtist" flexibleWidth="1" />
+    <Panel class="songActions" flexibleWidth="0" preferredWidth="100" />
+
+    <Text class="header:@Text" color="rgb(0,1,0)" />
+
+    <HorizontalLayout class="song" image="Sprites/Outline_Sharp" color="rgba(1,1,0,0.125)" allowDragging="true" restrictDraggingToParentBounds="true" isDropReceiver="true" onElementDropped="SongDropped()" />
+    <Text class="song:@Text" color="rgb(1,1,1)" />
+    <HorizontalLayout class="currentSong" color="rgba(1,1,0,0.5)" />
+    <Text class="currentSong:@Text" color="rgb(1,1,0)" />
+
+    <HorizontalLayout class="songActions>@HorizontalLayout" padding="10" spacing="5" childForceExpandWidth="false" childForceExpandHeight="false" childAlignment="MiddleCenter" />
+    <Button class="songActions:@Button" preferredWidth="32" preferredHeight="32" padding="5" iconColor="rgb(1,1,0)" />
+
+    <Button font="Arial Bold" image="Sprites/Layout/Button" colors="rgb(0.2,0.7,0)|rgb(0.2,0.9,0)|rgb(0.2,0.9,0)" textColor="rgb(0,1,0)" textShadow="rgba(0,0,0,0.5)" />
+
+    <Button class="playButton" icon="Sprites/Icons/Arrow_Right" tooltip="Play this song" />
+    <Button class="removeButton" icon="Sprites/Icons/Cancel" tooltip="Remove this song from the playlist" />
+
+    <VerticalScrollView class="songScrollView"
+                color="rgba(0.05,0.05,0.05,0.5)"
+                image=""
+                movementType="Clamped"
+                scrollSensitivity="15"
+                scrollbarBackgroundColor="rgb(0.05,0.1,0)"
+                scrollbarColors="rgba(0.2,0.6,0,0.8)|rgb(0.2,0.7,0)|rgb(0.2,0.7,0)|rgb(0.2,0.6,0)"
+                scrollbarImage="Sprites/Layout/Scrollbar" />
+
+    <VerticalLayout class="nowPlaying" flexibleHeight="0" preferredHeight="150" color="rgba(0.05,0.05,0.05,0.75)" image="Sprites/Layout/Button" />
+    <Text class="nowPlaying:@Text" color="rgb(0,1,0)" fontSize="20" />
+    <Button class="nowPlaying:@Button" preferredWidth="32" preferredHeight="32" padding="5" iconColor="rgb(1,1,0)" />
+
+    <Slider fillColor="rgb(0,0.5,0)" handleColor="rgb(0.2,0.8,0.2)" backgroundColor="rgb(0.2,0.7,0)" />
+
+  </Defaults>
+
+  <Panel width="600" height="500" image="Sprites/Layout/Viewport" color="rgb(0.5,0.5,0.5)" padding="5">
+    <VerticalLayout class="player">
+
+      <VerticalLayout class="nowPlaying">
+        <HorizontalLayout childForceExpandWidth="false">
+          <Text flexibleWidth="0" preferredWidth="200">Now Playing :</Text>
+          <Text flexibleWidth="1" id="nowPlayingText"></Text>
+        </HorizontalLayout>
+
+        <HorizontalLayout padding="50 50 10 0" childForceExpandHeight="false">
+          <Slider preferredHeight="16" minValue="0" maxValue="1" value="0.5" />
+        </HorizontalLayout>
+
+        <HorizontalLayout childForceExpandWidth="false" childForceExpandHeight="false" childAlignment="MiddleCenter" spacing="5">
+          <Button icon="Sprites/Icons/Arrow_Left" onClick="PlayPrevious()" />
+          <Button icon="Sprites/Icons/Arrow_Down" />
+          <Button icon="Sprites/Icons/Crosshair" />
+          <Button icon="Sprites/Icons/Cog" />
+          <Button icon="Sprites/Icons/Arrow_Right" onClick="PlayNext()" />
+        </HorizontalLayout>
+
+      </VerticalLayout>
+
+      <HorizontalLayout class="header">
+        <Panel class="songName">
+          <Text>Name</Text>
+        </Panel>
+        <Panel class="songArtist">
+          <Text>Artist</Text>
+        </Panel>
+        <Panel class="songActions">
+        </Panel>
+      </HorizontalLayout>
+
+      <VerticalScrollView class="songScrollView">
+        <VerticalLayout class="songList" id="songList">
+
+          <!-- Song Template -->
+          <HorizontalLayout class="song" id="songTemplate" active="false">
+            <Panel class="songName">
+              <Text internalId="songName">Song Name</Text>
+            </Panel>
+            <Panel class="songArtist">
+              <Text internalId="songArtist">Artist</Text>
+            </Panel>
+            <Panel class="songActions">
+              <HorizontalLayout>
+                <Button internalId="songPlayButton" class="playButton" />
+                <Button internalId="songRemoveButton" class="removeButton" />
+              </HorizontalLayout>
+            </Panel>
+          </HorizontalLayout>
+          <!-- /Song Template -->
+
+          <!-- this is a panel which occupies the remaining space in the container (if there is any)
+          elements dropped on this will be moved to the end of the list -->
+          <Panel id="bottom" class="bottom" flexibleHeight="1" isDropReceiver="true" onElementDropped="SongDropped()" />
+
+        </VerticalLayout>
+      </VerticalScrollView>
+
+    </VerticalLayout>
+  </Panel>
+
+</XmlLayout>

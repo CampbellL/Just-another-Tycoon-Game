@@ -1,0 +1,19 @@
+<XmlLayout xmlns="XmlLayout" 
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+           xsi:schemaLocation="XmlLayout ../../../Configuration/XmlLayout.xsd"
+           cursor="Cursors/ExampleCursor_Default|0 0" cursorClick="Cursors/ExampleCursor_Click|0 0">
+  
+  <Include path="Xml/Styles.xml" />
+  
+  <TableLayout class="noCellBackground" width="100%" height="36" rectAlignment="LowerCenter" padding="5" image="Sprites/Layout/Gradient" color="titleRowColor"  columnWidths="288 0 72" shadow="rgba(0,0,0,0.5)">
+    <Row>      
+      <Cell>
+        <Image image="Sprites/XmlLayout" preserveAspect="1" ignoreLayout="1" height="160" width="288" rectAlignment="MiddleCenter" offsetXY="0 2" shadow="black" outline="rgba(0.2,1,0.2,0.5)" />
+      </Cell>
+      <Cell><!-- Empty spacer cell --></Cell>
+      <Cell>
+          <Text id="versionNumber" alignment="MiddleCenter" fontStyle="Bold" color="text_Alternate" shadow="black" outline="rgba(0,0,0,0.25)" tooltip="XmlLayout V1.93" tooltipPosition="Above" tooltipTextColor="tooltipText">v1.93</Text>
+      </Cell>                            
+    </Row>
+  </TableLayout>  
+</XmlLayout>

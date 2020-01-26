@@ -1,0 +1,105 @@
+<XmlLayout xmlns="XmlLayout" 
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+           xsi:schemaLocation="XmlLayout ../../../Configuration/XmlLayout.xsd">
+  
+  <Include path="Xml/Styles.xml" />
+    
+  <TableLayout class="noCellBackground" height="550" width="512" rectAlignment="MiddleRight" offsetXY="-32 0" showAnimation="Grow" hideAnimation="Shrink" raycastTarget="1" name="test">
+    <Row class="headerRow">
+      <Cell>
+        <Text class="title">
+          Options
+        </Text>            
+      </Cell>
+    </Row>
+    <Row class="viewport">
+      <Cell dontUseTableCellBackground="true">
+        <TableLayout cellPadding="7" padding="20" cellSpacing="5" cellBackgroundImage="Sprites/Outline_Sharp" cellBackgroundColor="rgba(1,1,0,0.125)">                                   
+            <Row class="sectionHeaderRow">
+              <Cell columnSpan="2" dontUseTableCellBackground="1">
+                <Text class="h2" alignment="MiddleCenter">Video</Text>
+              </Cell>
+            </Row>
+
+            <Row preferredHeight="48">
+              <Cell>
+                <Text class="h3">Resolution</Text>
+              </Cell>
+              <Cell>
+                <Dropdown id="resolution" preferredHeight="32" onValueChanged="FormChanged();">
+                  <Option>1920x1080</Option>
+                  <Option selected="true">960x600</Option>
+                  <Option>1024x768</Option>
+                  <Option>800x600</Option>
+                </Dropdown>
+              </Cell>
+            </Row>
+            <Row preferredHeight="48">
+              <Cell>
+                <Text class="h3">Quality</Text>
+              </Cell>
+              <Cell>
+                <Dropdown id="quality" onValueChanged="FormChanged();">                  
+                </Dropdown>
+              </Cell>
+            </Row>
+          
+            <Row class="sectionHeaderRow">
+              <Cell columnSpan="2" dontUseTableCellBackground="1">
+                <Text class="h2" alignment="MiddleCenter">Audio</Text>
+              </Cell>
+            </Row>
+
+            <Row>
+              <Cell>
+                <Text class="h3">Master</Text>
+              </Cell>
+              <Cell>
+                <Slider id="masterVolume" value="0.8" onValueChanged="FormChanged();" />
+              </Cell>
+            </Row>
+            <Row>
+              <Cell>
+                <Text class="h3">Music</Text>
+              </Cell>
+              <Cell>
+                <Slider id="musicVolume" value="0.45" onValueChanged="FormChanged();" />
+              </Cell>
+            </Row>
+            <Row>
+              <Cell>
+                <Text class="h3">SFX</Text>
+              </Cell>
+              <Cell>              
+                <Slider id="sfxVolume" value="0.55" onValueChanged="FormChanged();" />
+              </Cell>
+            </Row>
+
+            <Row class="sectionHeaderRow">
+              <Cell columnSpan="2" dontUseTableCellBackground="1">
+                <Text class="h2" alignment="MiddleCenter">Gameplay</Text>
+              </Cell>
+            </Row>
+
+            <Row>
+              <Cell>
+                <Text class="h3">Enable Hints</Text>
+              </Cell>
+              <Cell>
+                <Toggle id="enableHints" onValueChanged="FormChanged();"></Toggle>
+              </Cell>
+            </Row>
+
+          <Row preferredHeight="44">
+            <Cell>
+              <Button onClick="ResetForm();">Reset</Button>
+            </Cell>
+            <Cell>
+              <Button id="applyButton" onClick="SubmitForm();" class="disabled">Apply</Button>
+            </Cell>            
+          </Row>
+        </TableLayout>
+      </Cell>
+    </Row>
+  </TableLayout>      
+</XmlLayout>

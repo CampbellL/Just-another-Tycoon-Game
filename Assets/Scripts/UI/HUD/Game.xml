@@ -1,0 +1,32 @@
+<XmlLayout xmlns="XmlLayout"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="XmlLayout UI/XmlLayout/Configuration/XmlLayout.xsd">
+    <Defaults>
+        <Text class="heading-1" fontSize="34" font="Fonts/Bumpo"/>
+        <Button fontSize="34" font="Fonts/Bumpo"/>
+        <Panel class="topPanel" height="10%" rectAlignment="UpperCenter">
+            <HorizontalLayout class="topPanel:@HorizontalLayout" offsetXY="0 -25">
+                <Text color="rgb(0,0,0,75)" fontSize="34">
+                </Text>
+            </HorizontalLayout>
+        </Panel>
+        <Panel class="bottomPanel" height="10%" rectAlignment="LowerCenter">
+            <HorizontalLayout class="bottomPanel:@HorizontalLayout">
+                <Text color="rgb(0,0,0,75)" fontSize="34"/>
+            </HorizontalLayout>
+        </Panel>
+    </Defaults>
+    <Panel height="100%" width="100%" image="Sprites/Background/Background2" name="Container">
+        <Panel name="Top Panel" class="topPanel" width="50%" rectAlignment="UpperRight" padding="10 10 0 0">
+            <HorizontalLayout childAlignment="MiddleRight" childForceExpandWidth="false">
+                <Text id="moneyLabel" class="heading-1" rectAlignment="UpperRight">
+                    50
+                </Text>
+                <Image preferredWidth="50" preserveAspect="true" image="Sprites/Coin/Coin"/>
+            </HorizontalLayout>
+        </Panel>
+        <Include path="SpecsPanel"/>
+        <Include path="WorkerPanel"/>
+        <Include path="BottomPanel"/>
+    </Panel>
+</XmlLayout>

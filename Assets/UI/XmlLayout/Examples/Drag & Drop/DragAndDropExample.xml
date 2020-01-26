@@ -1,0 +1,107 @@
+<XmlLayout xmlns="XmlLayout"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="XmlLayout ../../Configuration/XmlLayout.xsd" showAnimation="SlideIn_Right" hideAnimation="SlideOut_Right">
+
+  <Include path="Xml/Styles.xml" />
+  
+  <Defaults>
+    <!-- By default, TableCells ignore raycasts, but that needs to be changed (elements must block raycasts to be drop receivers) -->
+    <Cell class="itemCell" isDropReceiver="true" raycastTarget="1" onElementDropped="ItemDropped()" />
+    <Image class="item" allowDragging="true" restrictDraggingToParentBounds="false" preserveAspect="true" />
+
+    <Text color="white" fontSize="32" resizeTextForBestFit="true" minHeight="32" font="Fonts/Arial Bold" />    
+  </Defaults>
+
+  <Button rectAlignment="UpperRight" 
+          offsetXY="-64 -64" 
+          width="256" 
+          height="32" 
+          fontSize="16" 
+          icon="Sprites/Icons/Arrow_Left" iconWidth="64" iconColor="rgb(0,1,0)" iconHoverColor="rgb(0,1,0)" padding="0 0 4 4"
+          onClick="ReturnToMainExamples()">
+    Back to Example List
+  </Button>    
+  
+  <TableLayout width="800" height="384" offsetXY="0 -32" cellSpacing="32" cellBackgroundColor="clear">
+    <Row preferredHeight="32">
+      <Cell>
+        <Text>Drag items from one cell to another</Text>
+      </Cell>
+    </Row>
+
+    <Row>
+      <Cell>
+        <HorizontalLayout name="Container" flexibleHeight="1" spacing="16">
+
+          <Panel name="LeftPanel" color="white" rectAlignment="MiddleLeft" image="Sprites/Layout/Base" padding="8">
+            <Panel image="Sprites/Layout/Base" color="rgb(0.15,0.15,0.15)">
+
+              <TableLayout name="leftTable">
+                <Row>
+                  <Cell class="itemCell"></Cell>
+                  <Cell class="itemCell">
+                    <Image class="item" image="Sprites/Shop/Coin" name="Coin" />
+                  </Cell>
+                  <Cell class="itemCell"></Cell>
+                </Row>
+
+                <Row>
+                  <Cell class="itemCell">
+                    <Image class="item" image="Sprites/Shop/gemRed" name="Red Gem" />
+                  </Cell>
+                  <Cell class="itemCell"></Cell>
+                  <Cell class="itemCell"></Cell>
+                </Row>
+
+                <Row>
+                  <Cell class="itemCell"></Cell>
+                  <Cell class="itemCell"></Cell>
+                  <Cell class="itemCell">
+                    <Image class="item" image="Sprites/Shop/gemBlue" name="Blue Gem" />
+                  </Cell>
+                </Row>
+              </TableLayout>
+
+            </Panel>
+          </Panel>
+
+          <Panel name="RightPanel" color="white" rectAlignment="MiddleRight" image="Sprites/Layout/Base" padding="8">
+            <Panel image="Sprites/Layout/Base" color="rgb(0.15,0.15,0.15)">
+
+              <TableLayout name="rightTable">
+                <Row>
+                  <Cell class="itemCell"></Cell>
+                  <Cell class="itemCell"></Cell>
+                  <Cell class="itemCell"></Cell>
+                </Row>
+
+                <Row>
+                  <Cell class="itemCell"></Cell>
+                  <Cell class="itemCell">
+                    <Image class="item" image="Sprites/Shop/gemGreen" name="Green Gem" />
+                  </Cell>
+                  <Cell class="itemCell"></Cell>
+                </Row>
+
+                <Row>
+                  <Cell class="itemCell"></Cell>
+                  <Cell class="itemCell"></Cell>
+                  <Cell class="itemCell"></Cell>
+                </Row>
+              </TableLayout>
+
+            </Panel>
+          </Panel>
+
+        </HorizontalLayout>
+      </Cell>
+    </Row>
+
+    <Row preferredHeight="32">
+      <Cell>
+        <Text id="debugText"></Text>
+      </Cell>
+    </Row>    
+  </TableLayout>  
+
+</XmlLayout>

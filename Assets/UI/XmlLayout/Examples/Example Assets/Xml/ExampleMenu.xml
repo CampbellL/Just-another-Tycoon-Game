@@ -1,0 +1,24 @@
+<XmlLayout xmlns="XmlLayout" 
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+           xsi:schemaLocation="XmlLayout ../../../Configuration/XmlLayout.xsd">
+  
+  <Include path="Xml/Styles.xml" />   
+
+  <TableLayout class="noCellBackground" height="450" width="256" rectAlignment="MiddleLeft" offsetXY="32 0" useGlobalCellPadding="false"  raycastTarget="1">
+    <Row class="headerRow">
+      <Cell>
+        <Text class="title">          
+          Examples
+        </Text>
+      </Cell>
+    </Row>
+    <Row class="viewport">
+      <Cell dontUseTableCellBackground="true">
+        <VerticalLayout padding="10" spacing="5" id="menuButtons">          
+          <!-- This is a template which will be used by the XmlLayoutController to create the menu buttons dynamically -->
+          <Button id="menuButtonTemplate" active="false"></Button>          
+        </VerticalLayout>
+      </Cell>
+    </Row>    
+  </TableLayout>  
+</XmlLayout>

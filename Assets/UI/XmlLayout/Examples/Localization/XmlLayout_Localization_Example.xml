@@ -1,0 +1,83 @@
+<XmlLayout xmlns="XmlLayout"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="XmlLayout ../../Configuration/XmlLayout.xsd"
+           showAnimation="SlideIn_Right" hideAnimation="SlideOut_Right">
+
+  <Include path="Xml/Styles.xml" />
+
+  <Button rectAlignment="UpperRight"
+        offsetXY="-64 -64"
+        width="256"
+        height="32"
+        fontSize="16"
+        icon="Sprites/Icons/Arrow_Left" iconWidth="64" iconColor="rgb(0,1,0)" iconHoverColor="rgb(0,1,0)" padding="0 0 4 4"
+        onClick="ReturnToMainExamples()">
+    Back to Example List
+  </Button>
+
+  <ToggleGroup id="languageToggleGroup" onValueChanged="ChangeLanguage(selectedText)">
+    <TableLayout class="noCellBackground" width="600" height="64" rectAlignment="UpperCenter" offsetXY="0 -120" cellPadding="8">
+      <Row class="viewport">
+        <Cell>
+          <ToggleButton name="English">English</ToggleButton>
+        </Cell>
+        <Cell>
+          <ToggleButton name="Spanish">Spanish</ToggleButton>
+        </Cell>
+        <Cell>
+          <ToggleButton name="French">French</ToggleButton>
+        </Cell>
+        <Cell>
+          <ToggleButton name="Afrikaans">Afrikaans</ToggleButton>
+        </Cell>
+        <Cell>
+          <ToggleButton name="None">No Localization</ToggleButton>
+        </Cell>
+      </Row>
+    </TableLayout>
+  </ToggleGroup>
+  
+
+  <TableLayout class="noCellBackground" height="280" width="600" offsetXY="0 -48" useGlobalCellPadding="false">
+    <Row class="headerRow">
+      <Cell>
+        <Text class="title">
+          {LOCALIZATION_EXAMPLE_HEADER}
+        </Text>
+      </Cell>
+    </Row>
+    <Row class="viewport">
+      <Cell dontUseTableCellBackground="true" padding="16">
+        <TableLayout cellPadding="8" cellBackgroundColor="rgba(1,1,1,0.1)">
+          <Row>
+            <Cell>
+              <Text class="h3">{LOCALIZATION_EXAMPLE_USERNAME_LABEL}</Text>
+            </Cell>
+            <Cell>
+              <InputField id="username" placeholderText="{LOCALIZATION_EXAMPLE_USERNAME_PLACEHOLDER_TEXT}" />
+            </Cell>
+          </Row>
+
+          <Row>
+            <Cell>
+              <Text class="h3">{LOCALIZATION_EXAMPLE_PASSWORD_LABEL}</Text>
+            </Cell>
+            <Cell>
+              <InputField id="password" inputType="Password" placeholderText="{LOCALIZATION_EXAMPLE_PASSWORD_PLACEHOLDER_TEXT}" />
+            </Cell>
+          </Row>
+
+          <Row>
+            <Cell>
+              <Button resizeTextForBestFit="1" resizeTextMaxSize="16">{LOCALIZATION_EXAMPLE_LOGIN_BUTTON}</Button>
+            </Cell>
+            <Cell>
+              <Button resizeTextForBestFit="1" resizeTextMaxSize="16">{LOCALIZATION_EXAMPLE_REGISTER_BUTTON}</Button>
+            </Cell>
+          </Row>
+        </TableLayout>
+      </Cell>
+    </Row>
+  </TableLayout>
+
+</XmlLayout>

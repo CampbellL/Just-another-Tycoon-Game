@@ -1,0 +1,102 @@
+<XmlLayout xmlns="XmlLayout"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="XmlLayout ../../Configuration/XmlLayout.xsd">
+
+  <Include path="Xml/Styles.xml" />
+
+  <TableLayout class="noCellBackground" height="550" width="512" rectAlignment="UpperLeft" offsetXY="0 -10">
+    <Row class="headerRow">
+      <Cell>
+        <Text class="title">
+          Options
+        </Text>
+      </Cell>
+    </Row>
+    <Row class="viewport">
+      <Cell dontUseTableCellBackground="true">
+        <TableLayout cellPadding="7" padding="20" cellSpacing="5" cellBackgroundImage="Sprites/Outline_Sharp" cellBackgroundColor="rgba(1,1,0,0.125)">
+          <Row class="sectionHeaderRow">
+            <Cell columnSpan="2" dontUseTableCellBackground="1">
+              <Text class="h2" alignment="MiddleCenter">Video</Text>
+            </Cell>
+          </Row>
+
+          <Row preferredHeight="48">
+            <Cell>
+              <Text class="h3">Resolution</Text>
+            </Cell>
+            <Cell>
+              <Dropdown id="resolution" preferredHeight="32" onValueChanged="FormChanged();" vm-dataSource="resolution" vm-options="resolutionOptions">
+              </Dropdown>
+            </Cell>
+          </Row>
+          <Row preferredHeight="48">
+            <Cell>
+              <Text class="h3">Quality</Text>
+            </Cell>
+            <Cell>
+              <Dropdown id="quality" onValueChanged="FormChanged();" vm-dataSource="quality" vm-options="qualityOptions">
+              </Dropdown>
+            </Cell>
+          </Row>
+
+          <Row class="sectionHeaderRow">
+            <Cell columnSpan="2" dontUseTableCellBackground="1">
+              <Text class="h2" alignment="MiddleCenter">Audio</Text>
+            </Cell>
+          </Row>
+
+          <Row>
+            <Cell>
+              <Text class="h3">Master</Text>
+            </Cell>
+            <Cell>
+              <Slider id="masterVolume" onValueChanged="FormChanged();" vm-dataSource="masterVolume" />
+            </Cell>
+          </Row>
+          <Row>
+            <Cell>
+              <Text class="h3">Music</Text>
+            </Cell>
+            <Cell>
+              <Slider id="musicVolume" onValueChanged="FormChanged();" vm-dataSource="musicVolume" />
+            </Cell>
+          </Row>
+          <Row>
+            <Cell>
+              <Text class="h3">SFX</Text>
+            </Cell>
+            <Cell>
+              <Slider id="sfxVolume" onValueChanged="FormChanged();" vm-dataSource="sfxVolume" />
+            </Cell>
+          </Row>
+
+          <Row class="sectionHeaderRow">
+            <Cell columnSpan="2" dontUseTableCellBackground="1">
+              <Text class="h2" alignment="MiddleCenter">Gameplay</Text>
+            </Cell>
+          </Row>
+
+          <Row>
+            <Cell>
+              <Text class="h3">Enable Hints</Text>
+            </Cell>
+            <Cell>
+              <Toggle id="enableHints" onValueChanged="FormChanged();" vm-dataSource="enableHints"></Toggle>
+            </Cell>
+          </Row>
+
+          <Row preferredHeight="44">
+            <Cell>
+              <Button onClick="ResetForm();">Reset</Button>
+            </Cell>
+            <Cell>
+              <Button id="applyButton" onClick="Apply();" interactable="false">Apply</Button>
+            </Cell>
+          </Row>
+        </TableLayout>
+      </Cell>
+    </Row>
+  </TableLayout>
+
+</XmlLayout>

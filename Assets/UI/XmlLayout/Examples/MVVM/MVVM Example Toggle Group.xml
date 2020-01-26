@@ -1,0 +1,33 @@
+<XmlLayout xmlns="XmlLayout"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="XmlLayout ../../Configuration/XmlLayout.xsd">
+
+  <Include path="Xml/Styles" />
+
+  <TableLayout class="noCellBackground" height="384" width="256" rectAlignment="MiddleCenter" offsetXY="0 -10">
+    <Row class="headerRow">
+      <Cell>
+        <Text class="title">
+          Toggle Group
+        </Text>
+      </Cell>
+    </Row>
+    <Row class="viewport">
+      <Cell>
+        <ToggleGroup vm-dataSource="toggleValue">
+
+          <VerticalLayout spacing="16" padding="8">
+            <List vm-dataSource="toggleItems">
+              <Toggle>
+                <Text text="{toggleItems.text}" color="black" outline="{toggleItems.textColor}" outlineSize="0.5" font="Fonts/Arial Bold"/>
+              </Toggle>
+            </List>
+          </VerticalLayout>
+
+        </ToggleGroup>
+      </Cell>
+    </Row>
+  </TableLayout>    
+  
+
+</XmlLayout>

@@ -1,0 +1,13 @@
+Icons made by:
+
+Sbed http://opengameart.org/content/95-game-icon
+- cancel.png 
+
+Delapouite, http://delapouite.com
+- move.png
+- crosshair.png
+- anticlockwise-rotation.png
+
+Lorc, http://lorcblog.blogspot.com
+- cog.png
+

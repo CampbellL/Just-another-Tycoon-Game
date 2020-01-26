@@ -1,0 +1,16 @@
+<XmlLayout xmlns="XmlLayout"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="XmlLayout Vendor/UI/XmlLayout/Configuration/XmlLayout.xsd">
+    
+<Panel width="75%" height="35%" color="#3F3831">
+    <Panel width="100%" height="10%" color="#49726E" rectAlignment="UpperCenter">
+        <Text color="white" fontSize="64" id="mBoxHeaderText">Success</Text>
+    </Panel>
+    <Panel rectAlignment="MiddleCenter">
+        <Text color="white" fontSize="64" id="mBoxBodyText">Your Login was successful.</Text>
+    </Panel>
+    <Panel rectAlignment="LowerCenter" width="100%" height="30%" color="#93BFBA">
+        <Button fontSize="64" color="#49726E" textColor="white">Continue</Button>
+    </Panel>
+</Panel>
+</XmlLayout>

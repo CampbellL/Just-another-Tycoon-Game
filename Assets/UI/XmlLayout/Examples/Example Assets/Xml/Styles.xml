@@ -1,0 +1,85 @@
+<XmlLayout
+  xmlns="XmlLayout"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="XmlLayout ../../../Configuration/XmlLayout.xsd">
+
+  <!-- 
+  NOTE: Now controlled by the 'Color Scheme Manager'
+  <Include path="Xml/ColorSchemes/GreenYellow" />
+  -->
+  
+  <Defaults>
+    <Text color="text_Base" alignment="MiddleLeft" font="Arial" />
+    <Text class="title" alignment="MiddleCenter" color="titleTextColor" fontSize="32" shadow="shadowColor" font="Arial Bold" />
+    <Text class="h1" font="Arial Bold" fontSize="24" />
+    <Text class="h2" font="Arial Bold" fontSize="16" color="titleTextColor" shadow="shadowColor" />
+    <Text class="h3" font="Arial Bold" fontSize="12" />
+
+    <TableLayout class="noCellBackground" cellBackgroundColor="clear" />
+    
+    <Row class="headerRow" dontUseTableRowBackground="true" image="Sprites/Layout/Title" color="titleRowColor" preferredHeight="64" />
+    <Row class="sectionHeaderRow" dontUseTableRowBackground="true" image="Sprites/Layout/Button" color="sectionHeaderRowColor" preferredHeight="36" />
+    <Row class="viewport"  dontUseTableRowBackground="true" image="Sprites/Layout/Viewport" color="viewportColor" />
+
+    <Button font="Arial Bold" image="Sprites/Layout/Button" colors="button_Base|button_Active|button_Active|button_Disabled" textColor="buttonText" textShadow="shadowColor" />
+
+    <Button class="disabled" colors="button_Disabled|button_Disabled|button_Disabled|button_Disabled" textColor="buttonText_Disabled" interactable="false" />        
+    
+    <!--<Button class="submit" colors="rgb(0.1,0.4,0)|rgb(0.1,0.4,0)|rgb(0.1,0.4,0)" textColor="rgb(0,0.5,0)" />-->
+
+    <ToggleButton font="Arial Bold" 
+                  image="Sprites/Layout/Button" 
+                  colors="button_Base|button_Active|button_Active|button_Disabled"
+                  textColors="text_Faded|text_Highlighted|text_Highlighted"
+                  deselectedBackgroundColor="toggleButton_Deselected"                  
+                  deselectedIconColor="toggleButtonIcon_Deselected"
+                  selectedBackgroundColor="toggleButton_Selected"                  
+                  selectedIconColor="toggleButtonIcon_Selected"   
+                  textShadow="shadowColor" />
+
+    <VerticalScrollView class="scrollView"
+                    color="scrollViewBackground"
+                    image="Sprites/Layout/Base"
+                    movementType="Clamped"
+                    scrollSensitivity="15"
+                    scrollbarBackgroundColor="scrollbarBackground"
+                    scrollbarColors="scrollbar_Base|scrollbar_Active|scrollbar_Active|scrollbar_Disabled"
+                    scrollbarImage="Sprites/Layout/Scrollbar" />
+
+    <HorizontalScrollView class="scrollView"
+                    color="scrollViewBackground"
+                    image="Sprites/Layout/Base"
+                    movementType="Clamped"
+                    scrollSensitivity="15"
+                    scrollbarBackgroundColor="scrollbarBackground"
+                    scrollbarColors="scrollbar_Base|scrollbar_Active|scrollbar_Active|scrollbar_Disabled"
+                    scrollbarImage="Sprites/Layout/Scrollbar" />
+
+    <!-- Audio 'Styles' -->
+    <Button onClickSound="Audio/beep-timber" audioVolume="0.25" audioMixerGroup="Audio/XmlLayoutExampleAudioMixer|Master/Interface" />
+
+    <Tooltip tooltipBorderColor="tooltipBorder" tooltipTextColor="tooltipText" />
+
+    <!-- Hover Styles (new in v1.21) -->
+    <Slider backgroundColor="sliderBackground" fillColor="slider_Base" handleColor="slider_Base" hoverClass="hover" navigation="Vertical" />
+    <Slider class="hover" fillColor="slider_Active" handleColor="slider_Active" />    
+    
+    <Dropdown colors="dropdown_Base|dropdown_Active" textColor="dropdownText_Base" hoverClass="hover" />
+    <Dropdown class="hover" textColor="dropdownText_Active" />
+
+    <Toggle colors="toggle_Base|toggle_Active|toggle_Active" />
+
+    <InputField colors="inputField_Base|inputField_Active|inputField_Active" textColor="inputFieldText_Base" hoverClass="hover" />
+    <InputField class="hover" textColor="inputFieldText_Active" />
+        
+    <Button hoverClass="hover" />        
+    <Button class="hover" textColor="buttonText_Active" />        
+    
+    <!-- Cursors -->
+    <Button cursor="Cursors/ExampleCursor_Hover|0 0" />
+    <InputField cursor="Cursors/ExampleCursor_Hover|0 0" />
+    <Toggle cursor="Cursors/ExampleCursor_Hover|0 0" />
+    <ToggleButton cursor="Cursors/ExampleCursor_Hover|0 0" />
+    <Slider cursor="Cursors/ExampleCursor_Hover|0 0" />        
+  </Defaults>  
+</XmlLayout>

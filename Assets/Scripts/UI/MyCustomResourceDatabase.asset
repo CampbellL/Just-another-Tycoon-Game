@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0aec51a543456c24c94bde974bfaa499, type: 3}
+  m_Name: MyCustomResourceDatabase
+  m_EditorClassIdentifier: 
+  PathPrefix: 
+  MonitorContainingFolder: 0
+  folders:
+  - Scripts/UI/HUD
+  AutomaticallyRemoveEntries: 0
+  entries:
+  - path: CoffeeChainManagement
+    resource: {fileID: 102900000, guid: 8b5b4218ef72f426b8e942fb27ff6ed2, type: 3}
+  - path: Input/InputSystem.inputsettings
+    resource: {fileID: 0}
+  - path: HUD/Game
+    resource: {fileID: 4900000, guid: c4f64aa2955554b3199e0fd7487c5f62, type: 3}
+  - path: HUD/WorkerPanel
+    resource: {fileID: 4900000, guid: 5460beb17d334409c9a43ac80ecb4385, type: 3}
+  - path: MainMenu/Login/Login
+    resource: {fileID: 4900000, guid: ab1e33cc2271c448e9fcf799e33df017, type: 3}
+  - path: Misc/MessageBox/MessageBox
+    resource: {fileID: 4900000, guid: 344859e5adc0f4059802c26c2a3ff5d1, type: 3}
+  - path: MyCustomResourceDatabase
+    resource: {fileID: 11400000}

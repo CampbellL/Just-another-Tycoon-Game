@@ -1,0 +1,87 @@
+<XmlLayout xmlns="XmlLayout"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="XmlLayout ../../../../UI/XmlLayout/Configuration/XmlLayout.xsd">
+
+  <Include path="Xml/Styles" />
+
+  <Defaults>
+    <!-- Animation Definitions-->
+    
+    <Animation name="FadeInLinear" duration="1" attribute="CanvasGroup.alpha" from="0" to="1" valueType="float" curve="Linear" />
+    <Animation name="FadeOutLinear" duration="1" attribute="CanvasGroup.alpha" from="1" to="0" valueType="float" />
+    
+    <Animation name="GrowLinear" duration="1" attribute="RectTransform.localScale" from="0 0 0" to="1 1 1" valueType="Vector3" curve="Linear" />
+    <Animation name="GrowExpo" duration="1" attribute="RectTransform.localScale" from="0 0 0" to="1 1 1" valueType="Vector3" curve="ExpoEaseIn" />
+    <Animation name="GrowElastic" duration="1" attribute="RectTransform.localScale" from="0 0 0" to="1 1 1" valueType="Vector3" curve="ElasticEaseIn" />
+    <Animation name="GrowBounce" duration="1" attribute="RectTransform.localScale" from="0 0 0" to="1 1 1" valueType="Vector3" curve="BounceEaseIn" />
+
+    <Animation name="ShrinkVertical" duration="1" attribute="RectTransform.localScale" from="1 1 1" to="1 0 0" valueType="Vector3" curve="Linear" />
+    <Animation name="ShrinkHorizontal" duration="1" attribute="RectTransform.localScale" from="1 1 1" to="0 1 0" valueType="Vector3" curve="Linear" />
+
+    <Animation name="ShrinkBounce" duration="1" attribute="RectTransform.localScale" from="1 1 1" to="0 0 0" valueType="Vector3" curve="BounceEaseOut" />
+
+    <Animation name="ChangeColor" duration="1" attribute="Image.color" from="rgb(1,1,1)" to="rgb(1,0.2,0.2)" valueType="Color" />
+
+    <!-- Reset color to default instantly -->
+    <Animation name="ResetColor" duration="0" attribute="Image.color" to="rgb(1,1,1)" valueType="Color" />
+
+    <!-- Fade in and grow simultaneously -->
+    <Animation name="FadeInAndGrow" type="Simultaneous" animations="FadeInLinear GrowExpo" />
+
+    <!-- Grow and change color simultaneously -->
+    <Animation name="GrowAndChangeColor" type="Simultaneous" animations="GrowLinear ChangeColor" />
+
+    <!-- Grow, then change color -->
+    <Animation name="GrowThenChangeColor" type="Chained" animations="GrowExpo ChangeColor" />
+    
+    <!-- Fade in, then spin -->
+    <Animation name="Spin" attribute="RectTransform.localEulerAngles" from="0 0 0" to="0 0 360" valueType="Vector3" curve="Linear" />
+    <Animation name="FadeInThenSpin" type="Chained" animations="FadeInLinear Spin" />    
+    
+    <!-- Fade Out And Spin -->
+    <Animation name="FadeOutAndSpin" type="Simultaneous" animations="FadeOutLinear Spin" />
+    
+    <!-- Change color, then fade out (then reset color) -->
+    <Animation name="ChangeColorThenFadeOut" type="Chained" animations="ChangeColor FadeOutLinear ResetColor" />
+
+    <Animation name="FadeOutThenResetColor" type="Chained" animations="FadeOutLinear ResetColor" />
+    
+    
+    
+    <!-- /Animation Definitions -->
+  </Defaults>
+
+  <TableLayout class="noCellBackground" height="432" width="384" raycastTarget="1">
+    
+      <Row class="headerRow">
+      <Cell>
+        <Text class="title">
+          Animation Examples
+        </Text>
+      </Cell>
+    </Row>
+    
+    <Row class="viewport">
+      <Cell>
+
+        <GridLayout id="grid" childAlignment="MiddleCenter" padding="16" spacing="8" cellSize="100 100">
+
+          <Button showAnimation="FadeInLinear" hideAnimation="FadeOutLinear">One</Button>
+          <Button showAnimation="GrowLinear" hideAnimation="ShrinkVertical">Two</Button>
+          <Button showAnimation="GrowExpo" hideAnimation="ShrinkHorizontal">Three</Button>
+          <Button showAnimation="GrowElastic" hideAnimation="ChangeColorThenFadeOut">Four</Button>
+          <Button showAnimation="GrowBounce" hideAnimation="ShrinkHorizontal">Five</Button>
+          <Button showAnimation="FadeInAndGrow" hideAnimation="ShrinkBounce">Six</Button>
+          <Button showAnimation="GrowAndChangeColor" hideAnimation="FadeOutThenResetColor">Seven</Button>
+          <Button showAnimation="GrowThenChangeColor" hideAnimation="FadeOutThenResetColor">Eight</Button>
+          <Button showAnimation="FadeInThenSpin" hideAnimation="FadeOutAndSpin">Nine</Button>                 
+          
+        </GridLayout>        
+        
+      </Cell>
+    </Row>
+    
+  </TableLayout>
+  
+
+</XmlLayout>

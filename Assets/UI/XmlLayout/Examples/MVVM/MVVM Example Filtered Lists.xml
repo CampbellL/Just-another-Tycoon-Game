@@ -1,0 +1,64 @@
+<XmlLayout xmlns="XmlLayout"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="XmlLayout ../../Configuration/XmlLayout.xsd">
+
+  <Defaults>
+    <Text color="white" />
+    <TableLayout rowBackgroundColor="rgb(0,0,0,0.1)" rowBackgroundColorAlternate="rgb(1,1,1,0.1)" />
+  </Defaults>
+
+  <TableLayout width="25%" height="80%" rectAlignment="MiddleLeft" offsetXY="15 0" columnWidths="0 72">
+    <Row preferredHeight="48">
+      <Cell>
+        <Text>Name</Text>
+      </Cell>
+      <Cell>
+        <Text>Owned?</Text>
+      </Cell>
+    </Row>
+    <List vm-dataSource="items">
+      <Row preferredHeight="44">
+        <Cell>
+          <Text text="{items.name}" />
+        </Cell>
+        <Cell>          
+            <Toggle isOn="{items.selected}" />
+        </Cell>
+      </Row>
+    </List>
+  </TableLayout>
+
+  <TableLayout width="25%" height="80%" rectAlignment="MiddleCenter">
+    <Row preferredHeight="48">
+      <Cell>
+        <Text>Selected</Text>
+      </Cell>      
+    </Row>
+
+    <List vm-dataSource="ownedItems">
+      <Row preferredHeight="44">
+        <Cell>
+          <Text text="{ownedItems.name}" />
+        </Cell>
+      </Row>
+    </List>
+  </TableLayout>
+
+  <TableLayout width="25%" height="80%" rectAlignment="MiddleRight" offsetXY="-15 0">
+    <Row preferredHeight="48">
+      <Cell>
+        <Text>Deselected</Text>
+      </Cell>
+    </Row>
+
+    <List vm-dataSource="unownedItems">
+      <Row preferredHeight="44">
+        <Cell>
+          <Text text="{unownedItems.name}" />
+        </Cell>
+      </Row>
+    </List>
+  </TableLayout>
+  
+
+</XmlLayout>

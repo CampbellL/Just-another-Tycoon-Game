@@ -1,0 +1,90 @@
+<XmlLayout xmlns="XmlLayout"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="XmlLayout ../../Configuration/XmlLayout.xsd">
+
+  <Include path="Xml/Styles.xml" />
+  
+  <Defaults>
+    <TableLayout class="outlined" cellBackgroundImage="Sprites/Outline_Sharp" cellBackgroundColor="rgba(1,1,0,0.125)" />
+    <TableLayout class="content" cellPadding="7" cellSpacing="5" columnWidths="72 72 0 40" />
+  </Defaults>
+
+
+  <TableLayout class="noCellBackground" height="550" width="320" rectAlignment="UpperRight" offsetXY="0 -10">
+    <Row class="headerRow">
+      <Cell>
+        <Text class="title">
+          Example List
+        </Text>
+      </Cell>
+    </Row>
+    <Row class="viewport">
+      <Cell dontUseTableCellBackground="true">
+        <TableLayout class="outlined" padding="20">
+          <Row class="sectionHeaderRow">
+            <Cell>
+              <TableLayout class="content noCellBackground" columnWidths="72 72 0 57">
+                <Row>
+                  <Cell>
+                    <Text class="h2" alignment="MiddleCenter">A</Text>
+                  </Cell>
+
+                  <Cell>
+                    <Text class="h2" alignment="MiddleCenter">B</Text>
+                  </Cell>
+
+                  <Cell>
+                    <Text class="h2" alignment="MiddleCenter">A + B</Text>
+                  </Cell>
+                  
+                  <Cell></Cell>
+                </Row>
+              </TableLayout>
+            </Cell>
+
+          </Row>
+          
+          <Row>
+            <Cell>
+              <VerticalScrollView class="scrollview">
+                <TableLayout class="content outlined" autoCalculateHeight="true">
+                  <!-- MVVM List Component -->
+
+                    <List vm-dataSource="listItems" itemShowAnimation="FadeIn" itemHideAnimation="FadeOut">            
+                      <Row preferredHeight="48">
+                        <Cell>                
+                          <InputField textAlignment="MiddleCenter" text="{listItems.column1}" contentType="IntegerNumber" />
+                        </Cell>
+                        <Cell>                
+                          <InputField textAlignment="MiddleCenter" text="{listItems.column2}" contentType="IntegerNumber" />
+                        </Cell>
+                        <Cell>
+                          <Text class="h3" alignment="MiddleCenter" text="{listItems.combined}" />
+                        </Cell>
+                        <Cell>
+                          <Button onClick="Remove({listItems.item})">X</Button>
+                        </Cell>
+                      </Row>
+                    </List>
+          
+                  <!-- /MVVM List Component -->
+                </TableLayout>
+              </VerticalScrollView>
+            </Cell>
+          </Row>
+                    
+          <Row preferredHeight="48">
+            <Cell>
+              <HorizontalLayout>
+                <Button onClick="AddElement()">Add Element</Button>            
+                <Button onClick="ChangeLast()">Change Last</Button>
+              </HorizontalLayout>
+            </Cell>
+          </Row>
+          
+        </TableLayout>        
+      </Cell>
+    </Row>
+  </TableLayout>
+
+</XmlLayout>

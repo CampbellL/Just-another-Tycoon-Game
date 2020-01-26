@@ -1,0 +1,193 @@
+<XmlLayout xmlns="XmlLayout"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="XmlLayout ../../../Configuration/XmlLayout.xsd">
+
+  <Include path="Xml/Styles.xml" />
+
+  <Defaults>
+    <Panel class="borderOuter" padding="8" image="Sprites/Layout/Base" color="rgb(0.25,0.4,0.25)" ignoreLayout="true" rectAlignment="LowerCenter" />
+    <Panel class="borderInner" image="Sprites/Layout/Indented" color="rgb(0,0.3,0)" />
+
+    <Button class="commandButton" 
+            image="Sprites/HUD/CommandButton" 
+            iconColor="rgb(0.8,1,0.8)"            
+            showAnimation="Grow" 
+            animationDuration="0.5"
+            colors="rgb(0.2,0.7,0)|rgb(0.3,1,0.3)|rgb(0.2,0.9,0)"
+            padding="2" />    
+
+    <Button class="unitIcon"
+            image="Sprites/Outline"
+            icon="Sprites/HUD/UnitIcon" 
+            iconColor="rgb(0.4,1,0.0.4)"
+            showAnimation="Grow"
+            animationDuration="0.5"            
+            padding="2"
+            color="rgb(0,1,0)" />
+
+    <Button class="topLeft" width="224" height="32" rectAlignment="UpperLeft" offsetXY="16 -48" />
+
+    <Text class="resourceText" fontStyle="Bold" color="rgb(0,1,0)" horizontalOverflow="Overflow" />
+
+    <Tooltip tooltipPosition="Above" tooltipBorderColor="rgb(0,1,0)" tooltipBackgroundColor="rgb(0,0,0)" tooltipFollowMouse="1" />
+  </Defaults>
+
+  <!-- Overlay -->
+  <Panel image="Sprites/HUD/Game" color="white" type="Simple" preserveAspect="1" height="125%" width="125%" showAnimation="FadeIn" hideAnimation="FadeOut" raycastTarget="1">    
+  </Panel>
+
+  <!-- Back Button -->
+  <Button class="topLeft" image="Sprites/Layout/Button" icon="Sprites/Icons/Arrow_Left" iconWidth="32" iconColor="rgb(0,1,0)" iconHoverColor="rgb(0,1,0)" padding="0 0 4 4" onClick="Hide();" showAnimation="FadeIn" hideAnimation="FadeOut">
+    Back to Example List
+  </Button>
+  
+  <!-- Top Bar -->
+  <Panel height="32" rectAlignment="UpperCenter" image="Sprites/Layout/Gradient" color="rgb(0.2,0.9,0,0.5)" showAnimation="SlideIn_Top" hideAnimation="SlideOut_Top" animationDuration="0.5">
+    <TableLayout class="noCellBackground" rectAlignment="MiddleRight" width="224" cellPadding="5">
+      <Row preferredHeight="0">        
+        <Cell tooltip="Green Minerals" tooltipPosition="Below">
+          <TableLayout class="noCellBackground item">
+            <Row>
+              <Cell>
+                <Image image="Sprites/Shop/gemGreen" preserveAspect="1" width="125%" height="125%" ignoreLayout="1"/>
+              </Cell>
+              <Cell>
+                <Text class="resourceText">500</Text>
+              </Cell>
+            </Row>
+          </TableLayout>
+        </Cell>
+        <Cell tooltip="Blue Minerals" tooltipPosition="Below">
+          <TableLayout class="noCellBackground item">
+            <Row>
+              <Cell>
+                <Image image="Sprites/Shop/gemBlue" preserveAspect="1" width="125%" height="125%" ignoreLayout="1" />
+              </Cell>
+              <Cell>
+                <Text class="resourceText">1000</Text>
+              </Cell>
+            </Row>
+          </TableLayout>
+        </Cell>
+      </Row>
+    </TableLayout>
+  </Panel>  
+
+  <!-- Bottom Bar -->
+  <TableLayout columnWidths="192 0 128 256" height="192" rectAlignment="LowerCenter" class="noCellBackground" showAnimation="SlideIn_Bottom" hideAnimation="SlideOut_Bottom">
+    <Row>     
+      <Cell>
+        <!-- Minimap -->
+        <Panel class="borderOuter" padding="12">
+          <Panel padding="4" image="Sprites/Outline" color="rgba(0,1,0,0.75)">
+            <Panel class="borderInner">
+              <Image image="Sprites/HUD/Minimap" preserveAspect="1" />
+            </Panel>
+          </Panel>
+        </Panel>
+      </Cell>
+
+      <Cell>
+        <!-- Unit List -->
+        <Panel class="borderOuter" image="Sprites/Layout/Title" height="168">
+        </Panel>
+
+        <Panel class="borderOuter" image="Sprites/Layout/Viewport" height="160">
+          <Panel class="borderInner">
+
+            <TableLayout cellBackgroundColor="rgba(1,1,1,0.05)" cellBackgroundImage="Sprites/Outline" cellSpacing="8" padding="8 8 8 16" cellPadding="2">
+              <Row>
+                <Cell>
+                  <Button class="unitIcon" tooltip="Fighter" />
+                </Cell>
+                <Cell>
+                  <Button class="unitIcon" tooltip="Fighter" />
+                </Cell>
+                <Cell>
+                  <Button class="unitIcon" tooltip="Fighter" />
+                </Cell>
+                <Cell>
+                  <Button class="unitIcon" tooltip="Fighter" />
+                </Cell>
+                <Cell></Cell>                
+              </Row>
+
+              <Row>
+                <Cell></Cell>
+                <Cell></Cell>
+                <Cell></Cell>
+                <Cell></Cell>
+                <Cell></Cell>                
+              </Row>
+            </TableLayout>
+            
+          </Panel>
+        </Panel>
+      </Cell>
+
+      <Cell>
+        <!-- Unit Portrait -->
+        <Panel class="borderOuter" height="160">
+          <Panel class="borderInner" color="rgb(0.1,0.1,0.1)">
+            <Panel padding="4" image="Sprites/Outline" color="rgba(0,1,0,0.75)">
+              <Panel padding="8">
+                <Image image="Sprites/HUD/UnitPortrait" showAnimation="FadeIn" hideAnimation="FadeOut" animationDuration="0.5" preserveAspect="1" color="rgba(1,1,1,0.5)" />
+              </Panel>
+            </Panel>
+          </Panel>
+        </Panel>
+      </Cell>
+
+      <Cell>
+        <!-- Commands -->
+                
+        <Panel class="borderOuter" image="Sprites/Layout/Title" height="192">        
+        </Panel>
+        
+        <Panel class="borderOuter" image="Sprites/Layout/Viewport" height="160">
+          <Panel class="borderInner">
+            <TableLayout cellBackgroundColor="rgba(1,1,1,0.05)" cellBackgroundImage="Sprites/Outline" cellSpacing="8" padding="8 8 4 4" cellPadding="2">
+              <Row>
+                <Cell>
+                  <Button class="commandButton" icon="Sprites/Icons/Move" tooltip="Move" />
+                </Cell>
+                <Cell>
+                  <Button class="commandButton" icon="Sprites/Icons/Crosshair" tooltip="Attack" />
+                </Cell>
+                <Cell>
+                  <Button class="commandButton" icon="Sprites/Icons/Cancel" tooltip="Cancel" />
+                </Cell>
+                <Cell>
+                  <Button class="commandButton" icon="Sprites/Icons/Anticlockwise-Rotation" tooltip="Return" />                  
+                </Cell>
+              </Row>
+              
+              <Row>
+                <Cell></Cell>
+                <Cell></Cell>
+                <Cell></Cell>
+                <Cell></Cell>
+              </Row>
+              
+              <Row>
+                <Cell>
+                  <Button class="commandButton" icon="Sprites/Icons/Arrow_Left" tooltip="Previous Page" />
+                </Cell>
+                <Cell></Cell>
+                <Cell>
+                  <Button class="commandButton" icon="Sprites/Icons/Cog" tooltip="Advanced Options" />
+                </Cell>
+                <Cell>
+                  <Button class="commandButton" icon="Sprites/Icons/Arrow_Right" tooltip="Next Page" />                  
+                </Cell>
+              </Row>
+
+            </TableLayout>
+          </Panel>
+        </Panel>        
+      </Cell>
+    </Row>
+    
+  </TableLayout>
+  
+</XmlLayout>

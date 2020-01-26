@@ -1,0 +1,109 @@
+<XmlLayout xmlns="XmlLayout" 
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+           xsi:schemaLocation="XmlLayout ../../../Configuration/XmlLayout.xsd" showAnimation="Grow" hideAnimation="Shrink">
+  
+  <Include path="Xml/Styles.xml" />
+
+  <Defaults>    
+    <Cell class="header" dontUseTableCellBackground="1" color="titleRowColor" image="Sprites/Layout/Button" />
+    <Panel class="outlined" color="rgb(0.5,0.5,0.5)" image="Sprites/Outline_Sharp" />
+    <Text class="h2" alignment="MiddleCenter" />
+  </Defaults>
+
+  <TableLayout class="noCellBackground" height="512" width="880" rectAlignment="MiddleCenter" raycastTarget="1" id="mainPanel">
+    <Row class="headerRow">
+      <Cell>
+        <TableLayout class="noCellBackground" columnWidths="64 0">
+          <Row>
+            <Cell>
+              <Button image="Sprites/Icons/Arrow_Left" onClick="Hide()" ignoreLayout="1" preserveAspect="1" type="Simple" width="32" height="32" />
+            </Cell>
+            <Cell>
+              <Text class="title">
+                Test it out
+              </Text>
+            </Cell>        
+          </Row>
+        </TableLayout>
+      </Cell>
+    </Row>
+    <Row class="viewport">
+      <Cell dontUseTableCellBackground="true">
+        <TableLayout class="noCellBackground" padding="10" cellSpacing="2" cellPadding="10" columnWidths="480 0">
+          <Row preferredHeight="48">
+            <Cell class="header">
+              <Text class="h2">Code</Text>
+            </Cell>
+            <Cell class="header">              
+              <Text class="h2">Output</Text>
+              <Button image="Sprites/Icons/Move" onClick="ToggleViewportSize();" ignoreLayout="true" rectAlignment="MiddleRight" width="32" height="32" offsetXY="-8 0" />              
+            </Cell>
+          </Row>
+          <Row>
+            <Cell>
+              <TableLayout cellSpacing="10">
+                <Row preferredHeight="32">
+                  <Cell>
+                    <HorizontalLayout spacing="5" padding="5">
+                      <Button onClick="Empty();">Empty</Button>
+                      <Button onClick="ExampleA();">Example A</Button>
+                      <Button onClick="ExampleB();">Example B</Button>
+                      <Button onClick="ExampleC();">Example C</Button>
+                    </HorizontalLayout>
+                  </Cell>                  
+                </Row>
+                <Row>
+                  <Cell dontUseTableCellBackground="1">                    
+                    <VerticalScrollView class="scrollView" color="rgb(0,0,0,0.75)" id="codeInputScrollView">
+                      <TableLayout columnWidths="36 0" height="1024">
+                        <Row>
+                          <Cell>
+                            <InputField interactable="false" lineType="MultiLineNewline" fontSize="12" font="Courier New Bold" id="lineNumbers">                                                          
+                            </InputField>
+                          </Cell>
+                          <Cell>
+                            <InputField id="codeInputField" colors="clear" textColor="white" fontStyle="Bold" fontSize="12" font="Courier New" onValueChanged="XmlChanged(value);" lineType="MultiLineNewline"></InputField>
+                          </Cell>
+                        </Row>
+                      </TableLayout>
+                    </VerticalScrollView>
+                  </Cell>
+                </Row>
+                <Row preferredHeight="32">
+                  <Cell>
+                    <Button onClick="UpdateDisplay();">Update</Button>
+                  </Cell>                  
+                </Row>                
+              </TableLayout>
+            </Cell>
+            <Cell>
+              <Mask>
+                <Panel padding="10" class="outlined" id="outputContainer">
+                  <Panel id="output" name="Output">
+                    <!-- Output goes here -->
+                  </Panel>                
+                </Panel>
+              </Mask>
+            </Cell>
+          </Row>
+        </TableLayout>
+      </Cell>
+    </Row>
+  </TableLayout>
+
+  <TableLayout width="100%" height="100%" id="expandedOutput" active="false">
+    <Row preferredHeight="48">
+      <Cell class="header">
+        <Text class="h2">Output</Text>
+        <Button image="Sprites/Icons/Move" onClick="ToggleViewportSize();" ignoreLayout="true" rectAlignment="MiddleRight" width="32" height="32" offsetXY="-8 0" />
+      </Cell>
+    </Row>
+    <Row class="viewport">
+      <Cell>
+        <Mask>
+          <HorizontalLayout id="expandedOutputPanel" childForceExpandHeight="true" childForceExpandWidth="true" />
+        </Mask>
+      </Cell>
+    </Row>
+  </TableLayout>
+</XmlLayout>

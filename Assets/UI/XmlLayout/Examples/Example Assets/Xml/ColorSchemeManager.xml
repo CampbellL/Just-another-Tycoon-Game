@@ -1,0 +1,16 @@
+<XmlLayout xmlns="XmlLayout"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="XmlLayout ../../../Configuration/XmlLayout.xsd">
+
+  <HorizontalLayout color="rgb(0.5,0.5,0.5)" padding="8" image="Sprites/Layout/Viewport">
+    <Text color="white">Color Scheme:</Text>
+    
+    <Dropdown id="colorSchemeDropdown" preferredWidth="192" onValueChanged="ChangeColorScheme(selectedValue)">
+      <Option>GreenYellow</Option>
+      <Option>BlueYellow</Option>
+      <Option>Grayscale</Option>
+      <Option>GrayscaleAlt</Option>
+    </Dropdown>
+  </HorizontalLayout>
+
+</XmlLayout>

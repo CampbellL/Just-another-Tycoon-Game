@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0aec51a543456c24c94bde974bfaa499, type: 3}
+  m_Name: Prefab Resource Database
+  m_EditorClassIdentifier: 
+  PathPrefix: 
+  MonitorContainingFolder: 1
+  folders:
+  - UI/XmlLayout/Tags/Tag Prefabs
+  AutomaticallyRemoveEntries: 1
+  entries:
+  - path: Prefab Resource Database
+    resource: {fileID: 11400000}
+  - path: XmlLayout Prefabs/Button
+    resource: {fileID: 140746, guid: 042770d0e18670c48921efe1c27859ff, type: 3}
+  - path: XmlLayout Prefabs/Canvas
+    resource: {fileID: 1000012463795580, guid: 01f2c9309b1f8f1438d1d50f990d1964, type: 3}
+  - path: XmlLayout Prefabs/DataTable
+    resource: {fileID: 1000010005726018, guid: 7c2f75f51dc491044a16cf5c3f1ca1b0, type: 3}
+  - path: XmlLayout Prefabs/Dropdown
+    resource: {fileID: 196936, guid: 921ee0b176cfecf488d3901bb95f8bcf, type: 3}
+  - path: XmlLayout Prefabs/GridLayout
+    resource: {fileID: 183498, guid: db0e91cbe6c19634cad8f7d39ad6f712, type: 3}
+  - path: XmlLayout Prefabs/HorizontalLayout
+    resource: {fileID: 102828, guid: 621f4610248b6424b84e64f2bf91df95, type: 3}
+  - path: XmlLayout Prefabs/HorizontalScrollView
+    resource: {fileID: 109680, guid: 54313bea214463c408368f79e14b152a, type: 3}
+  - path: XmlLayout Prefabs/Image
+    resource: {fileID: 155822, guid: 41b150cb70f55814caccb75660c187aa, type: 3}
+  - path: XmlLayout Prefabs/InputField
+    resource: {fileID: 140704, guid: 07835e1c32e605c4c8da7eefb618d0c8, type: 3}
+  - path: XmlLayout Prefabs/Mask
+    resource: {fileID: 142864, guid: 27ff85ce7b910f54286abe6cb8077380, type: 3}
+  - path: XmlLayout Prefabs/PagedRect/Page
+    resource: {fileID: 194996, guid: bcd584b859a7ba14cbfc5d3408e9b8db, type: 3}
+  - path: XmlLayout Prefabs/Panel
+    resource: {fileID: 142900, guid: 7b69bf110d3234548a2c9d89cd0e8d21, type: 3}
+  - path: XmlLayout Prefabs/ProgressBar
+    resource: {fileID: 1000010173612680, guid: 5d5795247f919fa4d9a470ae01a96806, type: 3}
+  - path: XmlLayout Prefabs/Slider
+    resource: {fileID: 199954, guid: 7b3098f68358c55438bb9360c9c54798, type: 3}
+  - path: XmlLayout Prefabs/TableLayout/Note
+    resource: {fileID: 4900000, guid: ab211d7aaa68ca44189207e7055d68de, type: 3}
+  - path: XmlLayout Prefabs/Text
+    resource: {fileID: 129944, guid: 537f8ec32b5bf6540a9f87fde809b4d5, type: 3}
+  - path: XmlLayout Prefabs/TextMeshPro/TextMeshPro - Dropdown
+    resource: {fileID: 1000013560479422, guid: d327ca43dd08b9944afc0bd111024d2e, type: 3}
+  - path: XmlLayout Prefabs/Toggle
+    resource: {fileID: 131396, guid: f6e8df406bee8564ebc5daf0755ce670, type: 3}
+  - path: XmlLayout Prefabs/ToggleButton
+    resource: {fileID: 178968, guid: 0b9bdbd097c6c244caf4bfc360f0b668, type: 3}
+  - path: XmlLayout Prefabs/ToggleGroup
+    resource: {fileID: 108850, guid: 23bd1a8437068064e9f281fffb332808, type: 3}
+  - path: XmlLayout Prefabs/Tooltip
+    resource: {fileID: 190334, guid: c54784c9920b5ef40ad5c94b280dfbae, type: 3}
+  - path: XmlLayout Prefabs/UIObject3D/UIObject3D
+    resource: {fileID: 1000012911323710, guid: a6e3469d15d098943bb37eeabba2e760, type: 3}
+  - path: XmlLayout Prefabs/VerticalLayout
+    resource: {fileID: 107640, guid: bbac41adeb9433b439ae01aecc28f07c, type: 3}
+  - path: XmlLayout Prefabs/VerticalScrollView
+    resource: {fileID: 197048, guid: 3a9babe54b4013f41b1ebc59e032aa27, type: 3}
+  - path: XmlLayout Prefabs/XmlLayout
+    resource: {fileID: 163814, guid: 0047bc8aed5f77041b82920592c9cd6c, type: 3}

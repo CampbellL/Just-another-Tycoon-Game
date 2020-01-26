@@ -1,0 +1,26 @@
+<XmlLayout
+  xmlns="XmlLayout"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="XmlLayout ../../../Configuration/XmlLayout.xsd">
+
+  <Defaults>        
+    <!-- Product Styles -->
+    <Panel class="product" image="Sprites/Layout/Base" color="rgb(0.9,1,0.9)" padding="10" shadow="black" />
+    <Panel class="productImageOutline" image="Sprites/Outline_With_Background" color="rgba(0.05,0.05,0.05,0.75)" />
+    <Button class="productButton" colors="#CDAD00|#FFD700|#FFD700" textColor="#FFFF00" image="Sprites/Layout/Base" textOutline="black" />    
+    <Panel class="productImage" color="white" height="70%" preserveAspect="1" rectAlignment="LowerCenter" />    
+    <Text class="productQuantity" alignment="UpperCenter" outline="black" fontSize="16" font="Arial Bold" />    
+    
+    <Panel class="productBestDealBack" image="Sprites/Layout/Button" color="rgb(1,0,0,0.6)" height="20" rectAlignment="LowerCenter" offsetXY="0 -4" />
+    <Text class="productBestDealText" fontSize="12" alignment="MiddleCenter" color="#FFFF00" font="Arial Bold" />
+    <!-- /Product Styles -->
+
+    <!-- Styles for Confirm Purchase Dialog -->
+    <Text class="headerText" alignment="MiddleCenter" fontSize="18" shadow="black" font="Arial Bold" />    
+
+    <Text class="confirmPurchaseText" alignment="MiddleCenter" font="Arial Bold" outline="black" fontSize="24" />
+    <!-- /Styles for Confirm Purchase Dialog -->        
+
+  </Defaults>
+
+</XmlLayout>

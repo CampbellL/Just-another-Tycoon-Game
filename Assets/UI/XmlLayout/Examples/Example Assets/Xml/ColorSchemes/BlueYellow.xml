@@ -1,0 +1,82 @@
+<XmlLayout
+  xmlns="XmlLayout"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="XmlLayout ../../../../Configuration/XmlLayout.xsd">
+
+  <Defaults>
+    <!-- Color definitions referenced by this scheme -->
+    <Color name="accent" color="rgb(0.2,0.4,0.7)" />
+    <Color name="accentFaded" color="rgba(0.2,0.4,0.6,0.8)" />
+    <Color name="accentHighlight" color="rgb(0.2,0.4,0.9)" />
+    <Color name="accentVariantA" color="rgb(0.2,0.4,0.6)" />
+    <Color name="accentVariantB" color="rgb(0.1,0.2,0.4)" />
+    <Color name="accentVariantC" color="rgb(0.1,0.4,0.6)" />
+    
+    <Color name="black" color="rgb(0,0,0)" />
+    <Color name="white" color="rgb(1,1,1)" />
+    <Color name="lightGray" color="rgb(0.9,0.9,0.9)" />
+    <Color name="darkGray" color="rgb(0.3,0.3,0.3)" />
+    <Color name="yellow" color="rgb(1,1,0)" />
+    <Color name="darkYellow" color="rgb(0.5,0.5,0)" />
+    
+    
+    <!-- Text Colors -->
+    <Color name="text_Base" color="white" />
+    <Color name="text_Alternate" color="rgb(0,1,0.75)" />
+    <Color name="text_Faded" color="rgb(0,1,0.75,0.5)" />
+    <Color name="text_Highlighted" color="yellow" />
+    <Color name="titleTextColor" color="yellow" />
+    <Color name="shadowColor" color="rgba(0,0,0,0.5)" />
+
+    <!--- Row Colors -->
+    <Color name="titleRowColor" color="rgb(0.1,0.4,0.7)" />
+    <Color name="sectionHeaderRowColor" color="accentVariantA" />
+    <Color name="viewportColor" color="rgb(0.5,0.5,0.5)" />
+
+    <!-- Buttons /etc. -->
+    <Color name="buttonText" color="rgb(0,1,0.75)" />
+    <Color name="buttonText_Active" color="yellow" />
+    <Color name="buttonText_Disabled" color="rgb(0,0.5,0.5)" />
+    <Color name="button_Base" color="accent" />
+    <Color name="button_Active" color="accentHighlight" />
+    <Color name="button_Disabled" color="accentVariantB" />
+
+    <!-- Toggle Buttons -->
+    <Color name="toggleButton_Deselected" color="accentVariantC" />
+    <Color name="toggleButtonIcon_Deselected" color="darkYellow" />
+    <Color name="toggleButton_Selected" color="accent" />
+    <Color name="toggleButtonIcon_Selected" color="yellow" />
+
+    <!-- Scrollviews and Scrollbars -->
+    <Color name="scrollViewBackground" color="rgb(0.05,0.05,0.05,0.5)" />
+    <Color name="scrollbarBackground" color="rgb(0.05,0,0.1)" />
+    <Color name="scrollbar_Base" color="accentFaded" />
+    <Color name="scrollbar_Active" color="accent" />
+    <Color name="scrollbar_Disabled" color="accentVariantA" />
+
+    <!--- Sliders -->
+    <Color name="sliderBackground" color="white" />
+    <Color name="slider_Base" color="lightGray" />
+    <Color name="slider_Active" color="white" />
+
+    <!--- Dropdowns -->
+    <Color name="dropdown_Base" color="lightGray" />
+    <Color name="dropdown_Active" color="white" />
+    <Color name="dropdownText_Base" color="darkGray" />
+    <Color name="dropdownText_Active" color="black" />
+
+    <!--- Toggles -->
+    <Color name="toggle_Base" color="lightGray" />
+    <Color name="toggle_Active" color="white" />
+
+    <!-- Input Fields -->
+    <Color name="inputField_Base" color="lightGray" />
+    <Color name="inputField_Active" color="white" />
+    <Color name="inputFieldText_Base" color="darkGray" />
+    <Color name="inputFieldText_Active" color="black" />
+
+    <!-- Tooltips -->
+    <Color name="tooltipBorder" color="white" />
+    <Color name="tooltipText" color="white" />
+  </Defaults>  
+</XmlLayout>

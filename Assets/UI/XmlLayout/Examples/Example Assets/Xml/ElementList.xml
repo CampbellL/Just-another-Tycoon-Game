@@ -1,0 +1,405 @@
+<XmlLayout xmlns="XmlLayout"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="XmlLayout ../../../Configuration/XmlLayout.xsd" showAnimation="Grow" hideAnimation="FadeOut">
+
+  <Include path="Xml/Styles.xml" />  
+
+  <Defaults>
+    <Panel color="accentVariantC" image="Sprites/Outline_Sharp" />
+    <Text class="label" alignment="MiddleCenter" color="rgb(1,1,1,0.5)" />
+    <Text class="h2" alignment="MiddleCenter" />    
+    <Toggle textcolor="white" />
+
+    <Button class="iconButton" image="Sprites/Layout/Base" iconColor="text_Highlighted" iconHoverColor="text_Highlighted" />
+    <Button class="iconButtonWithText" iconWidth="48" padding="4 0 2 2" ignoreLayout="1" width="160" height="32" />
+
+    <ToggleButton class="iconButton" image="Sprites/Layout/Base" />
+    <ToggleButton class="iconButtonWithText" iconWidth="48" padding="4 0 2 2" ignoreLayout="1" width="160" height="32" />
+  </Defaults>  
+
+  <TableLayout class="noCellBackground" height="512" width="512" rectAlignment="MiddleRight" offsetXY="-32 0"  raycastTarget="1">
+    <Row class="headerRow">
+      <Cell>
+        <Text class="title">
+          Element List
+        </Text>
+      </Cell>
+    </Row>
+    <Row class="viewport">
+      <Cell>
+        <VerticalScrollView class="scrollView" color="rgba(0,0,0,0.25)">
+          <TableLayout cellPadding="7" padding="20" cellSpacing="5" cellBackgroundImage="Sprites/Outline_Sharp" cellBackgroundColor="rgba(1,1,0,0.125)" autoCalculateHeight="1" columnWidths="180 0">
+            <Row class="sectionHeaderRow">
+              <Cell columnSpan="2" dontUseTableCellBackground="1">
+                <Text class="h2" alignment="MiddleCenter">Basic Elements</Text>
+              </Cell>
+            </Row>
+
+            <Row preferredHeight="44">
+              <Cell>
+                <Text class="h3">Text Label</Text>
+              </Cell>
+              <Cell>
+                <Text alignment="MiddleCenter">
+                  This <i>is</i> some <textcolor color="green">rich</textcolor> text.
+                </Text>
+              </Cell>
+            </Row>
+
+            <Row preferredHeight="64">
+              <Cell>
+                <Text class="h3">Image</Text>
+              </Cell>
+              <Cell>
+                <Image image="Sprites/Shop/gemGreen" preserveAspect="1" />                
+              </Cell>
+            </Row>
+
+            <Row class="sectionHeaderRow">
+              <Cell columnSpan="2" dontUseTableCellBackground="1">
+                <Text class="h2" alignment="MiddleCenter">Input Elements</Text>
+              </Cell>
+            </Row>
+            
+            <Row preferredHeight="44">
+              <Cell>
+                <Text class="h3">Input Field</Text>
+              </Cell>
+              <Cell>
+                <InputField />
+              </Cell>
+            </Row>
+            <Row preferredHeight="44">
+              <Cell>
+                <Text class="h3">Toggle</Text>
+              </Cell>
+              <Cell>
+                <Toggle />
+              </Cell>
+            </Row>
+            <Row preferredHeight="44">
+              <Cell>
+                <Text class="h3">Toggle Group</Text>
+              </Cell>
+              <Cell>
+                <ToggleGroup>
+                  <HorizontalLayout>
+                    <Toggle isOn="1">A</Toggle>
+                    <Toggle>B</Toggle>
+                    <Toggle>C</Toggle>
+                    <Toggle>D</Toggle>
+                  </HorizontalLayout>
+                </ToggleGroup>
+              </Cell>
+            </Row>            
+
+            <Row preferredHeight="44">
+              <Cell>
+                <Text class="h3">Slider</Text>
+              </Cell>
+              <Cell>
+                <Slider minValue="0" maxValue="1" value="0.5" />
+              </Cell>
+            </Row>
+
+            <Row preferredHeight="48">
+              <Cell>
+                <Text class="h3" alignment="UpperLeft">Dropdown</Text>
+              </Cell>
+              <Cell>
+                <Dropdown>                  
+                  <Option selected="1">Option 1</Option>
+                  <Option>Option 2</Option>
+                  <Option>Option 3</Option>
+                  <Option>Option 4</Option>
+                  <Option>Option 5</Option>
+                  <Option>Option 6</Option>
+                  <Option>Option 7</Option>
+                  <Option>Option 8</Option>
+                </Dropdown>
+              </Cell>
+            </Row>
+
+            <Row preferredHeight="48">
+              <Cell>
+                <Text class="h3">Button</Text>                
+              </Cell>
+              <Cell>
+                <Button>Button Text</Button>
+              </Cell>
+            </Row>
+
+            <Row preferredHeight="48">
+              <Cell>
+                <Text class="h3">Button with icon</Text>
+              </Cell>
+              <Cell>                
+                <GridLayout cellSize="32,32" spacing="10" childAlignment="MiddleCenter">
+                  <Button class="iconButton" icon="Sprites/Icons/Move" />
+                  <Button class="iconButton" icon="Sprites/Icons/Cog" />
+                  <Button class="iconButton" icon="Sprites/Icons/Cancel" />
+                  <Button class="iconButton" icon="Sprites/Icons/Arrow_Right" />
+                </GridLayout>
+              </Cell>
+            </Row>
+
+            <Row preferredHeight="48">
+              <Cell>
+                <Text class="h3">Button with left-side icon</Text>
+              </Cell>
+              <Cell>
+                <Button class="iconButton iconButtonWithText" icon="Sprites/Icons/Arrow_Left" textAlignment="MiddleLeft">Button Text</Button>
+              </Cell>
+            </Row>
+
+            <Row preferredHeight="48">
+              <Cell>
+                <Text class="h3">Button with right-side icon</Text>
+              </Cell>
+              <Cell>
+                <Button class="iconButton iconButtonWithText" icon="Sprites/Icons/Arrow_Right" iconAlignment="Right" textAlignment="MiddleRight">Button Text</Button>
+              </Cell>
+            </Row>
+
+            <Row preferredHeight="48">
+              <Cell>
+                <Text class="h3">Toggle Button</Text>
+              </Cell>
+              <Cell>
+                <ToggleButton class="iconButton iconButtonWithText" icon="Sprites/Icons/Arrow_Left" textAlignment="MiddleLeft">Button Text</ToggleButton>
+              </Cell>
+            </Row>
+
+            <Row preferredHeight="44">
+              <Cell>
+                <Text class="h3">Toggle Button Group</Text>
+              </Cell>
+              <Cell>
+                <ToggleGroup>
+                  <GridLayout cellSize="32,32" spacing="10" childAlignment="MiddleCenter">
+                    <ToggleButton class="iconButton" icon="Sprites/Icons/Arrow_Left" isOn="1"></ToggleButton>
+                    <ToggleButton class="iconButton" icon="Sprites/Icons/Arrow_Up"></ToggleButton>
+                    <ToggleButton class="iconButton" icon="Sprites/Icons/Arrow_Down"></ToggleButton>
+                    <ToggleButton class="iconButton" icon="Sprites/Icons/Arrow_Right"></ToggleButton>
+                  </GridLayout>
+                </ToggleGroup>
+              </Cell>
+            </Row>
+
+            <Row class="sectionHeaderRow">
+              <Cell columnSpan="2" dontUseTableCellBackground="1">
+                <Text class="h2" alignment="MiddleCenter">Misc Elements</Text>
+              </Cell>
+            </Row>
+
+            <Row preferredHeight="44">
+              <Cell>
+                <Text class="h3">Progress Bar</Text>
+              </Cell>
+              <Cell>
+                <ProgressBar id="progressBar" percentage="0" showPercentageText="1" fontStyle="Bold" textColor="text_Alternate" textShadow="shadowColor" fillImageColor="accent" image="Sprites/Layout/Gradient" fillImage="Sprites/Layout/Button" percentageTextFormat="0.00" />
+              </Cell>
+            </Row>            
+                 
+            <Row class="sectionHeaderRow">
+              <Cell columnSpan="2" dontUseTableCellBackground="1">
+                <Text class="h2" alignment="MiddleCenter">Layout Elements</Text>
+              </Cell>
+            </Row>
+
+            <Row preferredHeight="44">
+              <Cell>
+                <Text class="h3">Panel</Text>
+              </Cell>
+              <Cell>
+                <Panel  image="Sprites/Outline_Sharp"></Panel>
+              </Cell>
+            </Row>
+            <Row preferredHeight="44">
+              <Cell>
+                <Text class="h3">Horizontal Layout</Text>
+              </Cell>
+              <Cell>
+                <HorizontalLayout spacing="5">
+                  <Panel>
+                    <Text class="label">1</Text>
+                  </Panel>
+                  <Panel>
+                    <Text class="label">2</Text>
+                  </Panel>
+                  <Panel>
+                    <Text class="label">3</Text>
+                  </Panel>
+                  <Panel>
+                    <Text class="label">4</Text>
+                  </Panel>                  
+                </HorizontalLayout>
+              </Cell>
+            </Row>
+            <Row preferredHeight="128">
+              <Cell>
+                <Text class="h3" alignment="UpperLeft">Vertical Layout</Text>
+              </Cell>
+              <Cell>
+                <VerticalLayout spacing="2">
+                  <Panel>
+                    <Text class="label">1</Text>
+                  </Panel>
+                  <Panel>
+                    <Text class="label">2</Text>
+                  </Panel>
+                  <Panel>
+                    <Text class="label">3</Text>
+                  </Panel>
+                  <Panel>
+                    <Text class="label">4</Text>
+                  </Panel>
+                </VerticalLayout>
+              </Cell>
+            </Row>
+            <Row preferredHeight="80">
+              <Cell>
+                <Text class="h3" alignment="UpperLeft">Grid Layout</Text>
+              </Cell>
+              <Cell>
+                <GridLayout spacing="4" cellSize="48,32" childAlignment="MiddleCenter">
+                  <Button>1</Button>
+                  <Button>2</Button>
+                  <Button>3</Button>
+                  <Button>4</Button>
+                  <Button>5</Button>
+                  <Button>6</Button>
+                  <Button>7</Button>
+                  <Button>8</Button>
+                  <Button>9</Button>
+                  <Button>10</Button>                                
+                </GridLayout>
+              </Cell>
+            </Row>
+
+            <Row preferredHeight="128">
+              <Cell>
+                <Text class="h3" alignment="UpperLeft">Table Layout</Text>
+              </Cell>
+              <Cell>
+                <TableLayout cellSpacing="1">
+                  <Row class="sectionHeaderRow" preferredHeight="32">
+                    <Cell>
+                      <Text class="h2">C1</Text>
+                    </Cell>
+                    <Cell>
+                      <Text class="h2">C2</Text>
+                    </Cell>
+                    <Cell>
+                      <Text class="h2">C3</Text>
+                    </Cell>
+                  </Row>
+                  <Row>
+                    <Cell>
+                      <Text class="label">1</Text>
+                    </Cell>
+                    <Cell>
+                      <Text class="label">2</Text>
+                    </Cell>
+                    <Cell>
+                      <Text class="label">3</Text>
+                    </Cell>
+                  </Row>
+                  <Row>
+                    <Cell>
+                      <Text class="label">4</Text>
+                    </Cell>
+                    <Cell>
+                      <Text class="label">5</Text>
+                    </Cell>
+                    <Cell>
+                      <Text class="label">6</Text>
+                    </Cell>
+                  </Row>
+                </TableLayout>
+              </Cell>
+            </Row>
+
+            <Row class="sectionHeaderRow">
+              <Cell columnSpan="2" dontUseTableCellBackground="1">
+                <Text class="h2" alignment="MiddleCenter">Scroll Views</Text>
+              </Cell>
+            </Row>
+
+            <Row preferredHeight="128">
+              <Cell>
+                <Text class="h3" alignment="UpperLeft">Vertical Scrollview</Text>
+              </Cell>
+              <Cell>
+                <VerticalScrollView class="scrollView">
+                  <VerticalLayout height="512" padding="16" spacing="16">
+                    <Panel>
+                      <Text class="label">1</Text>
+                    </Panel>
+                    <Panel>
+                      <Text class="label">2</Text>
+                    </Panel>
+                    <Panel>
+                      <Text class="label">3</Text>
+                    </Panel>
+                    <Panel>
+                      <Text class="label">4</Text>
+                    </Panel>
+                    <Panel>
+                      <Text class="label">5</Text>
+                    </Panel>
+                    <Panel>
+                      <Text class="label">6</Text>
+                    </Panel>
+                    <Panel>
+                      <Text class="label">7</Text>
+                    </Panel>
+                    <Panel>
+                      <Text class="label">8</Text>
+                    </Panel>
+                  </VerticalLayout>
+                </VerticalScrollView>
+              </Cell>
+            </Row>
+
+            <Row preferredHeight="128">
+              <Cell>
+                <Text class="h3" alignment="UpperLeft">Horizontal Scrollview</Text>
+              </Cell>
+              <Cell>
+                <HorizontalScrollView class="scrollView">
+                  <HorizontalLayout width="512" padding="16" spacing="16">
+                    <Panel>
+                      <Text class="label">1</Text>
+                    </Panel>
+                    <Panel>
+                      <Text class="label">2</Text>
+                    </Panel>
+                    <Panel>
+                      <Text class="label">3</Text>
+                    </Panel>
+                    <Panel>
+                      <Text class="label">4</Text>
+                    </Panel>
+                    <Panel>
+                      <Text class="label">5</Text>
+                    </Panel>
+                    <Panel>
+                      <Text class="label">6</Text>
+                    </Panel>
+                    <Panel>
+                      <Text class="label">7</Text>
+                    </Panel>
+                    <Panel>
+                      <Text class="label">8</Text>
+                    </Panel>
+                  </HorizontalLayout>
+                </HorizontalScrollView>
+              </Cell>
+            </Row>          
+          </TableLayout>
+        </VerticalScrollView>
+      </Cell>
+    </Row>
+  </TableLayout>  
+</XmlLayout>

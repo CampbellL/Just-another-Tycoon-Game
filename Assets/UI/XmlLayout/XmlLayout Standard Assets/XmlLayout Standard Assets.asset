@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0aec51a543456c24c94bde974bfaa499, type: 3}
+  m_Name: XmlLayout Standard Assets
+  m_EditorClassIdentifier: 
+  PathPrefix: 
+  MonitorContainingFolder: 1
+  folders:
+  - UI/XmlLayout/XmlLayout Standard Assets
+  AutomaticallyRemoveEntries: 1
+  entries:
+  - path: Animation/FadeIn
+    resource: {fileID: 7400000, guid: 5dd6b91ca58f0a84aa883e361771c2e7, type: 2}
+  - path: Animation/FadeOut
+    resource: {fileID: 7400000, guid: f2689dd4ecc218e44aebb6aad7670e98, type: 2}
+  - path: Animation/Shrink
+    resource: {fileID: 7400000, guid: 02f01da928a810548a221525c9137ca8, type: 2}
+  - path: Animation/Shrink_Horizontal
+    resource: {fileID: 7400000, guid: 178985705b41cf84fbd289372c1aeb14, type: 2}
+  - path: Animation/Shrink_Vertical
+    resource: {fileID: 7400000, guid: 7a98d3fa1d90e9047ab9594263023fe8, type: 2}
+  - path: Animation/SlideIn_Left
+    resource: {fileID: 7400000, guid: a1fa32b1afb362844897299b7a0f3437, type: 2}
+  - path: Animation/SlideIn_Top
+    resource: {fileID: 7400000, guid: ca6d76ce1866db14a9b0600c79b7e02c, type: 2}
+  - path: Animation/SlideOut_Bottom
+    resource: {fileID: 7400000, guid: 0ae32b877854d6346abe440eebb320da, type: 2}
+  - path: Animation/SlideOut_Right
+    resource: {fileID: 7400000, guid: 3fd038a8db8f02246b50a68bbb66ad1c, type: 2}
+  - path: Animation/XmlLayoutAnimationController
+    resource: {fileID: 9100000, guid: 4ea4c44e288b43242b205b28ca7ac857, type: 2}
+  - path: Fonts/Arial
+    resource: {fileID: 12800000, guid: 38596dd7edd19ff478b6ae4cb5eba580, type: 3}
+  - path: Fonts/Arial Bold
+    resource: {fileID: 12800000, guid: cc734ab6de70ef942bba6eaa5f00f6a6, type: 3}
+  - path: Fonts/Arial Italic
+    resource: {fileID: 12800000, guid: dfdce9ec4e550564da066f59e0987b60, type: 3}
+  - path: Fonts/Courier New
+    resource: {fileID: 12800000, guid: 47730109db0146c42951211ab68ebb60, type: 3}
+  - path: Fonts/Courier New Bold
+    resource: {fileID: 12800000, guid: d7acad710d1b0734baef8682cd9c56ab, type: 3}
+  - path: Sprites/Elements/Background_XmlLayout
+    resource: {fileID: 21300000, guid: a94b690bb7d7dbc4ebf724dd31b03707, type: 3}
+  - path: Sprites/Elements/Checkmark
+    resource: {fileID: 21300000, guid: a6f745c6eaad01c4aaae9023b6ec4dbc, type: 3}
+  - path: Sprites/Elements/DropdownArrow
+    resource: {fileID: 21300000, guid: 396ab7edde9be4e409776d4030b2bbbb, type: 3}
+  - path: Sprites/Elements/ToggleGroup_Background
+    resource: {fileID: 21300000, guid: cd5d58ad5b343a34ea55aed36bb3af86, type: 3}
+  - path: Sprites/Elements/ToggleGroup_Selected
+    resource: {fileID: 21300000, guid: 717bb066a1fb9f54ca57ca671cc69837, type: 3}
+  - path: Sprites/Elements/UISprite_XmlLayout
+    resource: {fileID: 21300000, guid: 1a6c660fb2af0874294b55605aabd8b8, type: 3}
+  - path: XmlLayout Standard Assets
+    resource: {fileID: 11400000}

@@ -1,0 +1,133 @@
+<XmlLayout xmlns="XmlLayout"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="XmlLayout ../../Configuration/XmlLayout.xsd">
+
+  <Defaults>      
+    <!-- Background for the accordion -->
+    <Accordion color="rgb(0.1,0.1,0.1)" />
+    
+    <!-- Set styles for the headers -->
+    <AccordionSectionHeader image="Sprites/Layout/Button" color="accent" />    
+    <Text class="@AccordionSectionHeader>@Text" color="text_Alternate" fontStyle="Bold" />
+    
+    <!-- Set styles for the header icon (arrow) -->
+    <!-- Note: you can also specify a 'collapsedSprite' and an 'expandedSprite' if you wish -->
+    <AccordionSectionHeaderIcon collapsedColor="buttonText_Disabled" expandedColor="buttonText" />
+  
+    <!-- When a section is expanded, change its text color to yellow (the 'expanded' class is added to any expanded 'AccordionSection' elements -->  
+    <!-- Similarly, the 'expanded' class will be removed from collapsed sections. -->
+    <!-- XmlLayout will also add a 'collapsed' class to any collapsed section, and remove it when that section is expanded. -->
+    <Text class="expanded>@AccordionSectionHeader>@Text" color="titleTextColor" />    
+    
+    <!-- Set height and styles for the content -->
+    <!-- Note: 'contentHeight' can vary from section to section if you wish -->
+    <AccordionSection contentHeight="192" />
+    <AccordionSectionContent image="Sprites/Layout/Gradient" color="rgb(0.5,0.5,0.5)" />
+    <Text class="@AccordionSectionContent:@Text" color="white" alignment="MiddleLeft" />
+
+    <!-- Set padding/etc. for horizontal layouts within the content section -->
+    <HorizontalLayout class="@AccordionSectionContent>@HorizontalLayout" padding="12" childForceExpandWidth="false" />
+      
+    <!-- Styles for the content images -->
+    <Image class="contentImage" minWidth="128" preferredWidth="128" flexibleWidth="0" preserveAspect="true" />
+  
+    <HorizontalLayout class="buttonList" padding="16" spacing="8" childForceExpandWidth="false" childForceExpandHeight="false" contentSizeFitter="horizontal" childAlignment="MiddleLeft" />
+    <Button font="Arial Bold" image="Sprites/Layout/Button" colors="button_Base|button_Active|button_Active|button_Disabled" textColor="buttonText" textShadow="shadowColor" />
+    <Button class="buttonList>@Button" minWidth="92" minHeight="92" preferredWidth="128" preferredHeight="128" padding="16" />
+  
+    <HorizontalScrollView class="scrollView"
+                          color="rgba(0,0,0,0)"
+                          image="Sprites/Layout/Base"
+                          movementType="Clamped"
+                          scrollSensitivity="15"
+                          scrollbarBackgroundColor="scrollbarBackground"
+                          scrollbarColors="scrollbar_Base|scrollbar_Active|scrollbar_Active|scrollbar_Disabled"
+                          scrollbarImage="Sprites/Layout/Scrollbar" />      
+  </Defaults>
+    
+  <Panel width="512" height="450" showAnimation="Grow" hideAnimation="FadeOut">
+    <Accordion collapsible="true" allowSectionReordering="true" makeDraggedSectionTransparent="true">
+    
+      <!-- Section 1 -->
+      <AccordionSection expanded="1" name="Section 1">
+        <!-- AccordionSectionHeader is also a HorizontalLayoutGroup with padding (16), spacing (8), and child alignment (MiddleLeft) set by default. You can change these values if you wish. -->
+        <AccordionSectionHeader>
+          <!-- This icon can be anywhere within the header (for example, it could be on the right) -->
+          <AccordionSectionHeaderIcon />
+          <Text>Section 1</Text>
+        </AccordionSectionHeader>
+                      
+        <AccordionSectionContent>          
+          <HorizontalLayout>
+            <Image class="contentImage" image="Sprites/Shop/Coin"  />
+            <Text>
+              - Click on a section header to expand that section.\n
+              - [Optional] Click an expanded section header to collapse that section. (collapsible=true)\n
+              - Accordion Sections can contain any combination of elements you wish, including ScrollViews, Buttons, etc.\n              
+            </Text>
+          </HorizontalLayout>          
+        </AccordionSectionContent>  
+      </AccordionSection>
+
+      <!-- Section 2 -->
+      <AccordionSection name="Section 2">
+        <AccordionSectionHeader>
+          <AccordionSectionHeaderIcon />
+          <Text>Section 2</Text>
+        </AccordionSectionHeader>
+
+        <AccordionSectionContent>          
+          <HorizontalLayout>            
+            <Text>
+              - [Optional] Drag a section header to reorder the accordion contents. (allowSectionReordering=true)\n
+              - [Optional] Dragged sections can be expanded automatically after being reordered. (expandSectionAfterReorder=true)
+            </Text>
+            <Image class="contentImage" image="Sprites/Shop/gemGreen" />
+          </HorizontalLayout>          
+        </AccordionSectionContent> 
+      </AccordionSection>
+
+      <!-- Section 3 -->
+      <AccordionSection name="Section 3">
+        <AccordionSectionHeader>
+          <AccordionSectionHeaderIcon />
+          <Text>Section 3</Text>
+        </AccordionSectionHeader>
+
+        <AccordionSectionContent>          
+          <HorizontalLayout>
+            <Image class="contentImage" image="Sprites/Shop/gemBlue" />
+            <Text>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</Text>
+          </HorizontalLayout>          
+        </AccordionSectionContent> 
+      </AccordionSection>
+
+      <!-- Section 4 -->            
+      <AccordionSection name="Section 4">
+        <AccordionSectionHeader>
+          <AccordionSectionHeaderIcon />
+          <Text>Section 4</Text>
+        </AccordionSectionHeader>
+
+        <AccordionSectionContent>          
+          <HorizontalScrollView class="scrollView">
+            <HorizontalLayout class="buttonList">
+              <Button icon="Sprites/Icons/Move" />
+              <Button icon="Sprites/Icons/Cancel" />
+              <Button icon="Sprites/Icons/Cog" />
+              <Button icon="Sprites/Icons/Crosshair" />
+              <Button icon="Sprites/Icons/Arrow_Left" />
+              <Button icon="Sprites/Icons/Arrow_Right" />
+              <Button icon="Sprites/Icons/Arrow_Up" />
+              <Button icon="Sprites/Icons/Arrow_Down" />
+            </HorizontalLayout>
+          </HorizontalScrollView>
+        </AccordionSectionContent> 
+      </AccordionSection>
+    
+    
+    
+    </Accordion>
+  </Panel>
+
+</XmlLayout>

@@ -1,0 +1,14 @@
+<XmlLayout xmlns="XmlLayout"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="../../../../UI/XmlLayout/Configuration/XmlLayout.xsd">
+  
+  <Include path="Xml/Styles.xml" />
+
+  <Panel image="Sprites/Elements/Background_XmlLayout" color="#000000">
+
+    <Include path="Xml/ExampleHUD.xml" />
+    
+  </Panel>
+  
+
+</XmlLayout>

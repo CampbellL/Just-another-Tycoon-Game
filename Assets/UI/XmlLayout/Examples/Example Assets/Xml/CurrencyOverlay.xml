@@ -1,0 +1,67 @@
+<XmlLayout xmlns="XmlLayout" 
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+           xsi:schemaLocation="XmlLayout ../../../Configuration/XmlLayout.xsd">
+  
+  <Include path="Xml/Styles.xml" />
+
+  <Defaults>
+    <Text shadow="black" font="Arial Bold"></Text>
+    <TableLayout class="item" columnWidths="32 0" />
+    <Image preserveAspect="1" shadow="black" />
+  </Defaults>
+
+  <Panel height="32" rectAlignment="UpperCenter" image="Sprites/Layout/Gradient" color="titleRowColor" showAnimation="SlideIn_Top" hideAnimation="SlideOut_Top" animationDuration="0.5">
+    <TableLayout class="noCellBackground" rectAlignment="MiddleRight" width="356" cellPadding="5">
+      <Row preferredHeight="0">        
+        <Cell>
+          <TableLayout class="noCellBackground item">
+            <Row>
+              <Cell>
+                <Image image="Sprites/Shop/coin" />
+              </Cell>
+              <Cell>                
+                <Text id="0">x0</Text>
+              </Cell>
+            </Row>
+          </TableLayout>
+        </Cell>
+        <Cell>
+          <TableLayout class="noCellBackground item">
+            <Row>
+              <Cell>
+                <Image image="Sprites/Shop/gemGreen" />
+              </Cell>
+              <Cell>
+                <Text id="1">x0</Text>
+              </Cell>
+            </Row>
+          </TableLayout>
+        </Cell>
+        <Cell>
+          <TableLayout class="noCellBackground item">
+            <Row>
+              <Cell>
+                <Image image="Sprites/Shop/gemBlue" />
+              </Cell>
+              <Cell>
+                <Text id="2">x0</Text>
+              </Cell>
+            </Row>
+          </TableLayout>
+        </Cell>
+        <Cell>
+          <TableLayout class="noCellBackground item">
+            <Row>
+              <Cell>
+                <Image image="Sprites/Shop/gemRed" />
+              </Cell>
+              <Cell>
+                <Text id="3">x0</Text>
+              </Cell>
+            </Row>
+          </TableLayout>
+        </Cell>
+      </Row>
+    </TableLayout>
+  </Panel>
+</XmlLayout>

@@ -1,0 +1,204 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a952b127d3da39d4da5fd455042d0d14, type: 3}
+  m_Name: resourceDatabase
+  m_EditorClassIdentifier: 
+  entries:
+  - path: Color Gradient Presets/Blue to Purple - Vertical
+    resource: {fileID: 11400000, guid: 1e643bbd7e13d46418da3774e72bef60, type: 2}
+  - path: Color Gradient Presets/Dark to Light Green - Vertical
+    resource: {fileID: 11400000, guid: 90c9133b254e2184b8084dea4f392337, type: 2}
+  - path: Color Gradient Presets/Light to Dark Green - Vertical
+    resource: {fileID: 11400000, guid: 33c745f0979f3984182a138bcc6e57ec, type: 2}
+  - path: Color Gradient Presets/Yellow to Orange - Vertical
+    resource: {fileID: 11400000, guid: e002cb2a36d9e4a439a062867fa24e1e, type: 2}
+  - path: Editor/landscape
+    resource: {fileID: 2800000, guid: 10bf81265ad87424d946598c575f45a0, type: 3}
+  - path: Editor/portrait
+    resource: {fileID: 2800000, guid: 1b32bcce201b4494ea8848326290c5d5, type: 3}
+  - path: Fonts & Materials/Anton SDF
+    resource: {fileID: 11400000, guid: f76ef802b8b940c46a31f9027f2b0158, type: 2}
+  - path: Fonts & Materials/Anton SDF - Drop Shadow
+    resource: {fileID: 2100000, guid: 250a1a103b3b4914c9707e6a423446d6, type: 2}
+  - path: Fonts & Materials/Anton SDF - Outline
+    resource: {fileID: 2100000, guid: e077dc203e948b740859c1c0ca8b9691, type: 2}
+  - path: Fonts & Materials/Bangers SDF
+    resource: {fileID: 11400000, guid: 808aa8f1ab804104aa7d0c337a6c1481, type: 2}
+  - path: Fonts & Materials/Bangers SDF - Drop Shadow
+    resource: {fileID: 2100000, guid: c26f698d4eee19e4a8b8f42cd299bab5, type: 2}
+  - path: Fonts & Materials/Bangers SDF - Outline
+    resource: {fileID: 2100000, guid: db7f2cfbf23d6d54ca4e74a9abd55326, type: 2}
+  - path: Fonts & Materials/Bangers SDF Glow
+    resource: {fileID: 2100000, guid: 7dd7006c58d8a3148a73aa211d8c13d0, type: 2}
+  - path: Fonts & Materials/Bangers SDF Logo
+    resource: {fileID: 2100000, guid: 4fb51aa7001a2244395ddf6a15d37389, type: 2}
+  - path: Fonts & Materials/Electronic Highway Sign SDF
+    resource: {fileID: 11400000, guid: 163292f6f226d954593d45b079f8aae0, type: 2}
+  - path: Fonts & Materials/LiberationSans SDF
+    resource: {fileID: 11400000, guid: 715b80e429c437e40867928a4e1fc975, type: 2}
+  - path: Fonts & Materials/LiberationSans SDF - Drop Shadow
+    resource: {fileID: 2100000, guid: 33db60c37b63f08448ded4b385e74e38, type: 2}
+  - path: Fonts & Materials/LiberationSans SDF - Metalic Green
+    resource: {fileID: 2100000, guid: 4f9843c79516ed1468b9b5a4f32e67e3, type: 2}
+  - path: Fonts & Materials/LiberationSans SDF - Outline
+    resource: {fileID: 2100000, guid: 83a1b0fe6c3dbac44b66f09c82e1d509, type: 2}
+  - path: Fonts & Materials/LiberationSans SDF - Overlay
+    resource: {fileID: 2100000, guid: 55eb086ae18c76e4bb6cc7106d0dd6e2, type: 2}
+  - path: Fonts & Materials/LiberationSans SDF - Soft Mask
+    resource: {fileID: 2100000, guid: 74e06d99c1657fc4abd33f20685ea9ff, type: 2}
+  - path: Fonts & Materials/Oswald Bold SDF
+    resource: {fileID: 11400000, guid: 09641b029dfa78843902b548a9de7553, type: 2}
+  - path: Fonts & Materials/Roboto-Bold SDF
+    resource: {fileID: 11400000, guid: d62a573c923f5cb47b8ff65261033b90, type: 2}
+  - path: Fonts & Materials/Roboto-Bold SDF - Drop Shadow
+    resource: {fileID: 2100000, guid: 102e7c5c5e3b1f3468518cb166967d77, type: 2}
+  - path: Fonts & Materials/Roboto-Bold SDF - Surface
+    resource: {fileID: 2100000, guid: e2da38ead8f8238449c54a1ef49e080f, type: 2}
+  - path: LineBreaking Following Characters
+    resource: {fileID: 4900000, guid: 312ba5b9e90627940866e19549a788cf, type: 3}
+  - path: LineBreaking Leading Characters
+    resource: {fileID: 4900000, guid: 8d713940fcbede142ae4a33ea0062b33, type: 3}
+  - path: Prefabs/TableLayout/Cell
+    resource: {fileID: 171100, guid: ce40bf8f12f94a744b07e8cfd9bff1df, type: 2}
+  - path: Prefabs/TableLayout/Row
+    resource: {fileID: 144882, guid: 2c18ba788d89ff94aa8321e22a650bc6, type: 2}
+  - path: Prefabs/TableLayout/TableLayout
+    resource: {fileID: 131506, guid: ea5245aa60bf15442aba456edf851d2b, type: 2}
+  - path: ResourceData/resourceDatabase
+    resource: {fileID: 11400000}
+  - path: Shaders/TMP_Bitmap
+    resource: {fileID: 4800000, guid: edfcf888cd11d9245b91d2883049a57e, type: 3}
+  - path: Shaders/TMP_Bitmap-Mobile
+    resource: {fileID: 4800000, guid: d1cf17907700cb647aa3ea423ba38f2e, type: 3}
+  - path: Shaders/TMP_SDF
+    resource: {fileID: 4800000, guid: dca26082f9cb439469295791d9f76fe5, type: 3}
+  - path: Shaders/TMP_SDF Overlay
+    resource: {fileID: 4800000, guid: 4a7755d6b5b67874f89c85f56f95fe97, type: 3}
+  - path: Shaders/TMP_SDF-Mobile
+    resource: {fileID: 4800000, guid: cafd18099dfc0114896e0a8b277b81b6, type: 3}
+  - path: Shaders/TMP_SDF-Mobile Masking
+    resource: {fileID: 4800000, guid: afc255f7c2be52e41973a3d10a2e632d, type: 3}
+  - path: Shaders/TMP_SDF-Mobile Overlay
+    resource: {fileID: 4800000, guid: 9ecb3fe313cb5f7478141eba4a2d54ed, type: 3}
+  - path: Shaders/TMP_SDF-Surface
+    resource: {fileID: 4800000, guid: 8e6b9842dbb1a5a4887378afab854e63, type: 3}
+  - path: Shaders/TMP_SDF-Surface-Mobile
+    resource: {fileID: 4800000, guid: 3c2ea7753c1425145a74d106ec1cd852, type: 3}
+  - path: Shaders/TMP_Sprite
+    resource: {fileID: 4800000, guid: 3a1c68c8292caf046bd21158886c5e40, type: 3}
+  - path: Shaders/TMPro
+    resource: {fileID: 10900000, guid: 438defe6a2827704f90bdf852732bc11, type: 3}
+  - path: Shaders/TMPro_Properties
+    resource: {fileID: 10900000, guid: bc2d34f37efcbdf429ed46cb34aa2ad5, type: 3}
+  - path: Shaders/TMPro_Surface
+    resource: {fileID: 10900000, guid: d37b1512245a86f4fa830a2e6488a787, type: 3}
+  - path: Sprite Assets/Default Sprite Asset
+    resource: {fileID: 11400000, guid: 273ca6c80b4b5d746b5e548f532bffd8, type: 2}
+  - path: Sprite Assets/DropCap Numbers
+    resource: {fileID: 11400000, guid: c4fd2a959a50b584b92dedfefec1ffda, type: 2}
+  - path: Sprite Assets/EmojiOne
+    resource: {fileID: 11400000, guid: 9a952e2781ef26940ae089f1053ef4ef, type: 2}
+  - path: Sprites/Outline
+    resource: {fileID: 21300000, guid: 6855878fb857eb9408b3d9ceeab8908b, type: 3}
+  - path: Sprites/Outline_Sharp
+    resource: {fileID: 21300000, guid: c88737c4d8c610c43a1be895c06d380c, type: 3}
+  - path: Sprites/Outline_With_Background
+    resource: {fileID: 21300000, guid: 55d36aa4af06b4b4988c2afc77a95fd1, type: 3}
+  - path: Style Sheets/Default Style Sheet
+    resource: {fileID: 11400000, guid: 54d1085f9a2fdea4587fcfc7dddcd4bc, type: 2}
+  - path: TMP Settings
+    resource: {fileID: 11400000, guid: 69ed5bac41eebaa4c97e9d2a4168c54f, type: 2}
+  - path: Ui/AccountDialog
+    resource: {fileID: 1687582151993540, guid: 27bf743aa0619034b94532a2ee080b30, type: 2}
+  - path: Ui/Fonts/AnitaSemiSquare/Anita semi square
+    resource: {fileID: 12800000, guid: 1c7eafdc11681d0408f381ba917a2832, type: 3}
+  - path: Ui/Fonts/AnitaSemiSquare/Anita semi square
+    resource: {fileID: 2100000, guid: 1c7eafdc11681d0408f381ba917a2832, type: 3}
+  - path: Ui/Fonts/AnitaSemiSquare/Anita semi square
+    resource: {fileID: 2800000, guid: 1c7eafdc11681d0408f381ba917a2832, type: 3}
+  - path: Ui/Fonts/AnitaSemiSquare/Anita semi square SDF
+    resource: {fileID: 11400000, guid: bccd5cfc6f2f3724bb5f1e32a6bca653, type: 2}
+  - path: Ui/InputDialog
+    resource: {fileID: 1000011805229714, guid: 3c386d40402ca87438d62e4d6b0537d8, type: 2}
+  - path: Ui/InspectorPanel
+    resource: {fileID: 1490194844258932, guid: b056ac530bbf18b4b835a9d3d4806980, type: 2}
+  - path: Ui/MessageDialog
+    resource: {fileID: 1000011805229714, guid: 340427c2a2eff7d469851079f1899e73, type: 2}
+  - path: Ui/Prefabs/XmlLayout/ContentButton
+    resource: {fileID: 140746, guid: 03d704ffffe175e4085e6da0b621db38, type: 2}
+  - path: Ui/Prefabs/XmlLayout/Spinner
+    resource: {fileID: 1280276993094472, guid: e55490edd432d6d489e6b066f8e2b840, type: 2}
+  - path: Ui/Prefabs/XmlLayout/TextButton
+    resource: {fileID: 140746, guid: 2db1145d2b2fc224bbf09c29500aab87, type: 2}
+  - path: Ui/Prefabs/XmlLayout/ToggleButton
+    resource: {fileID: 1029012023058150, guid: a37dff655bab5f4419c8c43498042cc8, type: 2}
+  - path: Ui/ScreenshotDialog
+    resource: {fileID: 1287319196453270, guid: a36d78b0ade82ff468d0cad89c1dfb48, type: 2}
+  - path: Ui/Sprites/Border/Angled-1px
+    resource: {fileID: 21300000, guid: 80a5cebd4e278874b9dbfa926260bcb6, type: 3}
+  - path: Ui/Sprites/Border/Angled-2px
+    resource: {fileID: 21300000, guid: 72b8ebf00fc52c54c9b17693d0cfb6d1, type: 3}
+  - path: Ui/Sprites/Border/Edge-Left-1px
+    resource: {fileID: 21300000, guid: 19865205e1f167f4d86ebf0e9d3d8a7a, type: 3}
+  - path: Ui/Sprites/Border/Square-1px
+    resource: {fileID: 21300000, guid: 3553dab713a707144aea6e93c637675d, type: 3}
+  - path: Ui/Sprites/Border/Square-2px
+    resource: {fileID: 21300000, guid: 7e4e8a2f59f17ea40a0cdfb8d81ee1f2, type: 3}
+  - path: Ui/Sprites/Border/Target-1px
+    resource: {fileID: 21300000, guid: 605de5a8b2ebf1c479d9db21d8e72763, type: 3}
+  - path: Ui/Sprites/Border/Target-2px
+    resource: {fileID: 21300000, guid: f528f86c04e569842b200fbb4b97a619, type: 3}
+  - path: Ui/Sprites/Circle
+    resource: {fileID: 21300000, guid: 0be647c444220d64096c088395aaa3d3, type: 3}
+  - path: Ui/Sprites/CircleProgressBar
+    resource: {fileID: 21300000, guid: 96c64347313b38d46af1fe22ea84d765, type: 3}
+  - path: Ui/Sprites/Common/IconArrowUp
+    resource: {fileID: 21300000, guid: 5081bbaf56016954da79e735d686ebfb, type: 3}
+  - path: Ui/Sprites/Common/IconChevronLeft
+    resource: {fileID: 21300000, guid: 47275157e3666284f9995939603d507a, type: 3}
+  - path: Ui/Sprites/Common/IconMenu
+    resource: {fileID: 21300000, guid: ffc287d2cee54004480ce5218c8c81af, type: 3}
+  - path: Ui/Sprites/Common/IconStagingEngine
+    resource: {fileID: 21300000, guid: 8b1c77b4553443949b25d4c1171e1bfe, type: 3}
+  - path: Ui/Sprites/Common/IconStagingFairing
+    resource: {fileID: 21300000, guid: 854fde42ecc0f1647939d7d676ecd1e0, type: 3}
+  - path: Ui/Sprites/Common/IconStagingInterstage
+    resource: {fileID: 21300000, guid: bd44d7be8aafc57408d7d0d6d6278113, type: 3}
+  - path: Ui/Sprites/Common/IconStagingLandingLeg
+    resource: {fileID: 21300000, guid: 6241cc47f7f005340aeb6d16bb6b7264, type: 3}
+  - path: Ui/Sprites/Common/IconStagingParachute
+    resource: {fileID: 21300000, guid: 80c012f5bbf7a6648992817d4cef07d4, type: 3}
+  - path: Ui/Sprites/Panel
+    resource: {fileID: 21300000, guid: 8865dea749c137049a8ee7d894d5d434, type: 3}
+  - path: Ui/Sprites/Panel-Angled
+    resource: {fileID: 21300000, guid: fb1b627aa26da4e45bd4a3c5432e51a5, type: 3}
+  - path: Ui/Sprites/Panel-Pin
+    resource: {fileID: 21300000, guid: dfc12f11c4c14e046aa299b9a3cc1d60, type: 3}
+  - path: Ui/UIResourceDatabase
+    resource: {fileID: 11400000, guid: adfe00b57beb98b4b96d014c10be95e5, type: 2}
+  - path: Ui/Xml/InspectorPanel
+    resource: {fileID: 4900000, guid: bbdfb13c518899246b0654ce997bf99e, type: 3}
+  - path: Ui/Xml/Styles
+    resource: {fileID: 4900000, guid: 45c7819d05f9b68459ffbd74db3f2ea3, type: 3}
+  - path: XmlLayout_Configuration
+    resource: {fileID: 11400000, guid: 78d64731951661341bfd4e9f45238495, type: 2}
+  - path: UISprite
+    resource: {fileID: 0}
+  - path: Background
+    resource: {fileID: 0}
+  - path: InputFieldBackground
+    resource: {fileID: 0}
+  customResourceDatabases:
+  - {fileID: 11400000, guid: adfe00b57beb98b4b96d014c10be95e5, type: 2}
+  - {fileID: 11400000, guid: 2bd2776fbe7b0b144b8d9c84aeb4a722, type: 2}
+  - {fileID: 11400000, guid: d7441918447714a4e8ff74df5663cf05, type: 2}
+  - {fileID: 11400000, guid: 5d65ba1e680b3064ca8c4980e6aea116, type: 2}
+  - {fileID: 11400000, guid: 091b92109681d4647a93339ad26c4dee, type: 2}

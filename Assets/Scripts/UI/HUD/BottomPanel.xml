@@ -1,0 +1,13 @@
+<XmlLayout xmlns="XmlLayout"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="XmlLayout ../../../UI/XmlLayout/Configuration/XmlLayout.xsd">
+    
+    <Panel name="Bottom Panel" class="bottomPanel">
+        <HorizontalLayout>
+            <Button textColor="white" image="Sprites/Buttons-assets/Button4" onClick="ShowWorkers()">Workers</Button>
+            <Button textColor="white" image="Sprites/Buttons-assets/Button3">Drinks</Button>
+            <Button textColor="white" image="Sprites/Buttons-assets/Button2" onClick="ShowSpecs()">Specialization</Button>
+        </HorizontalLayout>
+    </Panel>
+
+</XmlLayout>

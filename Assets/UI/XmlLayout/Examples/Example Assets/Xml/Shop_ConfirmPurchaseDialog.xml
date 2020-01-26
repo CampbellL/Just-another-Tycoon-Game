@@ -1,0 +1,66 @@
+<XmlLayout xmlns="XmlLayout" 
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+           xsi:schemaLocation="XmlLayout ../../../Configuration/XmlLayout.xsd"
+           height="100%" 
+           width="100%" 
+           rectAlignment="MiddleCenter">
+
+  <Include path="Xml/Styles.xml" />
+  <Include path="Xml/ShopStyles.xml" />
+
+  <Panel color="rgba(0,0,0,0.75)" name="Overlay">
+
+    <TableLayout class="noCellBackground" height="256" width="384" rectAlignment="MiddleCenter" name="Dialog" showAnimation="Grow" hideAnimation="Shrink"  raycastTarget="1">
+      <Row class="headerRow" preferredHeight="52">
+        <Cell>
+          <Text id="titleText" class="title" fontSize="28">          
+            Confirm Purchase
+          </Text>
+        </Cell>
+      </Row>
+      <Row class="viewport">
+        <Cell>
+          <TableLayout class="noCellBackground" cellPadding="10" width="95%" ignoreLayout="1">
+            <Row>
+              <Cell columnSpan="2">                
+                <TableLayout cellPadding="10" cellBackgroundColor="rgb(0.35,0.35,0.35)">
+                  <Row preferredHeight="48" class="sectionHeaderRow">
+                    <Cell>
+                      <Text class="headerText">Product</Text>
+                    </Cell>
+                    <Cell>
+                      <Text class="headerText">Quantity</Text>
+                    </Cell>
+                    <Cell>
+                      <Text class="headerText">Price</Text>
+                    </Cell>
+                  </Row>
+                  <Row>                    
+                    <Cell>
+                      <Image id="productImage" image="Sprites/Shop/Coin" preserveAspect="1" />
+                    </Cell>
+                    <Cell>
+                      <Text id="productQuantity" class="confirmPurchaseText">x1</Text>
+                    </Cell>
+                    <Cell>
+                      <Text id="productPrice" class="confirmPurchaseText">$0.00</Text>
+                    </Cell>
+                  </Row>
+                </TableLayout>                               
+              </Cell>
+            </Row>
+            <Row preferredHeight="48">              
+              <Cell>
+                <Button onClick="ConfirmPurchase();">Confirm Purchase</Button>
+              </Cell>
+              <Cell>
+                <Button onClick="Hide();">Cancel</Button>
+              </Cell>              
+            </Row>                
+          </TableLayout>
+        </Cell>
+      </Row>    
+    </TableLayout>
+    
+  </Panel>
+</XmlLayout>

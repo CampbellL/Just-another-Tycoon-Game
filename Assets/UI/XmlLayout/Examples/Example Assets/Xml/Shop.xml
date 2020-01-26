@@ -1,0 +1,56 @@
+<XmlLayout xmlns="XmlLayout" 
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+           xsi:schemaLocation="XmlLayout ../../../Configuration/XmlLayout.xsd">
+
+  <Include path="Xml/Styles.xml" />
+  <Include path="Xml/ShopStyles.xml" />
+
+  <TableLayout class="noCellBackground" height="384" width="512" rectAlignment="MiddleRight" offsetXY="-32 0" useGlobalCellPadding="false" showAnimation="Grow" hideAnimation="FadeOut"  raycastTarget="1">
+    <Row class="headerRow">
+      <Cell>
+        <Text class="title">          
+          Shop
+        </Text>
+      </Cell>
+    </Row>    
+    <Row class="viewport">
+      <Cell padding="15">        
+        <VerticalScrollView class="scrollView">
+          <TableLayout id="shopContent" cellSpacing="15" cellBackgroundColor="clear" autoCalculateHeight="1" padding="8 24 8 8">
+            <Row preferredHeight="128">
+              <Cell active="false">                
+                
+                <!-- Product Template -->
+                <Panel id="productTemplate" class="product" active="false">                                      
+                  <TableLayout cellBackgroundColor="clear" cellSpacing="5">
+                    <Row preferredHeight="72">
+                      <Cell>
+                        <Panel class="productImageOutline">
+                          <Panel padding="4">
+                            <Text internalId="productQuantity" class="productQuantity">x1</Text>
+                          </Panel>
+                          <Panel type="Simple" internalId="productImage" class="productImage">
+                            <Panel internalId="productBestDeal" class="productBestDealBack" active="false">
+                              <Text shadow="black" class="productBestDealText">Best Deal!</Text>
+                            </Panel>
+                          </Panel>
+                        </Panel>
+                      </Cell>                      
+                    </Row>
+                    <Row>                      
+                      <Cell>
+                        <Button internalId="productBuyButton" class="productButton">$0.00</Button>                        
+                      </Cell>
+                    </Row>
+                  </TableLayout>                  
+                </Panel>                
+                <!-- End of Product Template -->
+                
+              </Cell>              
+            </Row>                                    
+          </TableLayout>
+        </VerticalScrollView>
+      </Cell>
+    </Row>    
+  </TableLayout>  
+</XmlLayout>

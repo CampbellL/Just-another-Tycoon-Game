@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb4c5da18fb40404e9b2c4ee6287ab0d, type: 3}
+  m_Name: Spanish
+  m_EditorClassIdentifier: 
+  strings:
+    _Buckets: 0400000001000000ffffffffffffffffffffffff0600000000000000
+    _HashCodes: 882993622612a7052b1c8a5c0746687ee2369322a3f7f43cb3a3977d
+    _Next: ffffffffffffffffffffffff02000000ffffffff0300000005000000
+    _Count: 7
+    _Version: 71
+    _FreeList: -1
+    _FreeCount: 0
+    _Keys:
+    - LOCALIZATION_EXAMPLE_HEADER
+    - LOCALIZATION_EXAMPLE_USERNAME_LABEL
+    - LOCALIZATION_EXAMPLE_PASSWORD_LABEL
+    - LOCALIZATION_EXAMPLE_USERNAME_PLACEHOLDER_TEXT
+    - LOCALIZATION_EXAMPLE_PASSWORD_PLACEHOLDER_TEXT
+    - LOCALIZATION_EXAMPLE_LOGIN_BUTTON
+    - LOCALIZATION_EXAMPLE_REGISTER_BUTTON
+    _Values:
+    - "Ejemplo de localizaci\xF3n"
+    - Nombre de usuario
+    - "Contrase\xF1a"
+    - "Ingrese el nombre de usuario aqu\xED"
+    - "Introduzca la contrase\xF1a aqu\xED"
+    - "Iniciar sesi\xF3n"
+    - Registro
