@@ -718,6 +718,7 @@
           <e p="Installers" t="Include">
             <e p="GameSceneInstaller.cs" t="Include" />
           </e>
+          <e p="Specs" t="Include" />
           <e p="UI" t="Include">
             <e p="HUD" t="Include">
               <e p="BottomPanel.xml" t="Include" />

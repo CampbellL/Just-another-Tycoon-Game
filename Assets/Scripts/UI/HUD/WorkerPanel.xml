@@ -1,7 +1,7 @@
 <XmlLayout xmlns="XmlLayout"
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:schemaLocation="XmlLayout ../../UI/XmlLayout/Configuration/XmlLayout.xsd">
-    <Panel name="Worker Panel" image="Sprites/Background/Menu" id="workerPanel" class="workerPanel" height="75%" width="90%" showAnimation="Grow"
+    <Panel active="false" name="Worker Panel" image="Sprites/Background/Menu" id="workerPanel" class="workerPanel" height="75%" width="90%" showAnimation="Grow"
            hideAnimation="SlideOut_Right">
         <Panel height="10%" rectAlignment="UpperCenter">
             <Text class="heading-1" offsetXY="0 -35" color="rgba(255,255,255,100)">My Workers</Text>
