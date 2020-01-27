@@ -62,7 +62,7 @@ namespace UI.Xml.Tags
             innerXml = StringExtensions.DecodeEncodedNonAsciiCharacters(innerXml);
 
             var textComponent = primaryComponent as Text;
-            textComponent.text = innerXml;
+            if (textComponent != null) textComponent.text = innerXml;
         }
 
         public override void ApplyAttributes(AttributeDictionary attributesToApply)

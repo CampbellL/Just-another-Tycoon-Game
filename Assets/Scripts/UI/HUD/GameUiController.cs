@@ -6,10 +6,21 @@ using Zenject;
 
 internal class GameUiController : XmlLayoutController
 {
-    private XmlElementReference<Text> _moneyLabelReference;
+    #region WorkerPanelReferences
+
+    private XmlElementReference<Text> _workerMoneyLabelReference;
     private XmlElementReference<XmlElement> _workerPanelReference;
-    private XmlElementReference<XmlElement> _specsPanelReference;
     private XmlElementReference<XmlElement> _workerContentHolderReference;
+
+    #endregion
+
+    #region SpecPanelReferences
+
+    private XmlElementReference<XmlElement> _moneyUpgradeButtonReference;
+    private XmlElementReference<XmlElement> _specsPanelReference;
+
+    #endregion
+
     private EconomyController _economyController;
     private PlayerStateService _playerStateService;
     private int _workerCarouselPosition = 0;
@@ -22,10 +33,27 @@ internal class GameUiController : XmlLayoutController
         this._playerStateService = playerStateService;
         this._economyController.OnMoneyChanged += () =>
         {
-            if (this._moneyLabelReference != null)
-                this._moneyLabelReference.element.text = this._economyController.Money.ToString("0.00");
+            if (this._workerMoneyLabelReference != null)
+                this._workerMoneyLabelReference.element.text = this._economyController.Money.ToString("0.00");
+            if (this._moneyUpgradeButtonReference == null) return;
+            if (this._economyController.CanUpgradePercentageSkill()) return;
+            this._moneyUpgradeButtonReference.element.SetAttribute("color", "red");
+            this._moneyUpgradeButtonReference.element.ApplyAttributes();
         };
     }
+
+    public override void LayoutRebuilt(ParseXmlResult parseResult)
+    {
+        _workerMoneyLabelReference = _workerMoneyLabelReference ?? this.XmlElementReference<Text>("moneyLabel");
+        _workerPanelReference = _workerPanelReference ?? this.XmlElementReference<XmlElement>("workerPanel");
+        _specsPanelReference = _specsPanelReference ?? this.XmlElementReference<XmlElement>("specsPanel");
+        _moneyUpgradeButtonReference = _moneyUpgradeButtonReference ??
+                                       this.XmlElementReference<XmlElement>("UpgradeMoneyPercentage");
+        _workerPanelReference.element.Hide();
+        _specsPanelReference.element.Hide();
+    }
+
+    #region WorkerPanel
 
     private void PopulateWorkerPanel()
     {
@@ -54,8 +82,10 @@ internal class GameUiController : XmlLayoutController
             {
                 image.SetAttribute("active", "false");
             }
+
             image.ApplyAttributes();
         }
+
         nameField.ApplyAttributes();
         costField.ApplyAttributes();
         workerBodyField.ApplyAttributes();
@@ -71,6 +101,7 @@ internal class GameUiController : XmlLayoutController
         {
             this._workerCarouselPosition = this._playerStateService.GetWorkers().Count - 1;
         }
+
         PopulateWorkerPanel();
     }
 
@@ -81,30 +112,38 @@ internal class GameUiController : XmlLayoutController
         {
             this._workerCarouselPosition = 0;
         }
+
         PopulateWorkerPanel();
     }
-    
-    public override void LayoutRebuilt(ParseXmlResult parseResult)
+
+    #endregion
+
+    public void UpgradeMoneyPercentageSkillLevel()
     {
-        _moneyLabelReference = _moneyLabelReference ?? this.XmlElementReference<Text>("moneyLabel");
-        _workerPanelReference = _workerPanelReference ?? this.XmlElementReference<XmlElement>("workerPanel");
-        _specsPanelReference = _specsPanelReference ?? this.XmlElementReference<XmlElement>("specsPanel");
-        PopulateWorkerPanel();
-        _workerPanelReference.element.Hide();
-        _specsPanelReference.element.Hide();
+        this._economyController.PurchasePercentageSkillUpgrade();
+        this.SpecPanelUpdateInterface();
+    }
+
+    private void SpecPanelUpdateInterface()
+    {
+        this._moneyUpgradeButtonReference.element.SetAttribute("text",
+            this._economyController.GetPercentageSkillUpgradeCost().ToString());
+        this._moneyUpgradeButtonReference.element.ApplyAttributes();
     }
 
     public void ShowWorkers()
     {
+        PopulateWorkerPanel();
         _activePanel?.element.Hide();
         this._workerPanelReference.element.Show();
         this._activePanel = this._workerPanelReference;
     }
-    
+
     public void ShowSpecs()
     {
         this._activePanel?.element.Hide();
         this._specsPanelReference.element.Show();
+        this.SpecPanelUpdateInterface();
         this._activePanel = this._workerPanelReference;
     }
 }

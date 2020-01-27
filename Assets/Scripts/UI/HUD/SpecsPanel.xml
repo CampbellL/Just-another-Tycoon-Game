@@ -2,7 +2,8 @@
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:schemaLocation="XmlLayout ../../../UI/XmlLayout/Configuration/XmlLayout.xsd">
     <Defaults>
-        <TextMeshPro fontSize="54"></TextMeshPro>
+        <TextMeshPro fontSize="24"></TextMeshPro>
+        <Button fontSize="24"></Button>
     </Defaults>
 
     <Panel name="Specs Panel" image="Sprites/Background/Menu" id="specsPanel" class="specsPanel" height="75%" width="90%" showAnimation="Grow"
@@ -13,24 +14,13 @@
         <Panel>
             <VerticalScrollView height="60%" width="90%" childScaleHeight="false" childControlHeight="true" noScrollbars="true">
                 <VerticalLayout>
-                    <HorizontalLayout color="yellow">
-                        <TextMeshPro>Skill 1</TextMeshPro>
-                        <Button>Unlock</Button>
+                    <HorizontalLayout color="#17f461">
+                        <TextMeshPro>Coffee Machines
+                            (Income +5%)</TextMeshPro>
+                        <Button id="UpgradeMoneyPercentage" onClick="UpgradeMoneyPercentageSkillLevel">500</Button>
                     </HorizontalLayout>
                     <HorizontalLayout color="green">
                         <TextMeshPro>Skill 2</TextMeshPro>
-                        <Button>Unlock</Button>
-                    </HorizontalLayout>
-                    <HorizontalLayout color="blue">
-                        <TextMeshPro>Skill 3</TextMeshPro>
-                        <Button>Unlock</Button>
-                    </HorizontalLayout>
-                    <HorizontalLayout color="brown">
-                        <TextMeshPro>Skill 4</TextMeshPro>
-                        <Button>Unlock</Button>
-                    </HorizontalLayout>
-                    <HorizontalLayout color="black">
-                        <TextMeshPro>Skill 5</TextMeshPro>
                         <Button>Unlock</Button>
                     </HorizontalLayout>
                 </VerticalLayout>
