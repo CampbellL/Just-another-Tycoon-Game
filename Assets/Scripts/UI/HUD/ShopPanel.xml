@@ -1,0 +1,60 @@
+<XmlLayout xmlns="XmlLayout"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="XmlLayout ../../UI/XmlLayout/Configuration/XmlLayout.xsd">
+    <Panel active="false" name="Shop Panel" image="Sprites/Background/Menu" id="shopPanel" class="workerPanel"
+           height="75%" width="90%" showAnimation="Grow"
+           hideAnimation="SlideOut_Right">
+        <Panel height="10%" rectAlignment="UpperCenter">
+            <Text class="heading-1" offsetXY="-7 -35" color="rgba(255,255,255,100)">Shop</Text>
+        </Panel>
+        <TableLayout height="70%" rectAlignment="MiddleCenter" columnWidths="70 0 70" cellBackgroundImage="none">
+            <Row preferredHeight="50">
+                <Cell/>
+                <Cell>
+                </Cell>
+                <Cell/>
+            </Row>
+            <Row preferredHeight="250">
+                <Cell preferredWidth="25">
+                    <Image preserveAspect="true" image="Sprites/Buttons-assets/ArrowLeft" rectAlignment="MiddleLeft"
+                           onClick="WorkerCarouselLeft()"/>
+                </Cell>
+                <Cell>
+                    <Panel rectAlignment="MiddleCenter" showAnimation="Grow">
+                        <Image image="Sprites/Icons/Chest3" preserveAspect="true"/>
+                    </Panel>
+                </Cell>
+                <Cell width="25%">
+                    <Image preserveAspect="true" image="Sprites/Buttons-assets/ArrowRight"
+                           onClick="WorkerCarouselRight()" rectAlignment="MiddleLeft"/>
+                </Cell>
+            </Row>
+            <Row preferredHeight="50">
+                <Cell/>
+                <Cell>
+                    <HorizontalLayout childAlignment="MiddleCenter" childForceExpandWidth="false"
+                                      childControlWidth="true">
+                        <Text class="heading-1" alignment="MiddleCenter">Workers</Text>
+                    </HorizontalLayout>
+                </Cell>
+                <Cell/>
+            </Row>
+            <Row preferredHeight="50">
+                <Cell/>
+                <Cell>
+                    <HorizontalLayout childAlignment="MiddleCenter" childForceExpandWidth="false"
+                                      childControlWidth="true">
+                        <Text offsetXY="10 0" class="heading-1" alignment="MiddleCenter">1000</Text>
+                        <Image preferredWidth="55" preserveAspect="true" image="Sprites/Coin/Coin"/>
+                    </HorizontalLayout>
+                </Cell>
+                <Cell/>
+            </Row>
+        </TableLayout>
+        <Panel height="10%" width="70%" rectAlignment="LowerCenter" offsetXY="0 30">
+            <Button rectAlignment="MiddleCenter" image="Sprites/Buttons-assets/Button4" textColor="rgba(255,255,255,1)"
+                    onClick="OpenWorkerLootBox()">Open
+            </Button>
+        </Panel>
+    </Panel>
+</XmlLayout>
