@@ -1,8 +1,8 @@
 using Economy;
 using Game;
 using UI.Xml;
-using UnityEngine;
 using UnityEngine.UI;
+using Worker;
 using Zenject;
 
 internal class GameUiController : XmlLayoutController
@@ -27,6 +27,9 @@ internal class GameUiController : XmlLayoutController
     private int _workerCarouselPosition = 0;
     private XmlElementReference<XmlElement> _activePanel;
 
+    private XmlElementReference<XmlElement> _shopPanelReference;
+    private XmlElementReference<XmlElement> _workerUnlockPanelReference;
+    
     [Inject]
     private void PopulateDependencies(EconomyController economyController, PlayerStateService playerStateService)
     {
@@ -48,10 +51,10 @@ internal class GameUiController : XmlLayoutController
         _workerMoneyLabelReference = _workerMoneyLabelReference ?? this.XmlElementReference<Text>("moneyLabel");
         _workerPanelReference = _workerPanelReference ?? this.XmlElementReference<XmlElement>("workerPanel");
         _specsPanelReference = _specsPanelReference ?? this.XmlElementReference<XmlElement>("specsPanel");
+        _shopPanelReference = _shopPanelReference ?? this.XmlElementReference<XmlElement>("shopPanel");
+        _workerUnlockPanelReference = _workerUnlockPanelReference ?? this.XmlElementReference<XmlElement>("workerUnlockPanel");
         _moneyUpgradeButtonReference = _moneyUpgradeButtonReference ??
                                        this.XmlElementReference<XmlElement>("UpgradeMoneyPercentage");
-        _workerPanelReference.element.Hide();
-        _specsPanelReference.element.Hide();
     }
 
     #region WorkerPanel
@@ -145,11 +148,57 @@ internal class GameUiController : XmlLayoutController
         this._activePanel?.element.Hide();
         this._specsPanelReference.element.Show();
         this.SpecPanelUpdateInterface();
-        this._activePanel = this._workerPanelReference;
+        this._activePanel = this._specsPanelReference;
     }
 
-    public void OpenShop()
+    public void ShowShop()
     {
-        Debug.Log("Shop");
+        this._activePanel?.element.Hide();
+        this._shopPanelReference.element.Show();
+        this._activePanel = this._shopPanelReference;
+    }
+
+    public void PopulateWorkerUnlockPanel(Worker.Worker worker)
+    {
+        if (this._playerStateService == null) return;
+        XmlElement workerPanel = _workerUnlockPanelReference.element.GetElementByInternalId<XmlElement>("workerAvatarPanel");
+        XmlElement costField = _workerUnlockPanelReference.element.GetElementByInternalId<XmlElement>("workerCost");
+        XmlElement nameField = _workerUnlockPanelReference.element.GetElementByInternalId<XmlElement>("workerName");
+        XmlElement workerBodyField = _workerUnlockPanelReference.element.GetElementByInternalId<XmlElement>("workerBody");
+        XmlElement workerFaceField = _workerUnlockPanelReference.element.GetElementByInternalId<XmlElement>("workerFace");
+        XmlElement workerHairField = _workerUnlockPanelReference.element.GetElementByInternalId<XmlElement>("workerHair");
+        XmlElement workerKitField = _workerUnlockPanelReference.element.GetElementByInternalId<XmlElement>("workerKit");
+        var stars = _workerUnlockPanelReference.element.GetElementByInternalId<XmlElement>("workerEfficiency").childElements;
+        nameField.SetAttribute("text", worker.Name);
+        costField.SetAttribute("text", worker.Cost.ToString("0.00"));
+        workerBodyField.SetAttribute("image", $"Faces/Bodies/Body_{worker.BodyType}");
+        workerFaceField.SetAttribute("image", $"Faces/Faces/Face_{worker.FaceType}");
+        workerHairField.SetAttribute("image", $"Faces/Hairs/Hair_{worker.HairType}");
+        workerKitField.SetAttribute("image", $"Faces/Kits/Kit_{worker.KitType}");
+        workerPanel.Show();
+        for (var index = 1; index < stars.Count; index++)
+        {
+            XmlElement image = stars[index];
+            image.SetAttribute("active", "true");
+            if (index >= worker.Efficiency)
+            {
+                image.SetAttribute("active", "false");
+            }
+
+            image.ApplyAttributes();
+        }
+
+        nameField.ApplyAttributes();
+        costField.ApplyAttributes();
+        workerBodyField.ApplyAttributes();
+        workerFaceField.ApplyAttributes();
+        workerHairField.ApplyAttributes();
+        workerKitField.ApplyAttributes();
+    }
+
+    public void OpenWorkerLootBox()
+    {
+        this.PopulateWorkerUnlockPanel(WorkerController.GenerateRandomWorker());
+        this._workerUnlockPanelReference.element.Show();
     }
 }

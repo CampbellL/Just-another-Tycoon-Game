@@ -692,6 +692,14 @@
             <e p="APIHandler.cs" t="Include" />
           </e>
           <e p="Economy" t="Include">
+            <e p="Core" t="Include">
+              <e p="Name Generation" t="Include">
+                <e p="RandomName.cs" t="Include" />
+              </e>
+              <e p="Randomizer" t="Include">
+                <e p="WeightedRandomizer.cs" t="Include" />
+              </e>
+            </e>
             <e p="Customer" t="Include">
               <e p="Customer.cs" t="Include" />
               <e p="CustomerService.cs" t="Include" />
@@ -718,14 +726,12 @@
           <e p="Installers" t="Include">
             <e p="GameSceneInstaller.cs" t="Include" />
           </e>
-          <e p="Name Generation" t="Include">
-            <e p="RandomName.cs" t="Include" />
-          </e>
           <e p="UI" t="Include">
             <e p="HUD" t="Include">
               <e p="BottomPanel.xml" t="Include" />
               <e p="Game.xml" t="Include" />
               <e p="GameUiController.cs" t="Include" />
+              <e p="NewUnlockPanel.xml" t="Include" />
               <e p="ShopPanel.xml" t="Include" />
               <e p="SpecsPanel.xml" t="Include" />
               <e p="WorkerPanel.xml" t="Include" />
