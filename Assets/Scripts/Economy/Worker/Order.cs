@@ -4,5 +4,10 @@ namespace Worker
     {
         public bool completed;
         public Drink Drink;
+
+        public Order(Drink drink)
+        {
+            Drink = drink;
+        }
     }
 }

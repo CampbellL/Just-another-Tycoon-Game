@@ -17,12 +17,17 @@
         </Panel>
     </Defaults>
     <Panel height="100%" width="100%" image="Sprites/Background/Background2" name="Container">
-        <Panel name="Top Panel" class="topPanel" width="50%" rectAlignment="UpperRight" padding="10 10 0 0">
+        <Panel name="Top Panel" class="topPanel" width="40%" rectAlignment="UpperRight" padding="10 10 0 0">
             <HorizontalLayout childAlignment="MiddleRight" childForceExpandWidth="false">
                 <Text id="moneyLabel" class="heading-1" rectAlignment="UpperRight">
-                    50
+                    0
                 </Text>
                 <Image preferredWidth="50" preserveAspect="true" image="Sprites/Coin/Coin"/>
+            </HorizontalLayout>
+        </Panel>
+        <Panel width="100%" class="topPanel" rectAlignment="UpperLeft" padding="25 10 0 0">
+            <HorizontalLayout childAlignment="MiddleLeft" childForceExpandWidth="false">
+                <Image onClick="OpenShop()" preferredWidth="70" preserveAspect="true" image="Sprites/Icons/Store"/>
             </HorizontalLayout>
         </Panel>
         <Include path="SpecsPanel"/>

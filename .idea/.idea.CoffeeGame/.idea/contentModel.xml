@@ -718,12 +718,15 @@
           <e p="Installers" t="Include">
             <e p="GameSceneInstaller.cs" t="Include" />
           </e>
-          <e p="Specs" t="Include" />
+          <e p="Name Generation" t="Include">
+            <e p="RandomName.cs" t="Include" />
+          </e>
           <e p="UI" t="Include">
             <e p="HUD" t="Include">
               <e p="BottomPanel.xml" t="Include" />
               <e p="Game.xml" t="Include" />
               <e p="GameUiController.cs" t="Include" />
+              <e p="ShopPanel.xml" t="Include" />
               <e p="SpecsPanel.xml" t="Include" />
               <e p="WorkerPanel.xml" t="Include" />
             </e>
