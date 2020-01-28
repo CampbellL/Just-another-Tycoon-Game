@@ -29,9 +29,6 @@
       <xs:element ref="xmlLayout:ProgressBar" />
       <xs:element ref="xmlLayout:RawImage" />
       <xs:element ref="xmlLayout:SVGImage" />
-      <xs:element ref="xmlLayout:TextMeshPro" />
-      <xs:element ref="xmlLayout:TextMeshProDropdown" />
-      <xs:element ref="xmlLayout:TextMeshProInputField" />
     </xs:choice>
   </xs:group>
   <xs:group name="defaultsOnly">
@@ -39,7 +36,6 @@
       <xs:element ref="xmlLayout:Defaults" />
       <xs:element ref="xmlLayout:Animation" />
       <xs:element ref="xmlLayout:Color" />
-      <xs:element ref="xmlLayout:TextMeshProMaterial" />
     </xs:choice>
   </xs:group>
   <xs:complexType name="base">
@@ -485,14 +481,8 @@
             <xs:element ref="xmlLayout:AccordionSectionHeader" />
             <xs:element ref="xmlLayout:Animation" />
             <xs:element ref="xmlLayout:Color" />
-            <xs:element ref="xmlLayout:TextMeshProMaterial" />
             <xs:element ref="xmlLayout:DataTableCellTemplate" />
             <xs:element ref="xmlLayout:DataTableRowTemplate" />
-            <xs:element ref="xmlLayout:TMP_Option" />
-            <xs:element ref="xmlLayout:TMP_DropdownLabel" />
-            <xs:element ref="xmlLayout:TMP_OptionTextTemplate" />
-            <xs:element ref="xmlLayout:TMP_Text" />
-            <xs:element ref="xmlLayout:TMP_Placeholder" />
           </xs:choice>
         </xs:extension>
       </xs:complexContent>
@@ -509,7 +499,6 @@
         <xs:extension base="xmlLayout:base">
           <xs:choice minOccurs="0" maxOccurs="1">
             <xs:element ref="xmlLayout:Text" />
-            <xs:element ref="xmlLayout:TextMeshPro" />
           </xs:choice>
           <xs:attribute name="interactable" type="xmlLayout:boolean" />
           <xs:attributeGroup ref="xmlLayout:button" />
@@ -565,7 +554,7 @@
           </xs:attribute>
           <xs:attribute name="padding" type="xmlLayout:rectOffset" />
           <xs:attribute name="textColors" type="xmlLayout:colorblock" />
-          <xs:attribute name="transition" type="xmlLayout:enum15" />
+          <xs:attribute name="transition" type="xmlLayout:enum7" />
           <xs:attribute name="disabledSprite" type="xs:string" />
           <xs:attribute name="highlightedSprite" type="xs:string" />
           <xs:attribute name="pressedSprite" type="xs:string" />
@@ -613,7 +602,7 @@
           <xs:attribute name="itemWidth" type="xmlLayout:float" />
           <xs:attribute name="vm-options" type="xs:string" />
           <xs:attribute name="scrollSensitivity" type="xs:string" />
-          <xs:attribute name="transition" type="xmlLayout:enum15" />
+          <xs:attribute name="transition" type="xmlLayout:enum7" />
           <xs:attribute name="disabledSprite" type="xs:string" />
           <xs:attribute name="highlightedSprite" type="xs:string" />
           <xs:attribute name="pressedSprite" type="xs:string" />
@@ -663,7 +652,7 @@
           <xs:attribute name="handleImage" type="xs:string" />
           <xs:attribute name="fillMaskImage" type="xs:string" />
           <xs:attribute name="fillPadding" type="xmlLayout:rectOffset" />
-          <xs:attribute name="transition" type="xmlLayout:enum15" />
+          <xs:attribute name="transition" type="xmlLayout:enum7" />
           <xs:attribute name="disabledSprite" type="xs:string" />
           <xs:attribute name="highlightedSprite" type="xs:string" />
           <xs:attribute name="pressedSprite" type="xs:string" />
@@ -681,7 +670,6 @@
         <xs:extension base="xmlLayout:base">
           <xs:choice minOccurs="0" maxOccurs="1">
             <xs:element ref="xmlLayout:Text" />
-            <xs:element ref="xmlLayout:TextMeshPro" />
           </xs:choice>
           <xs:attribute name="interactable" type="xmlLayout:boolean" />
           <xs:attribute name="colors" type="xmlLayout:colorblock" />
@@ -707,7 +695,7 @@
           <xs:attribute name="checkColor" type="xmlLayout:color" />
           <xs:attribute name="toggleCheckmarkSize" type="xmlLayout:float" />
           <xs:attribute name="toggleCheckmarkImagePreserveAspect" type="xmlLayout:float" />
-          <xs:attribute name="transition" type="xmlLayout:enum15" />
+          <xs:attribute name="transition" type="xmlLayout:enum7" />
           <xs:attribute name="disabledSprite" type="xs:string" />
           <xs:attribute name="highlightedSprite" type="xs:string" />
           <xs:attribute name="pressedSprite" type="xs:string" />
@@ -777,7 +765,7 @@
           <xs:attribute name="selectedIcon" type="xs:string" />
           <xs:attribute name="selectedBackgroundSprite" type="xs:string" />
           <xs:attribute name="deselectedBackgroundSprite" type="xs:string" />
-          <xs:attribute name="transition" type="xmlLayout:enum15" />
+          <xs:attribute name="transition" type="xmlLayout:enum7" />
           <xs:attribute name="disabledSprite" type="xs:string" />
           <xs:attribute name="highlightedSprite" type="xs:string" />
           <xs:attribute name="pressedSprite" type="xs:string" />
@@ -931,7 +919,7 @@
           <xs:attribute name="asteriskChar" type="xs:string" />
           <xs:attribute name="textOffset" type="xmlLayout:rectOffset" />
           <xs:attributeGroup ref="xmlLayout:image" />
-          <xs:attribute name="transition" type="xmlLayout:enum15" />
+          <xs:attribute name="transition" type="xmlLayout:enum7" />
           <xs:attribute name="disabledSprite" type="xs:string" />
           <xs:attribute name="highlightedSprite" type="xs:string" />
           <xs:attribute name="pressedSprite" type="xs:string" />
@@ -1214,7 +1202,6 @@
     <xs:attribute name="tooltipFadeTime" type="xmlLayout:float" />
     <xs:attribute name="tooltipDelayTime" type="xmlLayout:float" />
     <xs:attribute name="tooltipWidth" type="xmlLayout:float" />
-    <xs:attribute name="tooltipUseTextMeshPro" type="xmlLayout:boolean" />
   </xs:attributeGroup>
   <xs:attributeGroup name="rectTransform">
     <xs:attribute name="anchorMin" type="xs:string" />
@@ -1724,241 +1711,6 @@
       </xs:complexContent>
     </xs:complexType>
   </xs:element>
-  <xs:element name="TextMeshPro">
-    <xs:complexType>
-      <xs:complexContent mixed="true">
-        <xs:extension base="xmlLayout:base">
-          <xs:choice minOccurs="0" maxOccurs="unbounded">
-            <xs:group ref="xmlLayout:default" />
-          </xs:choice>
-          <xs:attribute name="text" type="xs:string" />
-          <xs:attribute name="font" type="xs:string" />
-          <xs:attribute name="fontStyle" type="xs:string" />
-          <xs:attribute name="fontSize" type="xmlLayout:float" />
-          <xs:attribute name="fontWeight" type="xmlLayout:int" />
-          <xs:attribute name="fontSizeMin" type="xmlLayout:float" />
-          <xs:attribute name="fontSizeMax" type="xmlLayout:float" />
-          <xs:attribute name="fontScale" type="xmlLayout:float" />
-          <xs:attribute name="enableAutoSizing" type="xmlLayout:boolean" />
-          <xs:attribute name="characterSpacing" type="xmlLayout:float" />
-          <xs:attribute name="characterWidthAdjustment" type="xmlLayout:float" />
-          <xs:attribute name="alpha" type="xmlLayout:float" />
-          <xs:attribute name="autoSizeTextContainer" type="xmlLayout:boolean" />
-          <xs:attribute name="color" type="xmlLayout:color" />
-          <xs:attribute name="faceColor" type="xmlLayout:color" />
-          <xs:attribute name="outlineColor" type="xmlLayout:color" />
-          <xs:attribute name="outlineWidth" type="xmlLayout:float" />
-          <xs:attribute name="fontMaterial" type="xs:string" />
-          <xs:attribute name="enableWordWrapping" type="xmlLayout:boolean" />
-          <xs:attribute name="wordWrappingRatios" type="xmlLayout:float" />
-          <xs:attribute name="extraPadding" type="xmlLayout:boolean" />
-          <xs:attribute name="wordSpacing" type="xmlLayout:float" />
-          <xs:attribute name="lineSpacing" type="xmlLayout:float" />
-          <xs:attribute name="lineSpacingAdjustment" type="xmlLayout:float" />
-          <xs:attribute name="paragraphSpacing" type="xmlLayout:float" />
-          <xs:attribute name="margin" type="xmlLayout:vector4" />
-          <xs:attribute name="firstVisibleCharacter" type="xmlLayout:int" />
-          <xs:attribute name="maxVisibleWords" type="xmlLayout:int" />
-          <xs:attribute name="colorGradient" type="xmlLayout:colorblock" />
-          <xs:attribute name="overrideColorTags" type="xmlLayout:boolean" />
-          <xs:attribute name="enableKerning" type="xmlLayout:boolean" />
-          <xs:attribute name="geometrySorting" type="xmlLayout:enum3" />
-          <xs:attribute name="enableCulling" type="xmlLayout:boolean" />
-          <xs:attribute name="richText" type="xmlLayout:boolean" />
-          <xs:attribute name="useMaxVisibleDescender" type="xmlLayout:boolean" />
-          <xs:attribute name="tintAllSprites" type="xmlLayout:boolean" />
-          <xs:attribute name="spriteAsset" type="xs:string" />
-          <xs:attribute name="parseCtrlCharacters" type="xmlLayout:boolean" />
-          <xs:attribute name="pageToDisplay" type="xmlLayout:int" />
-          <xs:attribute name="pixelsPerUnit" type="xmlLayout:float" />
-          <xs:attribute name="raycastTarget" type="xmlLayout:boolean" />
-          <xs:attribute name="isRightToLeftText" type="xmlLayout:boolean" />
-          <xs:attribute name="alignment" type="xmlLayout:enum4" />
-          <xs:attribute name="horizontalMapping" type="xmlLayout:enum5" />
-          <xs:attribute name="verticalMapping" type="xmlLayout:enum5" />
-          <xs:attribute name="overflowMode" type="xmlLayout:enum6" />
-        </xs:extension>
-      </xs:complexContent>
-    </xs:complexType>
-  </xs:element>
-  <xs:simpleType name="enum3">
-    <xs:union memberTypes="xmlLayout:mvvmPattern">
-      <xs:simpleType>
-        <xs:restriction base="xs:token">
-          <xs:enumeration value="Normal" />
-          <xs:enumeration value="Reverse" />
-        </xs:restriction>
-      </xs:simpleType>
-    </xs:union>
-  </xs:simpleType>
-  <xs:simpleType name="enum4">
-    <xs:union memberTypes="xmlLayout:mvvmPattern">
-      <xs:simpleType>
-        <xs:restriction base="xs:token">
-          <xs:enumeration value="TopLeft" />
-          <xs:enumeration value="Top" />
-          <xs:enumeration value="TopRight" />
-          <xs:enumeration value="TopJustified" />
-          <xs:enumeration value="TopFlush" />
-          <xs:enumeration value="TopGeoAligned" />
-          <xs:enumeration value="Left" />
-          <xs:enumeration value="Center" />
-          <xs:enumeration value="Right" />
-          <xs:enumeration value="Justified" />
-          <xs:enumeration value="Flush" />
-          <xs:enumeration value="CenterGeoAligned" />
-          <xs:enumeration value="BottomLeft" />
-          <xs:enumeration value="Bottom" />
-          <xs:enumeration value="BottomRight" />
-          <xs:enumeration value="BottomJustified" />
-          <xs:enumeration value="BottomFlush" />
-          <xs:enumeration value="BottomGeoAligned" />
-          <xs:enumeration value="BaselineLeft" />
-          <xs:enumeration value="Baseline" />
-          <xs:enumeration value="BaselineRight" />
-          <xs:enumeration value="BaselineJustified" />
-          <xs:enumeration value="BaselineFlush" />
-          <xs:enumeration value="BaselineGeoAligned" />
-          <xs:enumeration value="MidlineLeft" />
-          <xs:enumeration value="Midline" />
-          <xs:enumeration value="MidlineRight" />
-          <xs:enumeration value="MidlineJustified" />
-          <xs:enumeration value="MidlineFlush" />
-          <xs:enumeration value="MidlineGeoAligned" />
-          <xs:enumeration value="CaplineLeft" />
-          <xs:enumeration value="Capline" />
-          <xs:enumeration value="CaplineRight" />
-          <xs:enumeration value="CaplineJustified" />
-          <xs:enumeration value="CaplineFlush" />
-          <xs:enumeration value="CaplineGeoAligned" />
-        </xs:restriction>
-      </xs:simpleType>
-    </xs:union>
-  </xs:simpleType>
-  <xs:simpleType name="enum5">
-    <xs:union memberTypes="xmlLayout:mvvmPattern">
-      <xs:simpleType>
-        <xs:restriction base="xs:token">
-          <xs:enumeration value="Character" />
-          <xs:enumeration value="Line" />
-          <xs:enumeration value="Paragraph" />
-          <xs:enumeration value="MatchAspect" />
-        </xs:restriction>
-      </xs:simpleType>
-    </xs:union>
-  </xs:simpleType>
-  <xs:simpleType name="enum6">
-    <xs:union memberTypes="xmlLayout:mvvmPattern">
-      <xs:simpleType>
-        <xs:restriction base="xs:token">
-          <xs:enumeration value="Overflow" />
-          <xs:enumeration value="Ellipsis" />
-          <xs:enumeration value="Masking" />
-          <xs:enumeration value="Truncate" />
-          <xs:enumeration value="ScrollRect" />
-          <xs:enumeration value="Page" />
-          <xs:enumeration value="Linked" />
-        </xs:restriction>
-      </xs:simpleType>
-    </xs:union>
-  </xs:simpleType>
-  <xs:element name="TextMeshProDropdown">
-    <xs:complexType>
-      <xs:complexContent mixed="true">
-        <xs:extension base="xmlLayout:base">
-          <xs:choice minOccurs="0" maxOccurs="unbounded">
-            <xs:group ref="xmlLayout:TextMeshProDropdown" />
-          </xs:choice>
-          <xs:attribute name="interactable" type="xmlLayout:boolean" />
-          <xs:attribute name="arrowImage" type="xs:string" />
-          <xs:attribute name="arrowColor" type="xmlLayout:color" />
-          <xs:attribute name="arrowOffset" type="xmlLayout:vector2" />
-          <xs:attribute name="dropDownHeight" type="xmlLayout:float" />
-          <xs:attribute name="itemHeight" type="xmlLayout:float" />
-          <xs:attribute name="itemWidth" type="xmlLayout:float" />
-          <xs:attribute name="checkColor" type="xmlLayout:color" />
-          <xs:attribute name="checkSize" type="xmlLayout:float" />
-          <xs:attribute name="checkImage" type="xs:string" />
-          <xs:attribute name="checkImagePreserveAspect" type="xmlLayout:boolean" />
-          <xs:attribute name="itemBackgroundColors" type="xmlLayout:colorblock" />
-          <xs:attribute name="dropDownBackgroundColor" type="xmlLayout:color" />
-          <xs:attribute name="dropDownBackgroundImage" type="xs:string" />
-          <xs:attribute name="scrollbarColors" type="xmlLayout:colorblock" />
-          <xs:attribute name="scrollbarImage" type="xs:string" />
-          <xs:attribute name="scrollbarBackgroundColor" type="xmlLayout:color" />
-          <xs:attribute name="scrollbarBackgroundImage" type="xs:string" />
-          <xs:attribute name="scrollbarWidth" type="xmlLayout:float" />
-          <xs:attribute name="colors" type="xmlLayout:colorblock" />
-          <xs:attribute name="vm-options" type="xs:string" />
-          <xs:attribute name="onValueChanged" type="xmlLayout:function" />
-          <xs:attribute name="padding" type="xmlLayout:vector4" />
-          <xs:attributeGroup ref="xmlLayout:image" />
-        </xs:extension>
-      </xs:complexContent>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="TextMeshProInputField">
-    <xs:complexType>
-      <xs:complexContent mixed="true">
-        <xs:extension base="xmlLayout:base">
-          <xs:choice minOccurs="0" maxOccurs="unbounded">
-            <xs:group ref="xmlLayout:TextMeshProInputField" />
-          </xs:choice>
-          <xs:attribute name="interactable" type="xmlLayout:boolean" />
-          <xs:attribute name="colors" type="xmlLayout:colorblock" />
-          <xs:attribute name="text" type="xs:string" />
-          <xs:attribute name="characterLimit" type="xmlLayout:int" />
-          <xs:attribute name="contentType" type="xmlLayout:enum7" />
-          <xs:attribute name="lineType" type="xmlLayout:enum8" />
-          <xs:attribute name="caretBlinkRate" type="xmlLayout:float" />
-          <xs:attribute name="caretWidth" type="xmlLayout:float" />
-          <xs:attribute name="customCaretColor" type="xmlLayout:boolean" />
-          <xs:attribute name="selectionColor" type="xmlLayout:color" />
-          <xs:attribute name="onFocusSelectAll" type="xmlLayout:boolean" />
-          <xs:attribute name="resetOnDeactivation" type="xmlLayout:boolean" />
-          <xs:attribute name="restoreOnESCKey" type="xmlLayout:boolean" />
-          <xs:attribute name="readOnly" type="xmlLayout:boolean" />
-          <xs:attribute name="richText" type="xmlLayout:boolean" />
-          <xs:attribute name="allowRichTextEditing" type="xmlLayout:boolean" />
-          <xs:attribute name="onValueChanged" type="xmlLayout:function" />
-          <xs:attribute name="onEndEdit" type="xmlLayout:function" />
-          <xs:attribute name="onSelect" type="xmlLayout:function" />
-          <xs:attribute name="onDeselect" type="xmlLayout:function" />
-          <xs:attribute name="padding" type="xmlLayout:vector4" />
-          <xs:attributeGroup ref="xmlLayout:image" />
-        </xs:extension>
-      </xs:complexContent>
-    </xs:complexType>
-  </xs:element>
-  <xs:simpleType name="enum7">
-    <xs:union memberTypes="xmlLayout:mvvmPattern">
-      <xs:simpleType>
-        <xs:restriction base="xs:token">
-          <xs:enumeration value="Standard" />
-          <xs:enumeration value="Autocorrected" />
-          <xs:enumeration value="IntegerNumber" />
-          <xs:enumeration value="DecimalNumber" />
-          <xs:enumeration value="Alphanumeric" />
-          <xs:enumeration value="Name" />
-          <xs:enumeration value="EmailAddress" />
-          <xs:enumeration value="Password" />
-          <xs:enumeration value="Pin" />
-          <xs:enumeration value="Custom" />
-        </xs:restriction>
-      </xs:simpleType>
-    </xs:union>
-  </xs:simpleType>
-  <xs:simpleType name="enum8">
-    <xs:union memberTypes="xmlLayout:mvvmPattern">
-      <xs:simpleType>
-        <xs:restriction base="xs:token">
-          <xs:enumeration value="SingleLine" />
-          <xs:enumeration value="MultiLineSubmit" />
-          <xs:enumeration value="MultiLineNewline" />
-        </xs:restriction>
-      </xs:simpleType>
-    </xs:union>
-  </xs:simpleType>
   <xs:group name="Accordion">
     <xs:choice>
       <xs:element ref="xmlLayout:AccordionSection" />
@@ -2015,19 +1767,19 @@
       <xs:complexContent mixed="true">
         <xs:extension base="xmlLayout:blank">
           <xs:attribute name="name" type="xs:string" />
-          <xs:attribute name="type" type="xmlLayout:enum9" />
+          <xs:attribute name="type" type="xmlLayout:enum3" />
           <xs:attribute name="from" type="xs:string" />
           <xs:attribute name="to" type="xs:string" />
           <xs:attribute name="attribute" type="xs:string" />
-          <xs:attribute name="valueType" type="xmlLayout:enum10" />
+          <xs:attribute name="valueType" type="xmlLayout:enum4" />
           <xs:attribute name="duration" type="xmlLayout:float" />
           <xs:attribute name="animations" type="xs:string" />
-          <xs:attribute name="curve" type="xmlLayout:enum11" />
+          <xs:attribute name="curve" type="xmlLayout:enum5" />
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
   </xs:element>
-  <xs:simpleType name="enum9">
+  <xs:simpleType name="enum3">
     <xs:union memberTypes="xmlLayout:mvvmPattern">
       <xs:simpleType>
         <xs:restriction base="xs:token">
@@ -2038,7 +1790,7 @@
       </xs:simpleType>
     </xs:union>
   </xs:simpleType>
-  <xs:simpleType name="enum10">
+  <xs:simpleType name="enum4">
     <xs:union memberTypes="xmlLayout:mvvmPattern">
       <xs:simpleType>
         <xs:restriction base="xs:token">
@@ -2050,7 +1802,7 @@
       </xs:simpleType>
     </xs:union>
   </xs:simpleType>
-  <xs:simpleType name="enum11">
+  <xs:simpleType name="enum5">
     <xs:union memberTypes="xmlLayout:mvvmPattern">
       <xs:simpleType>
         <xs:restriction base="xs:token">
@@ -2082,85 +1834,6 @@
       </xs:complexContent>
     </xs:complexType>
   </xs:element>
-  <xs:element name="TextMeshProMaterial">
-    <xs:complexType>
-      <xs:complexContent mixed="true">
-        <xs:extension base="xmlLayout:blank">
-          <xs:attribute name="name" type="xs:string" />
-          <xs:attribute name="font" type="xs:string" />
-          <xs:attribute name="shader" type="xs:string" />
-          <xs:attribute name="baseMaterial" type="xs:string" />
-          <xs:attribute name="faceColor" type="xmlLayout:color" />
-          <xs:attribute name="faceSoftness" type="xmlLayout:float" />
-          <xs:attribute name="faceDilate" type="xmlLayout:float" />
-          <xs:attribute name="faceTexture" type="xs:string" />
-          <xs:attribute name="faceUVSpeedX" type="xmlLayout:float" />
-          <xs:attribute name="faceUVSpeedY" type="xmlLayout:float" />
-          <xs:attribute name="faceTextureOffset" type="xmlLayout:vector2" />
-          <xs:attribute name="faceTextureTiling" type="xmlLayout:vector2" />
-          <xs:attribute name="outlineColor" type="xmlLayout:color" />
-          <xs:attribute name="outlineTexture" type="xs:string" />
-          <xs:attribute name="outlineTextureOffset" type="xmlLayout:vector2" />
-          <xs:attribute name="outlineTextureTiling" type="xmlLayout:vector2" />
-          <xs:attribute name="outlineUVSpeedX" type="xmlLayout:float" />
-          <xs:attribute name="outlineUVSpeedY" type="xmlLayout:float" />
-          <xs:attribute name="outlineThickness" type="xmlLayout:float" />
-          <xs:attribute name="outlineSoftness" type="xmlLayout:float" />
-          <xs:attribute name="bevelType" type="xmlLayout:enum12" />
-          <xs:attribute name="bevelAmount" type="xmlLayout:float" />
-          <xs:attribute name="bevelWidth" type="xmlLayout:float" />
-          <xs:attribute name="bevelOffset" type="xmlLayout:float" />
-          <xs:attribute name="bevelClamp" type="xmlLayout:float" />
-          <xs:attribute name="bevelRoundness" type="xmlLayout:float" />
-          <xs:attribute name="lightAngle" type="xmlLayout:float" />
-          <xs:attribute name="lightSpecularColor" type="xmlLayout:color" />
-          <xs:attribute name="lightSpecularPower" type="xmlLayout:float" />
-          <xs:attribute name="lightReflectivity" type="xmlLayout:float" />
-          <xs:attribute name="lightDiffuseShadow" type="xmlLayout:float" />
-          <xs:attribute name="lightAmbientShadow" type="xmlLayout:float" />
-          <xs:attribute name="bumpMapTexture" type="xs:string" />
-          <xs:attribute name="bumpMapOutlineAmount" type="xmlLayout:float" />
-          <xs:attribute name="bumpMapFaceAmount" type="xmlLayout:float" />
-          <xs:attribute name="envMapFaceColor" type="xmlLayout:color" />
-          <xs:attribute name="envMapOutlineColor" type="xmlLayout:color" />
-          <xs:attribute name="envMapCubemap" type="xs:string" />
-          <xs:attribute name="envMapMatrixRotation" type="xmlLayout:vector4" />
-          <xs:attribute name="underlayType" type="xmlLayout:enum13" />
-          <xs:attribute name="underlayColor" type="xmlLayout:color" />
-          <xs:attribute name="underlayOffsetX" type="xmlLayout:float" />
-          <xs:attribute name="underlayOffsetY" type="xmlLayout:float" />
-          <xs:attribute name="underlayDilate" type="xmlLayout:float" />
-          <xs:attribute name="underlaySoftness" type="xmlLayout:float" />
-          <xs:attribute name="glowColor" type="xmlLayout:color" />
-          <xs:attribute name="glowOffset" type="xmlLayout:float" />
-          <xs:attribute name="glowInnerAmount" type="xmlLayout:float" />
-          <xs:attribute name="glowOuterAmount" type="xmlLayout:float" />
-          <xs:attribute name="glowPower" type="xmlLayout:float" />
-        </xs:extension>
-      </xs:complexContent>
-    </xs:complexType>
-  </xs:element>
-  <xs:simpleType name="enum12">
-    <xs:union memberTypes="xmlLayout:mvvmPattern">
-      <xs:simpleType>
-        <xs:restriction base="xs:token">
-          <xs:enumeration value="InnerBevel" />
-          <xs:enumeration value="OuterBevel" />
-        </xs:restriction>
-      </xs:simpleType>
-    </xs:union>
-  </xs:simpleType>
-  <xs:simpleType name="enum13">
-    <xs:union memberTypes="xmlLayout:mvvmPattern">
-      <xs:simpleType>
-        <xs:restriction base="xs:token">
-          <xs:enumeration value="None" />
-          <xs:enumeration value="Normal" />
-          <xs:enumeration value="Inner" />
-        </xs:restriction>
-      </xs:simpleType>
-    </xs:union>
-  </xs:simpleType>
   <xs:group name="dataTableRow">
     <xs:choice>
       <xs:element ref="xmlLayout:DataTableCellTemplate" />
@@ -2193,13 +1866,13 @@
           </xs:choice>
           <xs:attribute name="preferredHeight" type="xmlLayout:float" />
           <xs:attribute name="dontUseTableRowBackground" type="xmlLayout:boolean" />
-          <xs:attribute name="templateType" type="xmlLayout:enum14" />
+          <xs:attribute name="templateType" type="xmlLayout:enum6" />
           <xs:attributeGroup ref="xmlLayout:image" />
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
   </xs:element>
-  <xs:simpleType name="enum14">
+  <xs:simpleType name="enum6">
     <xs:union memberTypes="xmlLayout:mvvmPattern">
       <xs:simpleType>
         <xs:restriction base="xs:token">
@@ -2209,262 +1882,7 @@
       </xs:simpleType>
     </xs:union>
   </xs:simpleType>
-  <xs:group name="TextMeshProDropdown">
-    <xs:choice>
-      <xs:element ref="xmlLayout:TMP_Option" />
-      <xs:element ref="xmlLayout:TMP_DropdownLabel" />
-      <xs:element ref="xmlLayout:TMP_OptionTextTemplate" />
-    </xs:choice>
-  </xs:group>
-  <xs:element name="TMP_Option">
-    <xs:complexType>
-      <xs:complexContent mixed="true">
-        <xs:extension base="xmlLayout:blank">
-          <xs:choice minOccurs="0" maxOccurs="unbounded">
-            <xs:group ref="xmlLayout:default" />
-          </xs:choice>
-          <xs:attribute name="selected" type="xmlLayout:boolean" />
-          <xs:attribute name="text" type="xs:string" />
-        </xs:extension>
-      </xs:complexContent>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="TMP_DropdownLabel">
-    <xs:complexType>
-      <xs:complexContent mixed="true">
-        <xs:extension base="xmlLayout:base">
-          <xs:choice minOccurs="0" maxOccurs="unbounded">
-            <xs:group ref="xmlLayout:default" />
-          </xs:choice>
-          <xs:attribute name="text" type="xs:string" />
-          <xs:attribute name="font" type="xs:string" />
-          <xs:attribute name="fontStyle" type="xs:string" />
-          <xs:attribute name="fontSize" type="xmlLayout:float" />
-          <xs:attribute name="fontWeight" type="xmlLayout:int" />
-          <xs:attribute name="fontSizeMin" type="xmlLayout:float" />
-          <xs:attribute name="fontSizeMax" type="xmlLayout:float" />
-          <xs:attribute name="fontScale" type="xmlLayout:float" />
-          <xs:attribute name="enableAutoSizing" type="xmlLayout:boolean" />
-          <xs:attribute name="characterSpacing" type="xmlLayout:float" />
-          <xs:attribute name="characterWidthAdjustment" type="xmlLayout:float" />
-          <xs:attribute name="alpha" type="xmlLayout:float" />
-          <xs:attribute name="autoSizeTextContainer" type="xmlLayout:boolean" />
-          <xs:attribute name="color" type="xmlLayout:color" />
-          <xs:attribute name="faceColor" type="xmlLayout:color" />
-          <xs:attribute name="outlineColor" type="xmlLayout:color" />
-          <xs:attribute name="outlineWidth" type="xmlLayout:float" />
-          <xs:attribute name="fontMaterial" type="xs:string" />
-          <xs:attribute name="enableWordWrapping" type="xmlLayout:boolean" />
-          <xs:attribute name="wordWrappingRatios" type="xmlLayout:float" />
-          <xs:attribute name="extraPadding" type="xmlLayout:boolean" />
-          <xs:attribute name="wordSpacing" type="xmlLayout:float" />
-          <xs:attribute name="lineSpacing" type="xmlLayout:float" />
-          <xs:attribute name="lineSpacingAdjustment" type="xmlLayout:float" />
-          <xs:attribute name="paragraphSpacing" type="xmlLayout:float" />
-          <xs:attribute name="margin" type="xmlLayout:vector4" />
-          <xs:attribute name="firstVisibleCharacter" type="xmlLayout:int" />
-          <xs:attribute name="maxVisibleWords" type="xmlLayout:int" />
-          <xs:attribute name="colorGradient" type="xmlLayout:colorblock" />
-          <xs:attribute name="overrideColorTags" type="xmlLayout:boolean" />
-          <xs:attribute name="enableKerning" type="xmlLayout:boolean" />
-          <xs:attribute name="geometrySorting" type="xmlLayout:enum3" />
-          <xs:attribute name="enableCulling" type="xmlLayout:boolean" />
-          <xs:attribute name="richText" type="xmlLayout:boolean" />
-          <xs:attribute name="useMaxVisibleDescender" type="xmlLayout:boolean" />
-          <xs:attribute name="tintAllSprites" type="xmlLayout:boolean" />
-          <xs:attribute name="spriteAsset" type="xs:string" />
-          <xs:attribute name="parseCtrlCharacters" type="xmlLayout:boolean" />
-          <xs:attribute name="pageToDisplay" type="xmlLayout:int" />
-          <xs:attribute name="pixelsPerUnit" type="xmlLayout:float" />
-          <xs:attribute name="raycastTarget" type="xmlLayout:boolean" />
-          <xs:attribute name="isRightToLeftText" type="xmlLayout:boolean" />
-          <xs:attribute name="alignment" type="xmlLayout:enum4" />
-          <xs:attribute name="horizontalMapping" type="xmlLayout:enum5" />
-          <xs:attribute name="verticalMapping" type="xmlLayout:enum5" />
-          <xs:attribute name="overflowMode" type="xmlLayout:enum6" />
-        </xs:extension>
-      </xs:complexContent>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="TMP_OptionTextTemplate">
-    <xs:complexType>
-      <xs:complexContent mixed="true">
-        <xs:extension base="xmlLayout:base">
-          <xs:choice minOccurs="0" maxOccurs="unbounded">
-            <xs:group ref="xmlLayout:default" />
-          </xs:choice>
-          <xs:attribute name="text" type="xs:string" />
-          <xs:attribute name="font" type="xs:string" />
-          <xs:attribute name="fontStyle" type="xs:string" />
-          <xs:attribute name="fontSize" type="xmlLayout:float" />
-          <xs:attribute name="fontWeight" type="xmlLayout:int" />
-          <xs:attribute name="fontSizeMin" type="xmlLayout:float" />
-          <xs:attribute name="fontSizeMax" type="xmlLayout:float" />
-          <xs:attribute name="fontScale" type="xmlLayout:float" />
-          <xs:attribute name="enableAutoSizing" type="xmlLayout:boolean" />
-          <xs:attribute name="characterSpacing" type="xmlLayout:float" />
-          <xs:attribute name="characterWidthAdjustment" type="xmlLayout:float" />
-          <xs:attribute name="alpha" type="xmlLayout:float" />
-          <xs:attribute name="autoSizeTextContainer" type="xmlLayout:boolean" />
-          <xs:attribute name="color" type="xmlLayout:color" />
-          <xs:attribute name="faceColor" type="xmlLayout:color" />
-          <xs:attribute name="outlineColor" type="xmlLayout:color" />
-          <xs:attribute name="outlineWidth" type="xmlLayout:float" />
-          <xs:attribute name="fontMaterial" type="xs:string" />
-          <xs:attribute name="enableWordWrapping" type="xmlLayout:boolean" />
-          <xs:attribute name="wordWrappingRatios" type="xmlLayout:float" />
-          <xs:attribute name="extraPadding" type="xmlLayout:boolean" />
-          <xs:attribute name="wordSpacing" type="xmlLayout:float" />
-          <xs:attribute name="lineSpacing" type="xmlLayout:float" />
-          <xs:attribute name="lineSpacingAdjustment" type="xmlLayout:float" />
-          <xs:attribute name="paragraphSpacing" type="xmlLayout:float" />
-          <xs:attribute name="margin" type="xmlLayout:vector4" />
-          <xs:attribute name="firstVisibleCharacter" type="xmlLayout:int" />
-          <xs:attribute name="maxVisibleWords" type="xmlLayout:int" />
-          <xs:attribute name="colorGradient" type="xmlLayout:colorblock" />
-          <xs:attribute name="overrideColorTags" type="xmlLayout:boolean" />
-          <xs:attribute name="enableKerning" type="xmlLayout:boolean" />
-          <xs:attribute name="geometrySorting" type="xmlLayout:enum3" />
-          <xs:attribute name="enableCulling" type="xmlLayout:boolean" />
-          <xs:attribute name="richText" type="xmlLayout:boolean" />
-          <xs:attribute name="useMaxVisibleDescender" type="xmlLayout:boolean" />
-          <xs:attribute name="tintAllSprites" type="xmlLayout:boolean" />
-          <xs:attribute name="spriteAsset" type="xs:string" />
-          <xs:attribute name="parseCtrlCharacters" type="xmlLayout:boolean" />
-          <xs:attribute name="pageToDisplay" type="xmlLayout:int" />
-          <xs:attribute name="pixelsPerUnit" type="xmlLayout:float" />
-          <xs:attribute name="raycastTarget" type="xmlLayout:boolean" />
-          <xs:attribute name="isRightToLeftText" type="xmlLayout:boolean" />
-          <xs:attribute name="alignment" type="xmlLayout:enum4" />
-          <xs:attribute name="horizontalMapping" type="xmlLayout:enum5" />
-          <xs:attribute name="verticalMapping" type="xmlLayout:enum5" />
-          <xs:attribute name="overflowMode" type="xmlLayout:enum6" />
-          <xs:attribute name="padding" type="xmlLayout:rectOffset" />
-        </xs:extension>
-      </xs:complexContent>
-    </xs:complexType>
-  </xs:element>
-  <xs:group name="TextMeshProInputField">
-    <xs:choice>
-      <xs:element ref="xmlLayout:TMP_Text" />
-      <xs:element ref="xmlLayout:TMP_Placeholder" />
-    </xs:choice>
-  </xs:group>
-  <xs:element name="TMP_Text">
-    <xs:complexType>
-      <xs:complexContent mixed="true">
-        <xs:extension base="xmlLayout:base">
-          <xs:choice minOccurs="0" maxOccurs="unbounded">
-            <xs:group ref="xmlLayout:default" />
-          </xs:choice>
-          <xs:attribute name="text" type="xs:string" />
-          <xs:attribute name="font" type="xs:string" />
-          <xs:attribute name="fontStyle" type="xs:string" />
-          <xs:attribute name="fontSize" type="xmlLayout:float" />
-          <xs:attribute name="fontWeight" type="xmlLayout:int" />
-          <xs:attribute name="fontSizeMin" type="xmlLayout:float" />
-          <xs:attribute name="fontSizeMax" type="xmlLayout:float" />
-          <xs:attribute name="fontScale" type="xmlLayout:float" />
-          <xs:attribute name="enableAutoSizing" type="xmlLayout:boolean" />
-          <xs:attribute name="characterSpacing" type="xmlLayout:float" />
-          <xs:attribute name="characterWidthAdjustment" type="xmlLayout:float" />
-          <xs:attribute name="alpha" type="xmlLayout:float" />
-          <xs:attribute name="autoSizeTextContainer" type="xmlLayout:boolean" />
-          <xs:attribute name="color" type="xmlLayout:color" />
-          <xs:attribute name="faceColor" type="xmlLayout:color" />
-          <xs:attribute name="outlineColor" type="xmlLayout:color" />
-          <xs:attribute name="outlineWidth" type="xmlLayout:float" />
-          <xs:attribute name="fontMaterial" type="xs:string" />
-          <xs:attribute name="enableWordWrapping" type="xmlLayout:boolean" />
-          <xs:attribute name="wordWrappingRatios" type="xmlLayout:float" />
-          <xs:attribute name="extraPadding" type="xmlLayout:boolean" />
-          <xs:attribute name="wordSpacing" type="xmlLayout:float" />
-          <xs:attribute name="lineSpacing" type="xmlLayout:float" />
-          <xs:attribute name="lineSpacingAdjustment" type="xmlLayout:float" />
-          <xs:attribute name="paragraphSpacing" type="xmlLayout:float" />
-          <xs:attribute name="margin" type="xmlLayout:vector4" />
-          <xs:attribute name="firstVisibleCharacter" type="xmlLayout:int" />
-          <xs:attribute name="maxVisibleWords" type="xmlLayout:int" />
-          <xs:attribute name="colorGradient" type="xmlLayout:colorblock" />
-          <xs:attribute name="overrideColorTags" type="xmlLayout:boolean" />
-          <xs:attribute name="enableKerning" type="xmlLayout:boolean" />
-          <xs:attribute name="geometrySorting" type="xmlLayout:enum3" />
-          <xs:attribute name="enableCulling" type="xmlLayout:boolean" />
-          <xs:attribute name="richText" type="xmlLayout:boolean" />
-          <xs:attribute name="useMaxVisibleDescender" type="xmlLayout:boolean" />
-          <xs:attribute name="tintAllSprites" type="xmlLayout:boolean" />
-          <xs:attribute name="spriteAsset" type="xs:string" />
-          <xs:attribute name="parseCtrlCharacters" type="xmlLayout:boolean" />
-          <xs:attribute name="pageToDisplay" type="xmlLayout:int" />
-          <xs:attribute name="pixelsPerUnit" type="xmlLayout:float" />
-          <xs:attribute name="raycastTarget" type="xmlLayout:boolean" />
-          <xs:attribute name="isRightToLeftText" type="xmlLayout:boolean" />
-          <xs:attribute name="alignment" type="xmlLayout:enum4" />
-          <xs:attribute name="horizontalMapping" type="xmlLayout:enum5" />
-          <xs:attribute name="verticalMapping" type="xmlLayout:enum5" />
-          <xs:attribute name="overflowMode" type="xmlLayout:enum6" />
-        </xs:extension>
-      </xs:complexContent>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="TMP_Placeholder">
-    <xs:complexType>
-      <xs:complexContent mixed="true">
-        <xs:extension base="xmlLayout:base">
-          <xs:choice minOccurs="0" maxOccurs="unbounded">
-            <xs:group ref="xmlLayout:default" />
-          </xs:choice>
-          <xs:attribute name="text" type="xs:string" />
-          <xs:attribute name="font" type="xs:string" />
-          <xs:attribute name="fontStyle" type="xs:string" />
-          <xs:attribute name="fontSize" type="xmlLayout:float" />
-          <xs:attribute name="fontWeight" type="xmlLayout:int" />
-          <xs:attribute name="fontSizeMin" type="xmlLayout:float" />
-          <xs:attribute name="fontSizeMax" type="xmlLayout:float" />
-          <xs:attribute name="fontScale" type="xmlLayout:float" />
-          <xs:attribute name="enableAutoSizing" type="xmlLayout:boolean" />
-          <xs:attribute name="characterSpacing" type="xmlLayout:float" />
-          <xs:attribute name="characterWidthAdjustment" type="xmlLayout:float" />
-          <xs:attribute name="alpha" type="xmlLayout:float" />
-          <xs:attribute name="autoSizeTextContainer" type="xmlLayout:boolean" />
-          <xs:attribute name="color" type="xmlLayout:color" />
-          <xs:attribute name="faceColor" type="xmlLayout:color" />
-          <xs:attribute name="outlineColor" type="xmlLayout:color" />
-          <xs:attribute name="outlineWidth" type="xmlLayout:float" />
-          <xs:attribute name="fontMaterial" type="xs:string" />
-          <xs:attribute name="enableWordWrapping" type="xmlLayout:boolean" />
-          <xs:attribute name="wordWrappingRatios" type="xmlLayout:float" />
-          <xs:attribute name="extraPadding" type="xmlLayout:boolean" />
-          <xs:attribute name="wordSpacing" type="xmlLayout:float" />
-          <xs:attribute name="lineSpacing" type="xmlLayout:float" />
-          <xs:attribute name="lineSpacingAdjustment" type="xmlLayout:float" />
-          <xs:attribute name="paragraphSpacing" type="xmlLayout:float" />
-          <xs:attribute name="margin" type="xmlLayout:vector4" />
-          <xs:attribute name="firstVisibleCharacter" type="xmlLayout:int" />
-          <xs:attribute name="maxVisibleWords" type="xmlLayout:int" />
-          <xs:attribute name="colorGradient" type="xmlLayout:colorblock" />
-          <xs:attribute name="overrideColorTags" type="xmlLayout:boolean" />
-          <xs:attribute name="enableKerning" type="xmlLayout:boolean" />
-          <xs:attribute name="geometrySorting" type="xmlLayout:enum3" />
-          <xs:attribute name="enableCulling" type="xmlLayout:boolean" />
-          <xs:attribute name="richText" type="xmlLayout:boolean" />
-          <xs:attribute name="useMaxVisibleDescender" type="xmlLayout:boolean" />
-          <xs:attribute name="tintAllSprites" type="xmlLayout:boolean" />
-          <xs:attribute name="spriteAsset" type="xs:string" />
-          <xs:attribute name="parseCtrlCharacters" type="xmlLayout:boolean" />
-          <xs:attribute name="pageToDisplay" type="xmlLayout:int" />
-          <xs:attribute name="pixelsPerUnit" type="xmlLayout:float" />
-          <xs:attribute name="raycastTarget" type="xmlLayout:boolean" />
-          <xs:attribute name="isRightToLeftText" type="xmlLayout:boolean" />
-          <xs:attribute name="alignment" type="xmlLayout:enum4" />
-          <xs:attribute name="horizontalMapping" type="xmlLayout:enum5" />
-          <xs:attribute name="verticalMapping" type="xmlLayout:enum5" />
-          <xs:attribute name="overflowMode" type="xmlLayout:enum6" />
-        </xs:extension>
-      </xs:complexContent>
-    </xs:complexType>
-  </xs:element>
-  <xs:simpleType name="enum15">
+  <xs:simpleType name="enum7">
     <xs:union memberTypes="xmlLayout:mvvmPattern">
       <xs:simpleType>
         <xs:restriction base="xs:token">

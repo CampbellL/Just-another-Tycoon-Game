@@ -2,7 +2,7 @@
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:schemaLocation="XmlLayout ../../../UI/XmlLayout/Configuration/XmlLayout.xsd">
     <Defaults>
-        <TextMeshPro fontSize="24"></TextMeshPro>
+        <Text fontSize="24"></Text>
         <Button fontSize="24"></Button>
     </Defaults>
 
@@ -15,12 +15,12 @@
             <VerticalScrollView height="60%" width="90%" childScaleHeight="false" childControlHeight="true" noScrollbars="true">
                 <VerticalLayout>
                     <HorizontalLayout color="#17f461">
-                        <TextMeshPro>Coffee Machines
-                            (Income +5%)</TextMeshPro>
+                        <Text>Coffee Machines
+                            (Income +5%)</Text>
                         <Button id="UpgradeMoneyPercentage" onClick="UpgradeMoneyPercentageSkillLevel">500</Button>
                     </HorizontalLayout>
                     <HorizontalLayout color="green">
-                        <TextMeshPro>Skill 2</TextMeshPro>
+                        <Text>Skill 2</Text>
                         <Button>Unlock</Button>
                     </HorizontalLayout>
                 </VerticalLayout>

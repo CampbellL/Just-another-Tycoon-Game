@@ -12,7 +12,7 @@ namespace Economy
         public delegate void MoneyChanged();
 
         public event MoneyChanged OnMoneyChanged;
-        private float _money = 100000;
+        private float _money = 0;
         private readonly WorkerController _workerController;
         private readonly PlayerStateService _playerStateService;
 

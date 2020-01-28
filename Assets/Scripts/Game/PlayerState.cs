@@ -22,6 +22,7 @@ namespace Game
             Workers = new List<Worker.Worker>
             {
                 new Worker.Worker() {Efficiency = 2, Name = nameGen.Generate((Sex) rand.Next(0,2), rand.Next(0,2)), Cost = 2000},
+                //new Worker.Worker() {Efficiency = 2, Name = "Hitler", Cost = 2000},
             };
 
             Customers = new List<Customer>();

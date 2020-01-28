@@ -1,6 +1,7 @@
 using Economy;
 using Game;
 using UI.Xml;
+using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
@@ -145,5 +146,10 @@ internal class GameUiController : XmlLayoutController
         this._specsPanelReference.element.Show();
         this.SpecPanelUpdateInterface();
         this._activePanel = this._workerPanelReference;
+    }
+
+    public void OpenShop()
+    {
+        Debug.Log("Shop");
     }
 }
