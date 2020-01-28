@@ -29,7 +29,10 @@ internal class GameUiController : XmlLayoutController
 
     private XmlElementReference<XmlElement> _shopPanelReference;
     private XmlElementReference<XmlElement> _workerUnlockPanelReference;
-    
+    private XmlElementReference<XmlElement> _messageBoxReference;
+
+    private Worker.Worker _unlockedWorkerCache;
+
     [Inject]
     private void PopulateDependencies(EconomyController economyController, PlayerStateService playerStateService)
     {
@@ -52,6 +55,7 @@ internal class GameUiController : XmlLayoutController
         _workerPanelReference = _workerPanelReference ?? this.XmlElementReference<XmlElement>("workerPanel");
         _specsPanelReference = _specsPanelReference ?? this.XmlElementReference<XmlElement>("specsPanel");
         _shopPanelReference = _shopPanelReference ?? this.XmlElementReference<XmlElement>("shopPanel");
+        _messageBoxReference = _messageBoxReference ?? this.XmlElementReference<XmlElement>("messageBox");
         _workerUnlockPanelReference = _workerUnlockPanelReference ?? this.XmlElementReference<XmlElement>("workerUnlockPanel");
         _moneyUpgradeButtonReference = _moneyUpgradeButtonReference ??
                                        this.XmlElementReference<XmlElement>("UpgradeMoneyPercentage");
@@ -124,8 +128,12 @@ internal class GameUiController : XmlLayoutController
 
     public void UpgradeMoneyPercentageSkillLevel()
     {
-        this._economyController.PurchasePercentageSkillUpgrade();
-        this.SpecPanelUpdateInterface();
+        if (this._economyController.CanUpgradePercentageSkill())
+        {
+            this._economyController.PurchasePercentageSkillUpgrade();
+            this.SpecPanelUpdateInterface();
+        }
+        this._messageBoxReference.element.Show();
     }
 
     private void SpecPanelUpdateInterface()
@@ -198,7 +206,30 @@ internal class GameUiController : XmlLayoutController
 
     public void OpenWorkerLootBox()
     {
-        this.PopulateWorkerUnlockPanel(WorkerController.GenerateRandomWorker());
-        this._workerUnlockPanelReference.element.Show();
+        if (this._economyController.Money > 1000)
+        {
+            this._economyController.Purchase(1000);
+            this._unlockedWorkerCache = WorkerController.GenerateRandomWorker();
+            this.PopulateWorkerUnlockPanel(this._unlockedWorkerCache);
+            this._workerUnlockPanelReference.element.Show();
+        }
+        this._messageBoxReference.element.Show();
+    }
+
+    public void DiscardWorker()
+    {
+        this._unlockedWorkerCache = null;
+        this._workerUnlockPanelReference.element.Hide();
+    }
+    
+    public void HireWorker()
+    {
+        this._playerStateService.HireWorker(this._unlockedWorkerCache);
+        this._workerUnlockPanelReference.element.Hide();
+    }
+
+    public void CloseMessageBox()
+    {
+        this._messageBoxReference.element.Hide();
     }
 }

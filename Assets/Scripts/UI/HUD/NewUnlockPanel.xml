@@ -61,8 +61,8 @@
         </TableLayout>
         <Panel height="10%" width="70%" rectAlignment="LowerCenter" offsetXY="0 50">
             <HorizontalLayout spacing="10">
-                <Button rectAlignment="MiddleCenter" image="Sprites/Buttons-assets/Button4">Hire</Button>
-                <Button rectAlignment="MiddleCenter" image="Sprites/Buttons-assets/Button4">X</Button>
+                <Button rectAlignment="MiddleCenter" image="Sprites/Buttons-assets/Button4" onClick="HireWorker()">Hire</Button>
+                <Button rectAlignment="MiddleCenter" image="Sprites/Buttons-assets/Button4" onClick="DiscardWorker()">X</Button>
             </HorizontalLayout>
         </Panel>
     </Panel>

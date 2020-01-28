@@ -32,6 +32,7 @@
         </Panel>
 
         <Include path="ShopPanel"/>
+        <Include path="MessageBox"/>
         <Include path="NewUnlockPanel"/>
         <Include path="SpecsPanel"/>
         <Include path="WorkerPanel"/>

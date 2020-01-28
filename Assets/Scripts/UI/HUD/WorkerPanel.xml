@@ -64,7 +64,6 @@
             </Row>
         </TableLayout>
         <Panel height="10%" width="70%" rectAlignment="LowerCenter" offsetXY="0 30">
-            <Button rectAlignment="MiddleCenter" image="Sprites/Buttons-assets/Button4">Hire Workers</Button>
         </Panel>
     </Panel>
 </XmlLayout>

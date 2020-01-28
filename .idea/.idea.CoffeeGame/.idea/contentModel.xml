@@ -731,6 +731,7 @@
               <e p="BottomPanel.xml" t="Include" />
               <e p="Game.xml" t="Include" />
               <e p="GameUiController.cs" t="Include" />
+              <e p="MessageBox.xml" t="Include" />
               <e p="NewUnlockPanel.xml" t="Include" />
               <e p="ShopPanel.xml" t="Include" />
               <e p="SpecsPanel.xml" t="Include" />

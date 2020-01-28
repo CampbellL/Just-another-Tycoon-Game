@@ -13,7 +13,11 @@ namespace Game
         public int UpgradePercentageSkill() => ++this._playerState.MoneyPercentageSkillLevel;
         
         public int GetMoneyPercentageSkillLevel() => this._playerState.MoneyPercentageSkillLevel;
-        
+
+        public void HireWorker(Worker.Worker worker)
+        {
+            this._playerState.Workers.Add(worker);
+        }
         public PlayerStateService(PlayerState playerState)
         {
             this._playerState = playerState;
