@@ -9,10 +9,10 @@ namespace Game
     public sealed class PlayerState
     {
         public readonly List<Worker.Worker> Workers;
-        public readonly List<Drink> UnlockedDrinks;
+        private readonly List<Drink> UnlockedDrinks;
         public readonly List<Customer> Customers;
         public int MoneyPercentageSkillLevel;
-        public int EfficiencyPercentageSkillLevel;
+        private int EfficiencyPercentageSkillLevel;
         public PlayerState()
         {
             this.MoneyPercentageSkillLevel = 1;
@@ -22,7 +22,6 @@ namespace Game
             Workers = new List<Worker.Worker>
             {
                 new Worker.Worker() {Efficiency = 2, Name = nameGen.Generate((Sex) rand.Next(0,2), rand.Next(0,2)), Cost = 2000},
-                //new Worker.Worker() {Efficiency = 2, Name = "Hitler", Cost = 2000},
             };
 
             Customers = new List<Customer>();

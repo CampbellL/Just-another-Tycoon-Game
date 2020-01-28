@@ -1,19 +1,19 @@
 <XmlLayout xmlns="XmlLayout"
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:schemaLocation="XmlLayout ../../UI/XmlLayout/Configuration/XmlLayout.xsd">
-    <Panel active="false" name="Worker Panel" image="Sprites/Background/Menu" id="workerPanel" class="workerPanel"
+    <Panel active="false" name="Unlock Panel" image="Sprites/Background/Menu" id="workerUnlockPanel" class="workerPanel"
            height="75%" width="90%" showAnimation="Grow"
-           hideAnimation="SlideOut_Right">
+           hideAnimation="SlideOut_Bottom">
         <Panel height="10%" rectAlignment="UpperCenter">
-            <Text class="heading-1" offsetXY="0 -35" color="rgba(255,255,255,100)">My Workers</Text>
+            <Text class="heading-1" offsetXY="0 -35" color="rgba(255,255,255,100)">Congratulations!</Text>
         </Panel>
         <TableLayout height="70%" rectAlignment="MiddleCenter" columnWidths="70 0 70" cellBackgroundImage="none">
             <Row preferredHeight="100">
                 <Cell/>
                 <Cell>
                     <HorizontalLayout width="50%" childAlignment="MiddleCenter" spacing="10"
-                                      internalId="workerEfficiency" childControlWidth="true"
-                                      childForceExpandWidth="false">
+                                      internalId="workerEfficiency"
+                                      childControlWidth="true" childForceExpandWidth="false">
                         <Image scale="1.5" preferredWidth="70" image="Sprites/Emoji/28" preserveAspect="true"/>
                         <Image scale="1.5" preferredWidth="70" image="Sprites/Emoji/28" preserveAspect="true"/>
                         <Image scale="1.5" preferredWidth="70" image="Sprites/Emoji/28" preserveAspect="true"/>
@@ -25,8 +25,6 @@
             </Row>
             <Row preferredHeight="250">
                 <Cell preferredWidth="25">
-                    <Image preserveAspect="true" image="Sprites/Buttons-assets/ArrowLeft" rectAlignment="MiddleLeft"
-                           onClick="WorkerCarouselLeft()"/>
                 </Cell>
                 <Cell>
                     <Panel rectAlignment="MiddleCenter" internalId="workerAvatarPanel" showAnimation="Grow">
@@ -37,8 +35,6 @@
                     </Panel>
                 </Cell>
                 <Cell width="25%">
-                    <Image preserveAspect="true" image="Sprites/Buttons-assets/ArrowRight"
-                           onClick="WorkerCarouselRight()" rectAlignment="MiddleLeft"/>
                 </Cell>
             </Row>
             <Row preferredHeight="50">
@@ -63,7 +59,11 @@
                 <Cell/>
             </Row>
         </TableLayout>
-        <Panel height="10%" width="70%" rectAlignment="LowerCenter" offsetXY="0 30">
+        <Panel height="10%" width="70%" rectAlignment="LowerCenter" offsetXY="0 50">
+            <HorizontalLayout spacing="10">
+                <Button rectAlignment="MiddleCenter" image="Sprites/Buttons-assets/Button4" onClick="HireWorker()">Hire</Button>
+                <Button rectAlignment="MiddleCenter" image="Sprites/Buttons-assets/Button4" onClick="DiscardWorker()">X</Button>
+            </HorizontalLayout>
         </Panel>
     </Panel>
 </XmlLayout>

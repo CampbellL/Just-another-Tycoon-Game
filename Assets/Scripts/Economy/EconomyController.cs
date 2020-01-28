@@ -44,8 +44,12 @@ namespace Economy
                 this.Money -= this.GetPercentageSkillUpgradeCost();
                 return this._playerStateService.UpgradePercentageSkill();
             }
-
             return -1;
+        }
+
+        public void Purchase(int amount)
+        {
+            this.Money -= amount;
         }
 
 
@@ -65,6 +69,11 @@ namespace Economy
                 new Order(new Drink() {name = "Latte Macchiato", price = 5.50f}),
                 new Order(new Drink() {name = "Coffee", price = 2.50f})
             };
+
+            for (var i = 0; i < 25; i++)
+            {
+                orders.AddRange(orders);
+            }
             return orders;
         }
 
