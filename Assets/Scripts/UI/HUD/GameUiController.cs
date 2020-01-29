@@ -29,7 +29,8 @@ internal class GameUiController : XmlLayoutController
 
     private XmlElementReference<XmlElement> _shopPanelReference;
     private XmlElementReference<XmlElement> _workerUnlockPanelReference;
-    private XmlElementReference<XmlElement> _messageBoxReference;
+    private XmlElementReference<XmlElement> _moneyMessageBoxReference;
+    private XmlElementReference<XmlElement> _workerCapMessageBoxReference;
 
     private Worker.Worker _unlockedWorkerCache;
 
@@ -55,7 +56,8 @@ internal class GameUiController : XmlLayoutController
         _workerPanelReference = _workerPanelReference ?? this.XmlElementReference<XmlElement>("workerPanel");
         _specsPanelReference = _specsPanelReference ?? this.XmlElementReference<XmlElement>("specsPanel");
         _shopPanelReference = _shopPanelReference ?? this.XmlElementReference<XmlElement>("shopPanel");
-        _messageBoxReference = _messageBoxReference ?? this.XmlElementReference<XmlElement>("messageBox");
+        _moneyMessageBoxReference = _moneyMessageBoxReference ?? this.XmlElementReference<XmlElement>("MoneyMessageBox");
+        _workerCapMessageBoxReference = _workerCapMessageBoxReference ?? this.XmlElementReference<XmlElement>("WorkerCapMessageBox");
         _workerUnlockPanelReference = _workerUnlockPanelReference ?? this.XmlElementReference<XmlElement>("workerUnlockPanel");
         _moneyUpgradeButtonReference = _moneyUpgradeButtonReference ??
                                        this.XmlElementReference<XmlElement>("UpgradeMoneyPercentage");
@@ -73,8 +75,10 @@ internal class GameUiController : XmlLayoutController
         XmlElement workerFaceField = _workerPanelReference.element.GetElementByInternalId<XmlElement>("workerFace");
         XmlElement workerHairField = _workerPanelReference.element.GetElementByInternalId<XmlElement>("workerHair");
         XmlElement workerKitField = _workerPanelReference.element.GetElementByInternalId<XmlElement>("workerKit");
+        XmlElement workerHeading = _workerPanelReference.element.GetElementByInternalId<XmlElement>("workerHeading");
         var stars = _workerPanelReference.element.GetElementByInternalId<XmlElement>("workerEfficiency").childElements;
         Worker.Worker worker = this._playerStateService.GetWorkers()[_workerCarouselPosition];
+        workerHeading.SetAttribute("text", $"My Workers {this._playerStateService.GetWorkers().Count} / {this._playerStateService.GetWorkerCap()}");
         nameField.SetAttribute("text", worker.Name);
         costField.SetAttribute("text", worker.Cost.ToString("0.00"));
         workerBodyField.SetAttribute("image", $"Faces/Bodies/Body_{worker.BodyType}");
@@ -100,6 +104,7 @@ internal class GameUiController : XmlLayoutController
         workerFaceField.ApplyAttributes();
         workerHairField.ApplyAttributes();
         workerKitField.ApplyAttributes();
+        workerHeading.ApplyAttributes();
     }
 
     public void WorkerCarouselLeft()
@@ -133,7 +138,7 @@ internal class GameUiController : XmlLayoutController
             this._economyController.PurchasePercentageSkillUpgrade();
             this.SpecPanelUpdateInterface();
         }
-        this._messageBoxReference.element.Show();
+        this._moneyMessageBoxReference.element.Show();
     }
 
     private void SpecPanelUpdateInterface()
@@ -213,7 +218,10 @@ internal class GameUiController : XmlLayoutController
             this.PopulateWorkerUnlockPanel(this._unlockedWorkerCache);
             this._workerUnlockPanelReference.element.Show();
         }
-        this._messageBoxReference.element.Show();
+        else
+        {
+            this._moneyMessageBoxReference.element.Show();
+        }
     }
 
     public void DiscardWorker()
@@ -224,12 +232,23 @@ internal class GameUiController : XmlLayoutController
     
     public void HireWorker()
     {
-        this._playerStateService.HireWorker(this._unlockedWorkerCache);
-        this._workerUnlockPanelReference.element.Hide();
+        if (this._playerStateService.HireWorker(this._unlockedWorkerCache))
+        {
+            this._workerUnlockPanelReference.element.Hide();
+        }
+        else
+        {
+            this._workerCapMessageBoxReference.element.Show();
+        }
     }
 
-    public void CloseMessageBox()
+    public void CloseMoneyMessageBox()
     {
-        this._messageBoxReference.element.Hide();
+        this._moneyMessageBoxReference.element.Hide();
+    }
+    
+    public void CloseWorkerCapMessageBox()
+    {
+        this._workerCapMessageBoxReference.element.Hide();
     }
 }

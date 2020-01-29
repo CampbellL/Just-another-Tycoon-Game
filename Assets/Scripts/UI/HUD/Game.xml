@@ -3,7 +3,7 @@
            xsi:schemaLocation="XmlLayout UI/XmlLayout/Configuration/XmlLayout.xsd">
     <Defaults>
         <Text class="heading-1" fontSize="34" font="Fonts/Bumpo"/>
-        <Button fontSize="34" font="Fonts/Bumpo"/>
+        <Button fontSize="34" onClickSound="Music/click" font="Fonts/Bumpo"/>
         <Panel class="topPanel" height="10%" rectAlignment="UpperCenter">
             <HorizontalLayout class="topPanel:@HorizontalLayout" offsetXY="0 -25">
                 <Text color="rgb(0,0,0,75)" fontSize="34">
@@ -32,10 +32,12 @@
         </Panel>
 
         <Include path="ShopPanel"/>
-        <Include path="MessageBox"/>
         <Include path="NewUnlockPanel"/>
         <Include path="SpecsPanel"/>
         <Include path="WorkerPanel"/>
         <Include path="BottomPanel"/>
+
+        <Include path="MoneyMessageBox"/>
+        <Include path="WorkerCapMessageBox"/>
     </Panel>
 </XmlLayout>

@@ -1,0 +1,19 @@
+<XmlLayout xmlns="XmlLayout"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="XmlLayout ../../UI/XmlLayout/Configuration/XmlLayout.xsd">
+    <Panel active="false" name="MoneyMessagebox" image="Sprites/Background/Menu" id="MoneyMessageBox" class="workerPanel"
+           height="30%" width="60%" showAnimation="Grow"
+           hideAnimation="SlideOut_Bottom" preserveAspect="true">
+        <Panel height="100%" rectAlignment="UpperCenter">
+            <Text width="60%" height="100%">
+                You dont have enough money!
+            </Text>
+            <Panel height="20%" width="70%" rectAlignment="LowerCenter" offsetXY="0 -20">
+                <Button rectAlignment="MiddleCenter" image="Sprites/Buttons-assets/Button4" textColor="rgba(255,255,255,1)"
+                        onClick="CloseMoneyMessageBox()">
+                    Ok
+                </Button>
+            </Panel>
+        </Panel>
+    </Panel>
+</XmlLayout>

@@ -3,57 +3,68 @@
            xsi:schemaLocation="XmlLayout Vendor/UI/XmlLayout/Configuration/XmlLayout.xsd">
     <Defaults>
         <InputField fontSize="64"/>
-        <Button fontSize="75"/>
+        <Button onClickSound="Music/click" fontSize="75" font="Fonts/Bumpo"/>
+        <Text font="Fonts/Bumpo"></Text>
         <Panel class="Fields" rectAlignment="MiddleCenter"/>
-        <Panel class="Buttons" rectAlignment="LowerCenter" />
+        <Panel class="Buttons" rectAlignment="LowerCenter"/>
     </Defaults>
-    <Panel name="Main Menu" >
-        <Panel class="Fields" height="20%" width="75%">
-            <VerticalLayout spacing="20">
-                <Button>Play</Button>
-                <Button width="100%">Options</Button>
-            </VerticalLayout>
+    <Panel image="Sprites/Background/Background2">
+        <Panel rectAlignment="UpperRight" height="10%" padding="0 0 120 0">
+            <Text color="white" id="userLogin" font="Fonts/Bumpo" fontSize="44">Not logged in</Text>
         </Panel>
-    </Panel>
-    <Panel name="LoginWindow" active="false">
-        <Panel class="Fields" height="20%" width="75%">
-            <VerticalLayout spacing="20">
-                <InputField id="username" placeholderText="Email Address" contentType="EmailAddress"
-                            textAlignment="MiddleCenter" onClick="OpenKeyboard">
-                </InputField>
-                <InputField placeholderText="password" id="password" textAlignment="MiddleCenter" contentType="Password">
-                </InputField>
-            </VerticalLayout>
+        <Panel name="Main Menu" id="MainMenu" rectAlignment="MiddleCenter">
+            <Panel class="Fields" height="30%" width="75%">
+                <VerticalLayout childControlHeight="true" spacing="25">
+                    <Button onClickSound="Music/click" image="Sprites/Buttons-assets/Button5" textColor="white" preferredHeight="40" preserveAspect="true" onClick="Play()">Play</Button>
+                    <Button onClickSound="Music/click" image="Sprites/Buttons-assets/Button5" textColor="white" preferredHeight="40" onClick="Options()" width="100%">Options</Button>
+                    <Button onClickSound="Music/click" image="Sprites/Buttons-assets/Button7" textColor="white" preferredHeight="40" onClick="Logout()" width="100%">Logout</Button>
+                </VerticalLayout>
+            </Panel>
         </Panel>
-        <Panel class="Buttons" height="10%" width="100%" rectAlignment="LowerCenter">
-            <HorizontalLayout >
-                <Button color="#93BFBA" textColor="white" onClick="Login">Login</Button>
-                <Button color="#6FA5A0" textColor="white">Register</Button>
-            </HorizontalLayout>
+        <Panel id="LoginWindow" name="LoginWindow" active="false">
+            <Panel class="Fields" height="40%" width="75%">
+                <VerticalLayout spacing="20">
+                    <InputField id="username" placeholderText="Username" contentType="EmailAddress"
+                                textAlignment="MiddleCenter">
+                    </InputField>
+                    <InputField placeholderText="password" id="password" textAlignment="MiddleCenter"
+                                contentType="Password">
+                    </InputField>
+                    <Text color="white" fontSize="34" internalId="loginStatus"/>
+                </VerticalLayout>
+            </Panel>
+            <Panel class="Buttons" height="10%" width="100%" rectAlignment="LowerCenter">
+                <HorizontalLayout>
+                    <Button color="#93BFBA" textColor="white" onClick="Login()">Login</Button>
+                    <Button color="#6FA5A0" textColor="white" onClick="ChangeToRegister()">Register</Button>
+                </HorizontalLayout>
+            </Panel>
         </Panel>
-    </Panel>
-    <Panel name="RegisterWindow" active="false">
-        <Panel class="Fields" height="60%" width="75%">
-            <VerticalLayout spacing="20">
-                <InputField id="username" placeholderText="First Name" contentType="EmailAddress"
-                            textAlignment="MiddleCenter" onClick="OpenKeyboard">
-                </InputField>
-                <InputField placeholderText="Last Name" id="password" textAlignment="MiddleCenter" contentType="Password">
-                </InputField>
-                <InputField id="username" placeholderText="Email Address" contentType="EmailAddress"
-                            textAlignment="MiddleCenter" onClick="OpenKeyboard">
-                </InputField>
-                <InputField placeholderText="password" id="password" textAlignment="MiddleCenter" contentType="Password">
-                </InputField>
-                <InputField placeholderText="password" id="password" textAlignment="MiddleCenter" contentType="Password">
-                </InputField>
-            </VerticalLayout>
-        </Panel>
-        <Panel class="Buttons" height="10%" width="100%" rectAlignment="LowerCenter">
-            <HorizontalLayout >
-                <Button color="#93BFBA" textColor="white" onClick="Login">Login</Button>
-                <Button color="#6FA5A0" textColor="white">Register</Button>
-            </HorizontalLayout>
+        <Panel id="RegisterWindow" name="RegisterWindow" active="false">
+            <Panel class="Fields" height="60%" width="75%">
+                <VerticalLayout spacing="20">
+                    <InputField id="FirstName" placeholderText="First Name" contentType="EmailAddress"
+                                textAlignment="MiddleCenter">
+                    </InputField>
+                    <InputField placeholderText="Last Name" id="LastName" textAlignment="MiddleCenter">
+                    </InputField>
+                    <InputField id="registerUsername" placeholderText="Username" contentType="EmailAddress"
+                                textAlignment="MiddleCenter" >
+                    </InputField>
+                    <InputField placeholderText="Email Address" id="EmailAddress" textAlignment="MiddleCenter">
+                    </InputField>
+                    <InputField placeholderText="password" id="registerPassword" textAlignment="MiddleCenter"
+                                contentType="Password">
+                    </InputField>
+                    <Text fontSize="44" internalId="registerStatus"/>
+                </VerticalLayout>
+            </Panel>
+            <Panel class="Buttons" height="10%" width="100%" rectAlignment="LowerCenter">
+                <HorizontalLayout>
+                    <Button color="#93BFBA" textColor="white" onClick="ChangeToLogin()">Login</Button>
+                    <Button color="#6FA5A0" textColor="white" onClick="Register()">Register</Button>
+                </HorizontalLayout>
+            </Panel>
         </Panel>
     </Panel>
 </XmlLayout>

@@ -5,7 +5,7 @@
            height="75%" width="90%" showAnimation="Grow"
            hideAnimation="SlideOut_Right">
         <Panel height="10%" rectAlignment="UpperCenter">
-            <Text class="heading-1" offsetXY="0 -35" color="rgba(255,255,255,100)">My Workers</Text>
+            <Text class="heading-1" offsetXY="0 -35" color="rgba(255,255,255,100)" internalId="workerHeading">My Workers</Text>
         </Panel>
         <TableLayout height="70%" rectAlignment="MiddleCenter" columnWidths="70 0 70" cellBackgroundImage="none">
             <Row preferredHeight="100">

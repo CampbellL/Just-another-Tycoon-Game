@@ -12,7 +12,7 @@ namespace Economy
         public delegate void MoneyChanged();
 
         public event MoneyChanged OnMoneyChanged;
-        private float _money = 0;
+        private float _money = 250;
         private readonly WorkerController _workerController;
         private readonly PlayerStateService _playerStateService;
 
@@ -69,11 +69,6 @@ namespace Economy
                 new Order(new Drink() {name = "Latte Macchiato", price = 5.50f}),
                 new Order(new Drink() {name = "Coffee", price = 2.50f})
             };
-
-            for (var i = 0; i < 25; i++)
-            {
-                orders.AddRange(orders);
-            }
             return orders;
         }
 

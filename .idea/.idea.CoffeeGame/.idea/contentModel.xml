@@ -3,9 +3,15 @@
   <component name="ContentModelStore">
     <e p="$PROJECT_DIR$" t="IncludeRecursive">
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
+      <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Plugins" t="Include">
+          <e p="JWT" t="Include">
+            <e p="DefaultJsonSerializer.cs" t="Include" />
+            <e p="IJsonSerializer.cs" t="Include" />
+            <e p="JWT.cs" t="Include" />
+          </e>
           <e p="UniRx" t="Include">
             <e p="Scripts" t="Include">
               <e p="Asynchronous" t="Include">
@@ -690,6 +696,8 @@
         <e p="Scripts" t="Include">
           <e p="Api" t="Include">
             <e p="APIHandler.cs" t="Include" />
+            <e p="LoginDto.cs" t="Include" />
+            <e p="RegisterDto.cs" t="Include" />
           </e>
           <e p="Economy" t="Include">
             <e p="Core" t="Include">
@@ -725,16 +733,18 @@
           </e>
           <e p="Installers" t="Include">
             <e p="GameSceneInstaller.cs" t="Include" />
+            <e p="MainMenuInstaller.cs" t="Include" />
           </e>
           <e p="UI" t="Include">
             <e p="HUD" t="Include">
               <e p="BottomPanel.xml" t="Include" />
               <e p="Game.xml" t="Include" />
               <e p="GameUiController.cs" t="Include" />
-              <e p="MessageBox.xml" t="Include" />
+              <e p="MoneyMessageBox.xml" t="Include" />
               <e p="NewUnlockPanel.xml" t="Include" />
               <e p="ShopPanel.xml" t="Include" />
               <e p="SpecsPanel.xml" t="Include" />
+              <e p="WorkerCapMessageBox.xml" t="Include" />
               <e p="WorkerPanel.xml" t="Include" />
             </e>
             <e p="MainMenu" t="Include">
