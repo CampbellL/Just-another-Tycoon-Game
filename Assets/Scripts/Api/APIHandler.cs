@@ -1,18 +1,15 @@
 
 using System;
 using System.Net;
-using System.Net.Http;
 using Newtonsoft.Json;
 using RestSharp;
-using UniRx;
-using UnityEngine;
-using UnityEngine.Networking;
+
 
 namespace Api
 {
     internal sealed class ApiHandler
     {
-        private RestClient _client = new RestClient("http://192.168.178.55:4200");
+        private RestClient _client = new RestClient("http://192.168.132.209/");
         public string Login(LoginDto loginDto)
         {
             this._client.Timeout = -1;
